@@ -28,4 +28,9 @@ namespace Tsukiy0.Extensions.AspNetCore.Filters
             }
         }
     }
+
+    public class ApiKeyAuthAttribute : TypeFilterAttribute
+    {
+        public ApiKeyAuthAttribute() : base(typeof(ApiKeyAuthFilter)) { }
+    }
 }

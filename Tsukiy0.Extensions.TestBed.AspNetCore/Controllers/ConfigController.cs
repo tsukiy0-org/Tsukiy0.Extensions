@@ -6,7 +6,7 @@ namespace Tsukiy0.Extensions.TestBed.AspNetCore.Controllers
 {
     [ApiController]
     [Route("Config")]
-    [TypeFilter(typeof(ApiKeyAuthFilter))]
+    [ApiKeyAuth]
     public class ConfigController : ControllerBase
     {
         private readonly ApiKeyAuthConfig config;
