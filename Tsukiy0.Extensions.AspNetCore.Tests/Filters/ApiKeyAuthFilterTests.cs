@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
 using Tsukiy0.Extensions.AspNetCore.Configs;
+using Tsukiy0.Extensions.AspNetCore.Filters;
 using Xunit;
 
 namespace Tsukiy0.Extensions.AspNetCore.Tests.Filters
