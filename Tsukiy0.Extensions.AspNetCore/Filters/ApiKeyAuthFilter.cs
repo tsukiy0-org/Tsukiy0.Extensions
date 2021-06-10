@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using System.Linq;
 using Tsukiy0.Extensions.AspNetCore.Configs;
 
-namespace Tsukiy0.Extensions.AspNetCore
+namespace Tsukiy0.Extensions.AspNetCore.Filters
 {
     public class ApiKeyAuthFilter : IAuthorizationFilter
     {
