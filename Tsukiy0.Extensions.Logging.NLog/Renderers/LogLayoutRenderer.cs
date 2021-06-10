@@ -8,7 +8,7 @@ using Tsukiy0.Extensions.Logging.Core.Extensions;
 
 namespace Tsukiy0.Adapter.NLog
 {
-    internal class LogLayoutRenderer : LayoutRenderer
+    public class LogLayoutRenderer : LayoutRenderer
     {
         protected override void Append(StringBuilder builder, LogEventInfo logEvent)
         {
