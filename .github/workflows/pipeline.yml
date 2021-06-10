@@ -1,0 +1,29 @@
+name: pipeline
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      publish:
+        required: true
+        default: "prerelease"
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: build
+        run: |
+          docker-compose -f tasks/ci/docker-compose.yml build build
+          docker-compose -f tasks/ci/docker-compose.yml run build
+          docker-compose -f tasks/ci/docker-compose.yml down
+      - name: deploy
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          docker-compose -f tasks/ci/docker-compose.yml build deploy
+          docker-compose -f tasks/ci/docker-compose.yml run deploy
+          docker-compose -f tasks/ci/docker-compose.yml down
