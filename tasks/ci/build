@@ -3,4 +3,6 @@
 set -euo pipefail
 
 dotnet build
+dotnet test Tsukiy0.Extensions.Core.Tests
+dotnet test Tsukiy0.Extensions.AspNetCore.Tests
 dotnet pack

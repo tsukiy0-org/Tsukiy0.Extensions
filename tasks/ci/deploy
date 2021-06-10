@@ -5,6 +5,5 @@ set -euo pipefail
 VERSION=$(jq -r ".version" package.json)
 SOURCE=https://api.nuget.org/v3/index.json
 
-dotnet nuget push Tsukiy0.AwsTools.Core/bin/Debug/*.nupkg --api-key ${NUGET_API_KEY} --source ${SOURCE}
-dotnet nuget push Tsukiy0.AwsTools.Runtime.Lambda/bin/Debug/*.nupkg --api-key ${NUGET_API_KEY} --source ${SOURCE}
-dotnet nuget push Tsukiy0.AwsTools.Client/bin/Debug/*.nupkg --api-key ${NUGET_API_KEY} --source ${SOURCE}
+dotnet nuget push Tsukiy0.Extensions.Core/bin/Debug/*.nupkg --api-key ${NUGET_API_KEY} --source ${SOURCE}
+dotnet nuget push Tsukiy0.Extensions.AspNetCore/bin/Debug/*.nupkg --api-key ${NUGET_API_KEY} --source ${SOURCE}
