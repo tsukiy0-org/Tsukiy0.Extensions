@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Core.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.AspNetCore", "Tsukiy0.Extensions.AspNetCore\Tsukiy0.Extensions.AspNetCore.csproj", "{43D63361-B578-424F-8679-C5AA88BE3657}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.AspNetCore.Tests", "Tsukiy0.Extensions.AspNetCore.Tests\Tsukiy0.Extensions.AspNetCore.Tests.csproj", "{9DEDB4D1-0236-45BD-91F9-D498DF8575F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,17 @@ Global
 		{43D63361-B578-424F-8679-C5AA88BE3657}.Release|x64.Build.0 = Release|Any CPU
 		{43D63361-B578-424F-8679-C5AA88BE3657}.Release|x86.ActiveCfg = Release|Any CPU
 		{43D63361-B578-424F-8679-C5AA88BE3657}.Release|x86.Build.0 = Release|Any CPU
+		{9DEDB4D1-0236-45BD-91F9-D498DF8575F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DEDB4D1-0236-45BD-91F9-D498DF8575F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DEDB4D1-0236-45BD-91F9-D498DF8575F9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9DEDB4D1-0236-45BD-91F9-D498DF8575F9}.Debug|x64.Build.0 = Debug|Any CPU
+		{9DEDB4D1-0236-45BD-91F9-D498DF8575F9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9DEDB4D1-0236-45BD-91F9-D498DF8575F9}.Debug|x86.Build.0 = Debug|Any CPU
+		{9DEDB4D1-0236-45BD-91F9-D498DF8575F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DEDB4D1-0236-45BD-91F9-D498DF8575F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DEDB4D1-0236-45BD-91F9-D498DF8575F9}.Release|x64.ActiveCfg = Release|Any CPU
+		{9DEDB4D1-0236-45BD-91F9-D498DF8575F9}.Release|x64.Build.0 = Release|Any CPU
+		{9DEDB4D1-0236-45BD-91F9-D498DF8575F9}.Release|x86.ActiveCfg = Release|Any CPU
+		{9DEDB4D1-0236-45BD-91F9-D498DF8575F9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
