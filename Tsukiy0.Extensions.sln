@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Logging.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Logging.AspNetCore", "Tsukiy0.Extensions.Logging.AspNetCore\Tsukiy0.Extensions.Logging.AspNetCore.csproj", "{E750EF52-376B-461B-9742-656311403C63}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Logging.AspNetCore.Tests", "Tsukiy0.Extensions.Logging.AspNetCore.Tests\Tsukiy0.Extensions.Logging.AspNetCore.Tests.csproj", "{263FE928-8222-4A0E-B630-E6931E32580E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -142,5 +144,17 @@ Global
 		{E750EF52-376B-461B-9742-656311403C63}.Release|x64.Build.0 = Release|Any CPU
 		{E750EF52-376B-461B-9742-656311403C63}.Release|x86.ActiveCfg = Release|Any CPU
 		{E750EF52-376B-461B-9742-656311403C63}.Release|x86.Build.0 = Release|Any CPU
+		{263FE928-8222-4A0E-B630-E6931E32580E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{263FE928-8222-4A0E-B630-E6931E32580E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{263FE928-8222-4A0E-B630-E6931E32580E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{263FE928-8222-4A0E-B630-E6931E32580E}.Debug|x64.Build.0 = Debug|Any CPU
+		{263FE928-8222-4A0E-B630-E6931E32580E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{263FE928-8222-4A0E-B630-E6931E32580E}.Debug|x86.Build.0 = Debug|Any CPU
+		{263FE928-8222-4A0E-B630-E6931E32580E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{263FE928-8222-4A0E-B630-E6931E32580E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{263FE928-8222-4A0E-B630-E6931E32580E}.Release|x64.ActiveCfg = Release|Any CPU
+		{263FE928-8222-4A0E-B630-E6931E32580E}.Release|x64.Build.0 = Release|Any CPU
+		{263FE928-8222-4A0E-B630-E6931E32580E}.Release|x86.ActiveCfg = Release|Any CPU
+		{263FE928-8222-4A0E-B630-E6931E32580E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
