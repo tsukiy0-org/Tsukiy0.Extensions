@@ -20,5 +20,16 @@ namespace Tsukiy0.Extensions.Logging.Core.Extensions
                 return fn();
             }
         }
+
+        public static void WithCorrelation(this ILogger logger, ICorrelationService correlationService, Action fn)
+        {
+            using (logger.BeginScope(new[] {
+                new KeyValuePair<string, object>(TRACE_ID_KEY, correlationService.TraceId),
+                new KeyValuePair<string, object>(SPAN_ID_KEY, correlationService.SpanId)
+            }))
+            {
+                fn();
+            }
+        }
     }
 }

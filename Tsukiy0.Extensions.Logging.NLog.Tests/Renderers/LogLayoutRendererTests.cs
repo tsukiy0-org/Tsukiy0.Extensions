@@ -9,7 +9,9 @@ using NLog.LayoutRenderers;
 using NLog.Layouts;
 using NLog.Targets;
 using Tsukiy0.Adapter.NLog;
+using Tsukiy0.Extensions.Logging.Core.Extensions;
 using Tsukiy0.Extensions.Logging.Core.Models;
+using Tsukiy0.Extensions.Logging.Core.Services;
 using Xunit;
 
 namespace Tsukiy0.Extensions.Logging.NLog.Tests
@@ -81,6 +83,21 @@ namespace Tsukiy0.Extensions.Logging.NLog.Tests
             var exceptionContext = (JsonElement)actual.Exception.Context;
             exceptionContext.GetProperty("Errors").GetString().Should().Be("Are Bad");
             exceptionContext.GetProperty("ComplexErrors").GetProperty("Value").GetString().Should().Be("Are Worse");
+        }
+
+        [Fact]
+        public void WithScope()
+        {
+            var correlationService = new StaticCorrelationService(Guid.NewGuid(), Guid.NewGuid());
+
+            sut.WithCorrelation(correlationService, () =>
+            {
+                sut.LogInformation("Hello {p1} {p2}", "param1", new { Complex = "Object" });
+                var actual = JsonSerializer.Deserialize<Log>(target.Logs[0]);
+
+                actual.TraceId.Should().Equals(correlationService.TraceId);
+                actual.SpanId.Should().Equals(correlationService.SpanId);
+            });
         }
     }
 }
