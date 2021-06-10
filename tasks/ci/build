@@ -6,4 +6,5 @@ dotnet build
 dotnet test Tsukiy0.Extensions.Core.Tests
 dotnet test Tsukiy0.Extensions.AspNetCore.Tests
 dotnet test Tsukiy0.Extensions.Logging.NLog.Tests
+dotnet test Tsukiy0.Extensions.Logging.AspNetCore.Tests
 dotnet pack
