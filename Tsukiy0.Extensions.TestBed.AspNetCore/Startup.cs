@@ -4,9 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Tsukiy0.Extensions.AspNetCore;
 using Tsukiy0.Extensions.AspNetCore.Configs;
 using Tsukiy0.Extensions.AspNetCore.Extensions;
+using Tsukiy0.Extensions.AspNetCore.Filters;
 
 namespace Tsukiy0.Extensions.TestBed.AspNetCore
 {
@@ -23,6 +23,7 @@ namespace Tsukiy0.Extensions.TestBed.AspNetCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddConfig<ApiKeyAuthConfig>(Configuration);
+            services.AddScoped<ApiKeyAuthFilter>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
