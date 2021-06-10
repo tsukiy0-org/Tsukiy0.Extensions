@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
-using Tsukiyy0.Extensions.Logging.Core.Services;
+using Tsukiy0.Extensions.Logging.Core.Services;
 
-namespace Tsukiyy0.Extensions.Logging.Core.Extensions
+namespace Tsukiy0.Extensions.Logging.Core.Extensions
 {
     public static class LoggerExtensions
     {

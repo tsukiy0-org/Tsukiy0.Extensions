@@ -1,6 +1,6 @@
 using System;
 
-namespace Tsukiyy0.Extensions.Logging.Core.Services
+namespace Tsukiy0.Extensions.Logging.Core.Services
 {
     public interface ICorrelationService
     {
