@@ -1,0 +1,15 @@
+{
+  "name": "root",
+  "private": true,
+  "version": "0.0.0",
+  "license": "MIT",
+  "devDependencies": {
+    "standard-version": "^9.3.0"
+  },
+  "scripts": {
+    "version:prerelease": "standard-version --prerelease alpha",
+    "version:prerelease:dry": "yarn version:prerelease --dry-run",
+    "version:release": "standard-version",
+    "version:release:dry": "standard-version --dry-run"
+  }
+}
