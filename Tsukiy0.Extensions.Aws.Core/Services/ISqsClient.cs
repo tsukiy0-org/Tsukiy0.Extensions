@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Tsukiy0.AwsTools.Core.Models;
+using Tsukiy0.Extensions.Aws.Core.Models;
 
 namespace Tsukiy0.Extensions.Aws.Core.Services
 {
