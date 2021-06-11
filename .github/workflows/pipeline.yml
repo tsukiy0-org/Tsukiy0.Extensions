@@ -38,10 +38,10 @@ jobs:
           docker-compose -f tasks/ci/docker-compose.yml build integration
           docker-compose -f tasks/ci/docker-compose.yml run integration
           docker-compose -f tasks/ci/docker-compose.yml down
-      - name: deploy
+      - name: publish
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
-          docker-compose -f tasks/ci/docker-compose.yml build deploy
-          docker-compose -f tasks/ci/docker-compose.yml run deploy
+          docker-compose -f tasks/ci/docker-compose.yml build publish
+          docker-compose -f tasks/ci/docker-compose.yml run publish
           docker-compose -f tasks/ci/docker-compose.yml down

@@ -33,13 +33,13 @@ services:
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
       AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
     command: bash ./tasks/ci/integration
-  deploy:
+  publish:
     build:
       context: .
-      dockerfile: deploy.Dockerfile
+      dockerfile: publish.Dockerfile
     volumes: 
       - ../../:/app
     working_dir: /app
     environment:
       NUGET_API_KEY: ${NUGET_API_KEY}
-    command: bash ./tasks/ci/deploy
+    command: bash ./tasks/ci/publish
