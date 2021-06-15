@@ -8,7 +8,8 @@ namespace Tsukiy0.Extensions.Logging.AspNetCore.Extensions
         public static IApplicationBuilder AddLoggingExtensions(this IApplicationBuilder app)
         {
             return app
-                .UseMiddleware<LogCorrelationMiddleware>();
+                .UseMiddleware<LogCorrelationMiddleware>()
+                .UseMiddleware<LogRequestMiddleware>();
         }
     }
 }

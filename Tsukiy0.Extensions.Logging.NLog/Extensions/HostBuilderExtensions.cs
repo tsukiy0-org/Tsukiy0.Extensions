@@ -12,9 +12,9 @@ namespace Tsukiy0.Extensions.Logging.Nlog.Extensions
 {
     public static class HostBuilderExtensions
     {
-        public static IHostBuilder AddLoggingExtensions(this IHostBuilder builder)
+        public static IHostBuilder AddLoggingExtensions(this IHostBuilder builder, string name)
         {
-            LogManager.Configuration = BuildConfig();
+            LogManager.Configuration = BuildConfig(name);
             return builder
                 .ConfigureLogging((_, logging) =>
                 {
@@ -24,10 +24,14 @@ namespace Tsukiy0.Extensions.Logging.Nlog.Extensions
                 .UseNLog();
         }
 
-        private static LoggingConfiguration BuildConfig()
+        private static LoggingConfiguration BuildConfig(string name)
         {
             var config = new LoggingConfiguration();
-            LayoutRenderer.Register<LogLayoutRenderer>("shared-log");
+            LayoutRenderer.Register("shared-log", _ =>
+            {
+                var renderer = new LogLayoutRenderer(name);
+                return renderer.Render(_);
+            });
 
             var consoleTarget = new ConsoleTarget()
             {

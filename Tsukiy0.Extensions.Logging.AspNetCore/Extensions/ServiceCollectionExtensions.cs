@@ -10,8 +10,10 @@ namespace Tsukiy0.Extensions.Logging.AspNetCore.Extensions
         public static IServiceCollection AddLoggingExtensions(this IServiceCollection services)
         {
             return services
+                .AddHttpContextAccessor()
                 .AddScoped<ICorrelationService, RequestCorrelationService>()
-                .AddScoped<LogCorrelationMiddleware>();
+                .AddScoped<LogCorrelationMiddleware>()
+                .AddScoped<LogRequestMiddleware>();
         }
     }
 }

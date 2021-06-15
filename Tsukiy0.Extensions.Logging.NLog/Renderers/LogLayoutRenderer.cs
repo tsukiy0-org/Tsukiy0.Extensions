@@ -10,12 +10,20 @@ namespace Tsukiy0.Extensions.NLog.Renderers
 {
     public class LogLayoutRenderer : LayoutRenderer
     {
+        private readonly string name;
+
+        public LogLayoutRenderer(string name)
+        {
+            this.name = name;
+        }
+
         protected override void Append(StringBuilder builder, LogEventInfo logEvent)
         {
             var log = new Log(
                 1,
                 logEvent.Level.Ordinal * 10,
                 logEvent.TimeStamp.ToUniversalTime(),
+                name,
                 RenderScopeId(logEvent, LoggerExtensions.TRACE_ID_KEY),
                 RenderScopeId(logEvent, LoggerExtensions.SPAN_ID_KEY),
                 logEvent.FormattedMessage,

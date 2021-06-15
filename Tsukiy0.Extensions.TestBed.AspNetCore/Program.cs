@@ -17,6 +17,6 @@ namespace Tsukiy0.Extensions.TestBed.AspNetCore
                 {
                     webBuilder.UseStartup<Startup>();
                 })
-                .AddLoggingExtensions();
+                .AddLoggingExtensions("Tsukiy0.Extensions.TestBed.AspNetCore");
     }
 }

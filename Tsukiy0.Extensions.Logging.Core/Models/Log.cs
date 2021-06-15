@@ -6,6 +6,7 @@ namespace Tsukiy0.Extensions.Logging.Core.Models
         int Version,
         int Level,
         DateTimeOffset Timestamp,
+        String Name,
         Guid? TraceId,
         Guid? SpanId,
         string Message,

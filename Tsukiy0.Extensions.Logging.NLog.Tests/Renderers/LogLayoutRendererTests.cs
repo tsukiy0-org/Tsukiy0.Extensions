@@ -24,7 +24,11 @@ namespace Tsukiy0.Extensions.Logging.NLog.Tests
         public LogLayoutRendererTests()
         {
             var config = new LoggingConfiguration();
-            LayoutRenderer.Register<LogLayoutRenderer>("standard-log");
+            LayoutRenderer.Register("shared-log", _ =>
+            {
+                var renderer = new LogLayoutRenderer("TestApp");
+                return renderer.Render(_);
+            });
             target = new MemoryTarget()
             {
                 Layout = Layout.FromString("${standard-log}")
@@ -44,6 +48,7 @@ namespace Tsukiy0.Extensions.Logging.NLog.Tests
             actual.Version.Should().Be(1);
             actual.Level.Should().Be(20);
             actual.Timestamp.Should().BeCloseTo(DateTimeOffset.UtcNow, 200);
+            actual.Name.Should().Be("TestApp");
             actual.TraceId.Should().BeNull();
             actual.SpanId.Should().BeNull();
             actual.Message.Should().Contain("Hello");
@@ -68,6 +73,7 @@ namespace Tsukiy0.Extensions.Logging.NLog.Tests
             actual.Version.Should().Be(1);
             actual.Level.Should().Be(40);
             actual.Timestamp.Should().BeCloseTo(DateTimeOffset.UtcNow, 200);
+            actual.Name.Should().Be("TestApp");
             actual.TraceId.Should().BeNull();
             actual.SpanId.Should().BeNull();
             actual.Message.Should().Contain("Hello");
