@@ -12,7 +12,7 @@ namespace Tsukiy0.Extensions.Logging.Nlog.Extensions
 {
     public static class HostBuilderExtensions
     {
-        public static IHostBuilder AddSharedLogging(this IHostBuilder builder)
+        public static IHostBuilder AddLoggingExtensions(this IHostBuilder builder)
         {
             LogManager.Configuration = BuildConfig();
             return builder

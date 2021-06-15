@@ -7,7 +7,7 @@ namespace Tsukiy0.Extensions.Logging.AspNetCore.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddSharedLogging(this IServiceCollection services)
+        public static IServiceCollection AddLoggingExtensions(this IServiceCollection services)
         {
             return services
                 .AddScoped<ICorrelationService, RequestCorrelationService>()

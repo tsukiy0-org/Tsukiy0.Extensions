@@ -5,7 +5,7 @@ namespace Tsukiy0.Extensions.Logging.AspNetCore.Extensions
 {
     public static class ApplicationBuilderExtensions
     {
-        public static IApplicationBuilder AddSharedLogging(this IApplicationBuilder app)
+        public static IApplicationBuilder AddLoggingExtensions(this IApplicationBuilder app)
         {
             return app
                 .UseMiddleware<LogCorrelationMiddleware>();

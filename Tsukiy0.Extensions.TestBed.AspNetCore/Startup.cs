@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using Tsukiy0.Extensions.AspNetCore.Configs;
 using Tsukiy0.Extensions.AspNetCore.Extensions;
 using Tsukiy0.Extensions.AspNetCore.Filters;
+using Tsukiy0.Extensions.Logging.AspNetCore.Extensions;
 
 namespace Tsukiy0.Extensions.TestBed.AspNetCore
 {
@@ -24,6 +25,7 @@ namespace Tsukiy0.Extensions.TestBed.AspNetCore
         {
             services.AddConfig<ApiKeyAuthConfig>(Configuration);
             services.AddScoped<ApiKeyAuthFilter>();
+            services.AddLoggingExtensions();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -42,6 +44,8 @@ namespace Tsukiy0.Extensions.TestBed.AspNetCore
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Tsukiy0.Extensions.TestBed.AspNetCore v1"));
             }
+
+            app.AddLoggingExtensions();
 
             app.UseHttpsRedirection();
 
