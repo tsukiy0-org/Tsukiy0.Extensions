@@ -41,7 +41,7 @@ namespace Tsukiy0.Extensions.AspNetCore.Tests.Filters
         [Theory]
         [InlineData("Operations")]
         [InlineData("Service")]
-        public void WhenHasKey__ThenPass(string keyName)
+        public void WhenHasKeyThenPass(string keyName)
         {
             context.HttpContext.Request.Headers.Add(ApiKeyAuthFilter.Header, config.ApiKeys[keyName]);
 
@@ -51,7 +51,7 @@ namespace Tsukiy0.Extensions.AspNetCore.Tests.Filters
         }
 
         [Fact]
-        public void WhenNoKey__ThenUnauthorized()
+        public void WhenNoKeyThenUnauthorized()
         {
             sut.OnAuthorization(context);
 
@@ -59,7 +59,7 @@ namespace Tsukiy0.Extensions.AspNetCore.Tests.Filters
         }
 
         [Fact]
-        public void WhenNotMatchingKey__ThenUnauthorized()
+        public void WhenNotMatchingKeyThenUnauthorized()
         {
             context.HttpContext.Request.Headers.Add(ApiKeyAuthFilter.Header, Guid.NewGuid().ToString());
 
