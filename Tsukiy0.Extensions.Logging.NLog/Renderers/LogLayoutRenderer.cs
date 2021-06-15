@@ -6,7 +6,7 @@ using NLog.LayoutRenderers;
 using Tsukiy0.Extensions.Logging.Core.Models;
 using Tsukiy0.Extensions.Logging.Core.Extensions;
 
-namespace Tsukiy0.Adapter.NLog
+namespace Tsukiy0.Extensions.NLog.Renderers
 {
     public class LogLayoutRenderer : LayoutRenderer
     {

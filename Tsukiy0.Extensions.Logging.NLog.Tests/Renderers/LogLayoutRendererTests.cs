@@ -8,7 +8,7 @@ using NLog.Extensions.Logging;
 using NLog.LayoutRenderers;
 using NLog.Layouts;
 using NLog.Targets;
-using Tsukiy0.Adapter.NLog;
+using Tsukiy0.Extensions.NLog.Renderers;
 using Tsukiy0.Extensions.Logging.Core.Extensions;
 using Tsukiy0.Extensions.Logging.Core.Models;
 using Tsukiy0.Extensions.Logging.Core.Services;
