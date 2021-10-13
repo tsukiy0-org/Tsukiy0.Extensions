@@ -2,48 +2,27 @@ using System;
 using System.Text.Json;
 using FluentAssertions;
 using Microsoft.Extensions.Logging;
-using NLog;
-using NLog.Config;
-using NLog.Extensions.Logging;
-using NLog.LayoutRenderers;
-using NLog.Layouts;
-using NLog.Targets;
-using Tsukiy0.Extensions.NLog.Renderers;
 using Tsukiy0.Extensions.Logging.Core.Extensions;
-using Tsukiy0.Extensions.Logging.Core.Models;
 using Xunit;
 using Tsukiy0.Extensions.Correlation.Services;
+using Tsukiy0.Extensions.Logging.NLog.Tests.Helpers;
 
 namespace Tsukiy0.Extensions.Logging.NLog.Tests
 {
     public class LogLayoutRendererTests
     {
-        private readonly MemoryTarget target;
-        private readonly Microsoft.Extensions.Logging.ILogger sut;
+        private readonly MemoryLoggerHelper<LogLayoutRendererTests> helper;
 
         public LogLayoutRendererTests()
         {
-            var config = new LoggingConfiguration();
-            LayoutRenderer.Register("shared-log", _ =>
-            {
-                var renderer = new LogLayoutRenderer("TestApp");
-                return renderer.Render(_);
-            });
-            target = new MemoryTarget()
-            {
-                Layout = Layout.FromString("${standard-log}")
-            };
-            config.AddRuleForAllLevels(target);
-            LogManager.Configuration = config;
-            var provider = new NLogLoggerProvider();
-            sut = provider.CreateLogger("test");
+            helper = new MemoryLoggerHelper<LogLayoutRendererTests>();
         }
 
         [Fact]
         public void LogInformation()
         {
-            sut.LogInformation("Hello {p1} {p2}", "param1", new { Complex = "Object" });
-            var actual = JsonSerializer.Deserialize<Log>(target.Logs[0]);
+            helper.Logger.LogInformation("Hello {p1} {p2}", "param1", new { Complex = "Object" });
+            var actual = helper.GetFirstLog();
 
             actual.Version.Should().Be(1);
             actual.Level.Should().Be(20);
@@ -67,8 +46,8 @@ namespace Tsukiy0.Extensions.Logging.NLog.Tests
             var exception = new Exception("Something Bad!");
             exception.Data.Add("Errors", "Are Bad");
             exception.Data.Add("ComplexErrors", new { Value = "Are Worse" });
-            sut.LogError(exception, "Hello {p1} {p2}", "param1", new { Complex = "Object" });
-            var actual = JsonSerializer.Deserialize<Log>(target.Logs[0]);
+            helper.Logger.LogError(exception, "Hello {p1} {p2}", "param1", new { Complex = "Object" });
+            var actual = helper.GetFirstLog();
 
             actual.Version.Should().Be(1);
             actual.Level.Should().Be(40);
@@ -96,10 +75,10 @@ namespace Tsukiy0.Extensions.Logging.NLog.Tests
         {
             var correlationService = new StaticCorrelationService(Guid.NewGuid(), Guid.NewGuid());
 
-            sut.WithCorrelation(correlationService, () =>
+            helper.Logger.WithCorrelation(correlationService, () =>
             {
-                sut.LogInformation("Hello {p1} {p2}", "param1", new { Complex = "Object" });
-                var actual = JsonSerializer.Deserialize<Log>(target.Logs[0]);
+                helper.Logger.LogInformation("Hello {p1} {p2}", "param1", new { Complex = "Object" });
+                var actual = helper.GetFirstLog();
 
                 actual.TraceId.Should().Equals(correlationService.TraceId);
                 actual.SpanId.Should().Equals(correlationService.SpanId);
