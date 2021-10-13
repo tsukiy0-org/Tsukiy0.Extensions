@@ -5,12 +5,11 @@ using Amazon.Lambda.SQSEvents;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using NLog;
 using NLog.Extensions.Logging;
 using Tsukiy0.Extensions.Aws.Core.Models;
 using Tsukiy0.Extensions.Logging.Core.Extensions;
 using Tsukiy0.Extensions.Logging.Core.Services;
-using Tsukiy0.Extensions.Logging.NLog.Extensions;
+using Tsukiy0.Extensions.Logging.Nlog.Extensions;
 
 namespace Tsukiy0.Extensions.Aws.Runtime.Lambda
 {
@@ -21,9 +20,8 @@ namespace Tsukiy0.Extensions.Aws.Runtime.Lambda
 
         private IHost CreateHost(SendMessageEnvelope<T> message)
         {
-            LogManager.Setup().LoadConfiguration(_ => _.Configuration.AddStandardLog());
-
             return Host.CreateDefaultBuilder()
+                .AddLoggingExtensions("SqsRuntime")
                 .ConfigureServices((ctx, services) =>
                 {
                     services.AddLogging(l =>
