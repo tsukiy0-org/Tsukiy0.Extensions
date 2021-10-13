@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Tsukiy0.Extensions.Processor.Models;
 using FluentAssertions;
 using System.Linq;
+using FluentAssertions.Extensions;
 
 namespace Tsukiy0.Extensions.Processor.Tests.Services
 {
@@ -35,15 +36,20 @@ namespace Tsukiy0.Extensions.Processor.Tests.Services
             await sut.Send(body);
 
             messages.Single().Should().BeEquivalentTo(new Message<string>
-            {
-                Header = new MessageHeader
-                {
-                    Version = 1,
-                    TraceId = traceId,
-                    AdditionalHeaders = new Dictionary<string, string>()
-                },
-                Body = body
-            }, o => o.Excluding(_ => _.Header.Created));
+                (
+                    Header: new MessageHeader
+                    (
+                        Version: 1,
+                        TraceId: traceId,
+                        Created: DateTimeOffset.Now,
+                        AdditionalHeaders: new Dictionary<string, string>()
+                    ),
+                    Body: body
+                ),
+                o => o
+                    .Using<DateTime>(ctx => ctx.Subject.Should().BeCloseTo(ctx.Expectation, 1.Seconds()))
+                    .WhenTypeIs<DateTime>()
+            );
         }
 
         public class TestQueue : DefaultQueue<string>

@@ -19,17 +19,17 @@ namespace Tsukiy0.Extensions.Processor.Services
 
         public async Task Send(T body)
         {
-            await messageQueue.Send(new Message<T>
-            {
-                Header = new MessageHeader
-                {
-                    Version = 1,
-                    TraceId = correlationService.TraceId,
-                    Created = DateTimeOffset.UtcNow,
-                    AdditionalHeaders = new Dictionary<string, string> { }
-                },
-                Body = body
-            });
+            await messageQueue.Send(
+                new Message<T>(
+                    Header: new MessageHeader(
+                        Version: 1,
+                        TraceId: correlationService.TraceId,
+                        Created: DateTimeOffset.UtcNow,
+                        AdditionalHeaders: new Dictionary<string, string> { }
+                    ),
+                    Body: body
+                )
+            );
         }
     }
 }

@@ -14,16 +14,16 @@ namespace Tsukiy0.Extensions.Processor.Tests.Services
         public MessageCorrelationServiceTests()
         {
             message = new Message<string>
-            {
-                Header = new MessageHeader
-                {
-                    Version = 1,
-                    TraceId = Guid.NewGuid(),
-                    Created = DateTimeOffset.MaxValue,
-                    AdditionalHeaders = new Dictionary<string, string>()
-                },
-                Body = "test"
-            };
+            (
+                Header: new MessageHeader
+                (
+                    Version: 1,
+                    TraceId: Guid.NewGuid(),
+                    Created: DateTimeOffset.MaxValue,
+                    AdditionalHeaders: new Dictionary<string, string>()
+                ),
+                Body: "test"
+            );
         }
 
         [Fact]
@@ -51,10 +51,16 @@ namespace Tsukiy0.Extensions.Processor.Tests.Services
         public void WhenNoTraceIdThenReturnNewTraceId()
         {
             // Arrange
-            message.Header.TraceId = Guid.Empty;
+            var newMessage = message with
+            {
+                Header = message.Header with
+                {
+                    TraceId = Guid.Empty
+                }
+            };
 
             // Act
-            var actual = new MessageCorrelationService(message.Header);
+            var actual = new MessageCorrelationService(newMessage.Header);
 
             // Assert
             actual.TraceId.Should().NotBe(Guid.Empty);
