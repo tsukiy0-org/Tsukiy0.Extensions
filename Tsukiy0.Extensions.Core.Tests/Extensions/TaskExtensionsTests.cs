@@ -1,9 +1,8 @@
-using System.Diagnostics;
 using System.Threading.Tasks;
 using Xunit;
 using FluentAssertions;
-using System.Linq;
-using System.Threading;
+using System.Collections.Generic;
+using Tsukiy0.Extensions.Core.Extensions;
 
 namespace Tsukiy0.Extensions.Core.Tests.Extensions
 {
@@ -12,16 +11,29 @@ namespace Tsukiy0.Extensions.Core.Tests.Extensions
         public class WhenAllBatched
         {
             [Fact]
-            public async Task BatchesTasks()
+            public async Task WhenAllBatched__BehavesLikeWhenAll()
             {
-                var sw = new Stopwatch();
-                var tasks = Enumerable.Range(0, 2).Select(async _ => Thread.Sleep(1000));
+                // Arrange
+                var whenAllTasks = GetTasks();
+                var whenAllBatchedTasks = GetTasks();
 
-                sw.Start();
-                await Core.Extensions.TaskExtensions.WhenAllBatched(tasks, 1);
-                sw.Stop();
+                // Act
+                var whenAllResults = await Task.WhenAll(whenAllTasks);
+                var whenAllBatchedResults = await whenAllBatchedTasks.WhenAllBatched(2);
 
-                sw.ElapsedMilliseconds.Should().BeCloseTo(2000, 100);
+                // Assert
+                whenAllBatchedResults.Should().BeEquivalentTo(whenAllResults);
+            }
+
+            private static IEnumerable<Task<int>> GetTasks()
+            {
+                return new List<Task<int>>{
+                    Task.FromResult(1),
+                    Task.FromResult(2),
+                    Task.FromResult(3),
+                    Task.FromResult(4),
+                    Task.FromResult(5),
+                };
             }
         }
     }
