@@ -5,7 +5,7 @@ using Tsukiy0.Extensions.Processor.Models;
 using Tsukiy0.Extensions.Processor.Services;
 using Xunit;
 
-namespace Tsukiy0.Extensions.Processort.Tests.Services
+namespace Tsukiy0.Extensions.Processor.Tests.Services
 {
     public class MessageCorrelationServiceTests
     {
