@@ -1,6 +1,6 @@
 using System;
 
-namespace Tsukiy0.Extensions.Logging.Core.Services
+namespace Tsukiy0.Extensions.Correlation.Services
 {
     public class StaticCorrelationService : ICorrelationService
     {

@@ -12,6 +12,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Tsukiy0.Extensions.Correlation\Tsukiy0.Extensions.Correlation.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <MinVerTagPrefix>v</MinVerTagPrefix>
   </PropertyGroup>

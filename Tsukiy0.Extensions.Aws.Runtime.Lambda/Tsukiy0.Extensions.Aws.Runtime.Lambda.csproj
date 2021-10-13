@@ -24,6 +24,7 @@
     <ProjectReference Include="..\Tsukiy0.Extensions.Logging.NLog\Tsukiy0.Extensions.Logging.NLog.csproj" />
     <ProjectReference Include="..\Tsukiy0.Extensions.Aws.Core\Tsukiy0.Extensions.Aws.Core.csproj" />
     <ProjectReference Include="..\Tsukiy0.Extensions.Aws.Infrastructure\Tsukiy0.Extensions.Aws.Infrastructure.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Correlation\Tsukiy0.Extensions.Correlation.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

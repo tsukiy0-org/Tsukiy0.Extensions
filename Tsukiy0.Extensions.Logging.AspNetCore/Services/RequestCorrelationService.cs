@@ -1,6 +1,6 @@
 using System;
 using Microsoft.AspNetCore.Http;
-using Tsukiy0.Extensions.Logging.Core.Services;
+using Tsukiy0.Extensions.Correlation.Services;
 
 namespace Tsukiy0.Extensions.Logging.AspNetCore.Services
 {

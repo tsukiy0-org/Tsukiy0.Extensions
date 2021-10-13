@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
-using Tsukiy0.Extensions.Logging.Core.Services;
+using Tsukiy0.Extensions.Correlation.Services;
 
 namespace Tsukiy0.Extensions.Logging.Core.Extensions
 {

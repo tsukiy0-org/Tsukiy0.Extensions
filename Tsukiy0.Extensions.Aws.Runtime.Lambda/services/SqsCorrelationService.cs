@@ -1,6 +1,6 @@
 using System;
 using Tsukiy0.Extensions.Aws.Core.Models;
-using Tsukiy0.Extensions.Logging.Core.Services;
+using Tsukiy0.Extensions.Correlation.Services;
 
 namespace Tsukiy0.Extensions.Aws.Runtime.Lambda
 {

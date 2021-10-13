@@ -1,7 +1,7 @@
 using Tsukiy0.Extensions.Logging.AspNetCore.Middlewares;
 using Tsukiy0.Extensions.Logging.AspNetCore.Services;
-using Tsukiy0.Extensions.Logging.Core.Services;
 using Microsoft.Extensions.DependencyInjection;
+using Tsukiy0.Extensions.Correlation.Services;
 
 namespace Tsukiy0.Extensions.Logging.AspNetCore.Extensions
 {

@@ -11,8 +11,8 @@ using NLog.Targets;
 using Tsukiy0.Extensions.NLog.Renderers;
 using Tsukiy0.Extensions.Logging.Core.Extensions;
 using Tsukiy0.Extensions.Logging.Core.Models;
-using Tsukiy0.Extensions.Logging.Core.Services;
 using Xunit;
+using Tsukiy0.Extensions.Correlation.Services;
 
 namespace Tsukiy0.Extensions.Logging.NLog.Tests
 {

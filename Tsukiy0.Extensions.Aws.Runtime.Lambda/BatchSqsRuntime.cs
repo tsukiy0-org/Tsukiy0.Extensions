@@ -9,8 +9,8 @@ using Microsoft.Extensions.Logging;
 using Tsukiy0.Extensions.Aws.Core.Models;
 using Tsukiy0.Extensions.Aws.Core.Services;
 using Tsukiy0.Extensions.Aws.Infrastructure.Services;
+using Tsukiy0.Extensions.Correlation.Services;
 using Tsukiy0.Extensions.Logging.Core.Extensions;
-using Tsukiy0.Extensions.Logging.Core.Services;
 using Tsukiy0.Extensions.Logging.Nlog.Extensions;
 
 namespace Tsukiy0.Extensions.Aws.Runtime.Lambda
