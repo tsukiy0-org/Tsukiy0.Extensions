@@ -2,7 +2,7 @@ using System;
 using System.Text.Json;
 using FluentAssertions;
 using Microsoft.Extensions.Logging;
-using Tsukiy0.Extensions.Logging.Core.Extensions;
+using Tsukiy0.Extensions.Logging.Extensions;
 using Xunit;
 using Tsukiy0.Extensions.Correlation.Services;
 using Tsukiy0.Extensions.Logging.NLog.Tests.Helpers;

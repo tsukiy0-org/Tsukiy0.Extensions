@@ -7,7 +7,7 @@ using NLog.Targets;
 using Microsoft.Extensions.Logging;
 using NLog;
 using Tsukiy0.Extensions.NLog.Renderers;
-using Tsukiy0.Extensions.Logging.Core.Models;
+using Tsukiy0.Extensions.Logging.Models;
 
 namespace Tsukiy0.Extensions.Logging.NLog.Tests.Helpers
 {

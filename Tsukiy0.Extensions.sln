@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.AspNetCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.TestBed.AspNetCore", "Tsukiy0.Extensions.TestBed.AspNetCore\Tsukiy0.Extensions.TestBed.AspNetCore.csproj", "{E1831E85-DEAA-4EF3-ABA1-D48DB9546349}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Logging.Core", "Tsukiy0.Extensions.Logging.Core\Tsukiy0.Extensions.Logging.Core.csproj", "{F3F7A8DC-33D8-4722-AB74-B27675AB2521}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Logging", "Tsukiy0.Extensions.Logging\Tsukiy0.Extensions.Logging.csproj", "{F3F7A8DC-33D8-4722-AB74-B27675AB2521}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Logging.NLog", "Tsukiy0.Extensions.Logging.NLog\Tsukiy0.Extensions.Logging.NLog.csproj", "{F8015B7C-FF8A-4A79-901E-C60D538ACE52}"
 EndProject

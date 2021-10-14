@@ -1,4 +1,4 @@
-namespace Tsukiy0.Extensions.Logging.Core.Models
+namespace Tsukiy0.Extensions.Logging.Models
 {
     public record LogException(
         string Type,

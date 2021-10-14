@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Tsukiy0.Extensions.Correlation.Services;
-using Tsukiy0.Extensions.Logging.Core.Extensions;
+using Tsukiy0.Extensions.Logging.Extensions;
 
 namespace Tsukiy0.Extensions.Logging.AspNetCore.Middlewares
 {

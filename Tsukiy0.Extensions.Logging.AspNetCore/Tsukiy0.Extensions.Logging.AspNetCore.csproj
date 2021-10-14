@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Tsukiy0.Extensions.Logging.Core\Tsukiy0.Extensions.Logging.Core.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Logging\Tsukiy0.Extensions.Logging.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

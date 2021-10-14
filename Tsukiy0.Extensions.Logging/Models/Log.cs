@@ -1,6 +1,6 @@
 using System;
 
-namespace Tsukiy0.Extensions.Logging.Core.Models
+namespace Tsukiy0.Extensions.Logging.Models
 {
     public record Log(
         int Version,

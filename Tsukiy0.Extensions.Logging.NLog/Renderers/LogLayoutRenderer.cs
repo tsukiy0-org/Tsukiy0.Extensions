@@ -3,8 +3,8 @@ using System.Text;
 using System.Text.Json;
 using NLog;
 using NLog.LayoutRenderers;
-using Tsukiy0.Extensions.Logging.Core.Models;
-using Tsukiy0.Extensions.Logging.Core.Extensions;
+using Tsukiy0.Extensions.Logging.Models;
+using Tsukiy0.Extensions.Logging.Extensions;
 
 namespace Tsukiy0.Extensions.NLog.Renderers
 {

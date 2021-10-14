@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using Tsukiy0.Extensions.Correlation.Services;
 
-namespace Tsukiy0.Extensions.Logging.Core.Extensions
+namespace Tsukiy0.Extensions.Logging.Extensions
 {
     public static class LoggerExtensions
     {
