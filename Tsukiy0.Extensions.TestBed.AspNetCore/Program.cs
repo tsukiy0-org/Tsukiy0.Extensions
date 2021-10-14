@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using Tsukiy0.Extensions.Logging.Nlog.Extensions;
+using Tsukiy0.Extensions.Logging.NLog.Extensions;
 
 namespace Tsukiy0.Extensions.TestBed.AspNetCore
 {
