@@ -17,6 +17,8 @@
     <ProjectReference Include="..\Tsukiy0.Extensions.Correlation\Tsukiy0.Extensions.Correlation.csproj" />
     <ProjectReference Include="..\Tsukiy0.Extensions.Logging\Tsukiy0.Extensions.Logging.csproj" />
     <ProjectReference Include="..\Tsukiy0.Extensions.Core\Tsukiy0.Extensions.Core.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Json\Tsukiy0.Extensions.Json.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Http\Tsukiy0.Extensions.Http.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
