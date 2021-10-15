@@ -8,13 +8,13 @@ namespace Tsukiy0.Extensions.Correlation.Tests.Services
     public class StaticCorrelationServiceTests
     {
         [Fact]
-        public void UsesProvidedCorrelationIdAndSpanId()
+        public void UsesProvidedTraceIdAndSpanId()
         {
-            var correlationId = Guid.NewGuid();
+            var traceId = Guid.NewGuid();
             var spanId = Guid.NewGuid();
-            var sut = new StaticCorrelationService(correlationId, spanId);
+            var sut = new StaticCorrelationService(traceId, spanId);
 
-            sut.TraceId.Should().Be(correlationId);
+            sut.TraceId.Should().Be(traceId);
             sut.SpanId.Should().Be(spanId);
         }
     }

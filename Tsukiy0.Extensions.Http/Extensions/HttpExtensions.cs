@@ -31,5 +31,11 @@ namespace Tsukiy0.Extensions.Http.Extensions
             request.Headers.Add(HttpHeaders.TraceId, correlationService.TraceId.ToString());
             return request;
         }
+
+        public static HttpRequestMessage AddApiKey(this HttpRequestMessage request, string key)
+        {
+            request.Headers.Add(HttpHeaders.ApiKey, key);
+            return request;
+        }
     }
 }
