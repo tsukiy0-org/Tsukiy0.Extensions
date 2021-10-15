@@ -41,14 +41,14 @@ namespace Tsukiy0.Extensions.Processor.Tests.Services
                     (
                         Version: 1,
                         TraceId: traceId,
-                        Created: DateTimeOffset.Now,
+                        Created: DateTimeOffset.UtcNow,
                         AdditionalHeaders: new Dictionary<string, string>()
                     ),
                     Body: body
                 ),
                 o => o
-                    .Using<DateTime>(ctx => ctx.Subject.Should().BeCloseTo(ctx.Expectation, 1.Seconds()))
-                    .WhenTypeIs<DateTime>()
+                    .Using<DateTimeOffset>(ctx => ctx.Subject.Should().BeCloseTo(ctx.Expectation, 20.Seconds()))
+                    .WhenTypeIs<DateTimeOffset>()
             );
         }
 

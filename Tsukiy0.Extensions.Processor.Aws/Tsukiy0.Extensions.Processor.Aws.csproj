@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Tsukiy0.Extensions.Processor\Tsukiy0.Extensions.Processor.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Json\Tsukiy0.Extensions.Json.csproj" />
   </ItemGroup>
 
   <ItemGroup>

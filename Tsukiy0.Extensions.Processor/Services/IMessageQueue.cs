@@ -5,6 +5,6 @@ namespace Tsukiy0.Extensions.Processor.Services
 {
     public interface IMessageQueue<T>
     {
-        Task Send(Message<T> message);
+        Task Send(params Message<T>[] message);
     }
 }
