@@ -11,7 +11,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Tsukiy0.Extensions.AspNetCore\Tsukiy0.Extensions.AspNetCore.csproj" />
-    <ProjectReference Include="..\Tsukiy0.Extensions.Logging.AspNetCore\Tsukiy0.Extensions.Logging.AspNetCore.csproj" />
     <ProjectReference Include="..\Tsukiy0.Extensions.Logging.NLog\Tsukiy0.Extensions.Logging.NLog.csproj" />
   </ItemGroup>
 
