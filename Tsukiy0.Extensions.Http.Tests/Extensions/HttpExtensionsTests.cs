@@ -63,7 +63,7 @@ namespace Tsukiy0.Extensions.Http.Tests.Extensions
 
             request.AddTraceId(mockCorrelationService.Object);
 
-            request.Headers.GetValues(HttpHeaders.TraceIdKey).Should().Contain(traceId.ToString());
+            request.Headers.GetValues(HttpHeaders.TraceId).Should().Contain(traceId.ToString());
         }
     }
 }

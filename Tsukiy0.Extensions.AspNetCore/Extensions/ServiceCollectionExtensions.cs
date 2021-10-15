@@ -8,6 +8,7 @@ using Tsukiy0.Extensions.AspNetCore.Middlewares;
 using Tsukiy0.Extensions.AspNetCore.Services;
 using Tsukiy0.Extensions.Correlation.Services;
 using Tsukiy0.Extensions.DependencyInjection.Extensions;
+using Tsukiy0.Extensions.Http.Constants;
 using Tsukiy0.Extensions.Logging.AspNetCore.Middlewares;
 
 namespace Tsukiy0.Extensions.AspNetCore.Extensions
@@ -47,7 +48,7 @@ namespace Tsukiy0.Extensions.AspNetCore.Extensions
         {
             services.ConfigureSwaggerGen(_ =>
             {
-                _.AddAuthHeader(ApiKeyAuthFilter.Header);
+                _.AddAuthHeader(HttpHeaders.ApiKey);
             });
 
             return services

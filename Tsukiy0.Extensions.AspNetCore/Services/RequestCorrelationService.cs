@@ -19,7 +19,7 @@ namespace Tsukiy0.Extensions.AspNetCore.Services
 
         private Guid GetTraceId()
         {
-            var header = httpContextAccessor.HttpContext.Request.Headers[HttpHeaders.TraceIdKey];
+            var header = httpContextAccessor.HttpContext.Request.Headers[HttpHeaders.TraceId];
 
             if (header.Count == 0)
             {

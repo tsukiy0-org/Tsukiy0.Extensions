@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Tsukiy0.Extensions.AspNetCore.Extensions;
-using Tsukiy0.Extensions.AspNetCore.Filters;
+using Tsukiy0.Extensions.Http.Constants;
 
 namespace Tsukiy0.Extensions.TestBed.AspNetCore
 {
@@ -25,7 +25,7 @@ namespace Tsukiy0.Extensions.TestBed.AspNetCore
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Tsukiy0.Extensions.TestBed.AspNetCore", Version = "v1" });
-                c.AddAuthHeader(ApiKeyAuthFilter.Header);
+                c.AddAuthHeader(HttpHeaders.ApiKey);
             });
         }
 

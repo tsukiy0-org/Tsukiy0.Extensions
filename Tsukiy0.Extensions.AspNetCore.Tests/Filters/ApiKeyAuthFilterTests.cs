@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
 using Tsukiy0.Extensions.AspNetCore.Configs;
 using Tsukiy0.Extensions.AspNetCore.Filters;
+using Tsukiy0.Extensions.Http.Constants;
 using Xunit;
 
 namespace Tsukiy0.Extensions.AspNetCore.Tests.Filters
@@ -43,7 +44,7 @@ namespace Tsukiy0.Extensions.AspNetCore.Tests.Filters
         [InlineData("Service")]
         public void WhenHasKeyThenPass(string keyName)
         {
-            context.HttpContext.Request.Headers.Add(ApiKeyAuthFilter.Header, config.ApiKeys[keyName]);
+            context.HttpContext.Request.Headers.Add(HttpHeaders.ApiKey, config.ApiKeys[keyName]);
 
             sut.OnAuthorization(context);
 
@@ -61,7 +62,7 @@ namespace Tsukiy0.Extensions.AspNetCore.Tests.Filters
         [Fact]
         public void WhenNotMatchingKeyThenUnauthorized()
         {
-            context.HttpContext.Request.Headers.Add(ApiKeyAuthFilter.Header, Guid.NewGuid().ToString());
+            context.HttpContext.Request.Headers.Add(HttpHeaders.ApiKey, Guid.NewGuid().ToString());
 
             sut.OnAuthorization(context);
 

@@ -28,7 +28,7 @@ namespace Tsukiy0.Extensions.Http.Extensions
 
         public static HttpRequestMessage AddTraceId(this HttpRequestMessage request, ICorrelationService correlationService)
         {
-            request.Headers.Add(HttpHeaders.TraceIdKey, correlationService.TraceId.ToString());
+            request.Headers.Add(HttpHeaders.TraceId, correlationService.TraceId.ToString());
             return request;
         }
     }

@@ -41,7 +41,7 @@ namespace Tsukiy0.Extensions.AspNetCore.Tests.Services
         public void WhenHasHeaderThenReturnHeaderAsTraceId()
         {
             var traceId = Guid.NewGuid().ToString();
-            context.Request.Headers[HttpHeaders.TraceIdKey] = traceId;
+            context.Request.Headers[HttpHeaders.TraceId] = traceId;
 
             var actual = new RequestCorrelationService(mockHttpContextAccessor.Object);
 
@@ -51,7 +51,7 @@ namespace Tsukiy0.Extensions.AspNetCore.Tests.Services
         [Fact]
         public void WhenBadHeaderThenReturnNewTraceId()
         {
-            context.Request.Headers[HttpHeaders.TraceIdKey] = "gibberish";
+            context.Request.Headers[HttpHeaders.TraceId] = "gibberish";
 
             var actual = new RequestCorrelationService(mockHttpContextAccessor.Object);
 
