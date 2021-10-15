@@ -6,22 +6,13 @@ using Tsukiy0.Extensions.AspNetCore.Filters;
 using Tsukiy0.Extensions.AspNetCore.Middlewares;
 using Tsukiy0.Extensions.AspNetCore.Services;
 using Tsukiy0.Extensions.Correlation.Services;
+using Tsukiy0.Extensions.DependencyInjection.Extensions;
 using Tsukiy0.Extensions.Logging.AspNetCore.Middlewares;
 
 namespace Tsukiy0.Extensions.AspNetCore.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddConfig<T>(this IServiceCollection services, IConfiguration configuration) where T : class
-        {
-            var name = typeof(T).Name;
-            return services.AddScoped((_) =>
-            {
-                return configuration.GetSection(name)
-                    .Get<T>();
-            });
-        }
-
         public static IServiceCollection AddDefaultControllers(this IServiceCollection services)
         {
             services.AddControllers().AddJsonOptions(_ =>

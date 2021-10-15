@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using Tsukiy0.Extensions.AspNetCore.Configs;
 using Tsukiy0.Extensions.AspNetCore.Extensions;
 using Tsukiy0.Extensions.AspNetCore.Filters;
+using Tsukiy0.Extensions.DependencyInjection.Extensions;
 using Tsukiy0.Extensions.Logging.AspNetCore.Extensions;
 
 namespace Tsukiy0.Extensions.TestBed.AspNetCore
