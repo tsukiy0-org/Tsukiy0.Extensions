@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Amazon.SQS;
 using Amazon.SQS.Model;
+using Tsukiy0.Extensions.Core.Extensions;
 using Tsukiy0.Extensions.Json.Extensions;
 using Tsukiy0.Extensions.Processor.Models;
 using Tsukiy0.Extensions.Processor.Services;
@@ -24,15 +25,18 @@ namespace Tsukiy0.Extensions.Processor.Aws.Services
 
         public async Task Send(IEnumerable<Message<T>> messages)
         {
-            await client.SendMessageBatchAsync(new SendMessageBatchRequest
+            var requests = messages.Chunk(10).Select(chunk => new SendMessageBatchRequest
             {
                 QueueUrl = queueUrl,
-                Entries = messages.Select(_ => new SendMessageBatchRequestEntry
+                Entries = chunk.Select(_ => new SendMessageBatchRequestEntry
                 {
                     Id = Guid.NewGuid().ToString(),
                     MessageBody = JsonSerializer.Serialize(_, JsonSerializerExtensions.DefaultJsonSerializerOptions)
                 }).ToList()
             });
+
+            await requests.Select(_ => client.SendMessageBatchAsync(_))
+                .WhenAllBatched(5);
 
             // @TODO retry failed
         }

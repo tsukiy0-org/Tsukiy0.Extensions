@@ -7,11 +7,11 @@ using Moq;
 using Tsukiy0.Extensions.Processor.Services;
 using Tsukiy0.Extensions.Processor.Aws.Runtimes;
 using FluentAssertions;
-using FizzWare.NBuilder;
 using Amazon.Lambda.SQSEvents;
 using Tsukiy0.Extensions.Processor.Models;
 using static Amazon.Lambda.SQSEvents.SQSEvent;
 using System.Linq;
+using AutoFixture;
 
 namespace Tsukiy0.Extensions.Processor.Aws.Tests.Runtimes
 {
@@ -29,12 +29,10 @@ namespace Tsukiy0.Extensions.Processor.Aws.Tests.Runtimes
         [Fact]
         public async Task WhenMoreThanOneRecordThenThrow()
         {
-            var e = Builder<SQSEvent>.CreateNew()
-                .With(_ => _.Records = new List<SQSMessage> {
-                    Builder<SQSMessage>.CreateNew().Build(),
-                    Builder<SQSMessage>.CreateNew().Build(),
-                })
-                .Build();
+            var fixture = new Fixture();
+            var e = fixture.Build<SQSEvent>()
+                .With(_ => _.Records, fixture.CreateMany<SQSMessage>(100))
+                .Create();
 
             Func<Task> action = async () => await sut.Run(e);
 
@@ -45,24 +43,15 @@ namespace Tsukiy0.Extensions.Processor.Aws.Tests.Runtimes
         public async Task WhenOneRecordThenProcess()
         {
             // Arrange
-            var message = new Message<string>
-            (
-                Header: new MessageHeader
-                (
-                    Version: 1,
-                    TraceId: Guid.NewGuid(),
-                    Created: DateTimeOffset.MaxValue,
-                    AdditionalHeaders: new Dictionary<string, string>()
-                ),
-                Body: "yay!"
-            );
-            var e = Builder<SQSEvent>.CreateNew()
-                .With(_ => _.Records = new List<SQSMessage> {
-                    Builder<SQSMessage>.CreateNew()
-                        .With(_ => _.Body = JsonSerializer.Serialize(message))
-                        .Build(),
+            var fixture = new Fixture();
+            var message = fixture.Create<Message<string>>();
+            var e = fixture.Build<SQSEvent>()
+                .With(_ => _.Records, new List<SQSMessage> {
+                    new SQSMessage {
+                        Body = JsonSerializer.Serialize(message)
+                    }
                 })
-                .Build();
+                .Create();
             var messages = new List<Message<string>>();
             mockProcessor.Setup(_ => _.Run(Capture.In(messages)));
 

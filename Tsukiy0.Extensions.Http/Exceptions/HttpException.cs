@@ -8,7 +8,7 @@ namespace Tsukiy0.Extensions.Http.Exceptions
     {
         public readonly HttpStatusCode StatusCode;
 
-        public HttpException(HttpResponseMessage response) : base($"Request to {response.RequestMessage.RequestUri} failed with status {response.StatusCode}.")
+        public HttpException(HttpResponseMessage response) : base($"Request to {response.RequestMessage.Method} {response.RequestMessage.RequestUri} failed with status {response.StatusCode}.")
         {
             Data.Add("Method", response.RequestMessage.Method.ToString());
             Data.Add("StatusCode", response.StatusCode.ToString());
