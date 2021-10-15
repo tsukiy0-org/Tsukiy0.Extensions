@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace Tsukiy0.Extensions.Processor.Aws.Services
             this.queueUrl = queueUrl;
         }
 
-        public async Task Send(params Message<T>[] messages)
+        public async Task Send(IEnumerable<Message<T>> messages)
         {
             await client.SendMessageBatchAsync(new SendMessageBatchRequest
             {
@@ -34,6 +35,11 @@ namespace Tsukiy0.Extensions.Processor.Aws.Services
             });
 
             // @TODO retry failed
+        }
+
+        public async Task Send(Message<T> message)
+        {
+            await Send(new List<Message<T>> { message });
         }
     }
 }

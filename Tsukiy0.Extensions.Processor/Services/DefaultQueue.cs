@@ -18,7 +18,7 @@ namespace Tsukiy0.Extensions.Processor.Services
             this.correlationService = correlationService;
         }
 
-        public async Task Send(params T[] messages)
+        public async Task Send(IEnumerable<T> messages)
         {
             await messageQueue.Send(
                 messages.Select(_ =>
@@ -31,8 +31,13 @@ namespace Tsukiy0.Extensions.Processor.Services
                         ),
                         Body: _
                     )
-                ).ToArray()
+                )
             );
+        }
+
+        public async Task Send(T message)
+        {
+            await Send(new List<T> { message });
         }
     }
 }
