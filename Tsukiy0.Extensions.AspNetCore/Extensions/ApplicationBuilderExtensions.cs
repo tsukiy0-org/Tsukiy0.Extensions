@@ -38,5 +38,22 @@ namespace Tsukiy0.Extensions.AspNetCore.Extensions
         {
             app.UseMiddleware<ErrorHandlingMiddleware>();
         }
+
+        public static void UseDefaults(this IApplicationBuilder app, IConfiguration configuration)
+        {
+            app.UseDefaultLogging();
+            app.UseErrorHandling();
+
+            app.UseSwagger();
+            app.UseHttpsRedirection();
+            app.UseResponseCompression();
+            app.UseRouting();
+            app.UseCorsWhitelist(configuration);
+            app.UseAuthentication();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+        }
     }
-}

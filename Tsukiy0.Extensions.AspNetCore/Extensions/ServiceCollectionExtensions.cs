@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Tsukiy0.Extensions.AspNetCore.Configs;
@@ -52,6 +53,17 @@ namespace Tsukiy0.Extensions.AspNetCore.Extensions
             return services
                 .AddConfig<ApiKeyAuthConfig>(configuration)
                 .AddScoped<ApiKeyAuthFilter>();
+        }
+
+        public static IServiceCollection AddDefaults(this IServiceCollection services)
+        {
+            services.AddDefaultControllers();
+            services.AddDefaultLogging();
+            services.AddErrorHandling();
+
+            services.AddResponseCompression();
+
+            return services;
         }
     }
 }
