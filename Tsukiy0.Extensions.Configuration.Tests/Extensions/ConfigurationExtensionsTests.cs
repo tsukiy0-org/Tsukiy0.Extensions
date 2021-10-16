@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
-using Tsukiy0.Extensions.DependencyInjection.Extensions;
+using Tsukiy0.Extensions.Configuration.Extensions;
 using Xunit;
 
-namespace Tsukiy0.Extensions.DependencyInjection.Tests.Extensions
+namespace Tsukiy0.Extensions.Configuration.Tests.Extensions
 {
     public class ConfigurationExtensionsTests
     {

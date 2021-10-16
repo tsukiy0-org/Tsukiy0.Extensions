@@ -15,7 +15,7 @@
     <ProjectReference Include="..\Tsukiy0.Extensions.Core\Tsukiy0.Extensions.Core.csproj" />
     <ProjectReference Include="..\Tsukiy0.Extensions.Json\Tsukiy0.Extensions.Json.csproj" />
     <ProjectReference Include="..\Tsukiy0.Extensions.Http\Tsukiy0.Extensions.Http.csproj" />
-    <ProjectReference Include="..\Tsukiy0.Extensions.DependencyInjection\Tsukiy0.Extensions.DependencyInjection.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Configuration\Tsukiy0.Extensions.Configuration.csproj" />
   </ItemGroup>
 
   <ItemGroup>

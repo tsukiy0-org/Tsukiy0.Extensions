@@ -7,7 +7,7 @@ using Tsukiy0.Extensions.AspNetCore.Filters;
 using Tsukiy0.Extensions.AspNetCore.Middlewares;
 using Tsukiy0.Extensions.AspNetCore.Services;
 using Tsukiy0.Extensions.Correlation.Services;
-using Tsukiy0.Extensions.DependencyInjection.Extensions;
+using Tsukiy0.Extensions.Configuration.Extensions;
 using Tsukiy0.Extensions.Http.Constants;
 using Tsukiy0.Extensions.Logging.AspNetCore.Middlewares;
 

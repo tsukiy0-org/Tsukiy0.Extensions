@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Tsukiy0.Extensions.DependencyInjection.Extensions
+namespace Tsukiy0.Extensions.Configuration.Extensions
 {
     public static class ServiceCollectionExtensions
     {
