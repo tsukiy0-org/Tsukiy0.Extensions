@@ -6,10 +6,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
-    <PackageReference Include="MinVer" Version="2.5.0">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
   </ItemGroup>
 
@@ -20,6 +16,13 @@
     <ProjectReference Include="..\Tsukiy0.Extensions.Json\Tsukiy0.Extensions.Json.csproj" />
     <ProjectReference Include="..\Tsukiy0.Extensions.Http\Tsukiy0.Extensions.Http.csproj" />
     <ProjectReference Include="..\Tsukiy0.Extensions.DependencyInjection\Tsukiy0.Extensions.DependencyInjection.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MinVer" Version="2.5.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
   <PropertyGroup>
