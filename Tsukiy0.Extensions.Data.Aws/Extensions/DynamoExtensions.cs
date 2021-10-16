@@ -1,8 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
+using System.Threading.Tasks;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
+using Tsukiy0.Extensions.Core.Extensions;
 using Tsukiy0.Extensions.Json.Extensions;
 
 namespace Tsukiy0.Extensions.Data.Aws.Extensions
@@ -56,6 +59,33 @@ namespace Tsukiy0.Extensions.Data.Aws.Extensions
 
                 lastEvaluatedKey = response.LastEvaluatedKey;
             } while (lastEvaluatedKey is not null && lastEvaluatedKey.Count != 0);
+        }
+
+        public static async Task PutAll(this IAmazonDynamoDB client, string tableName, IEnumerable<Dictionary<string, AttributeValue>> items)
+        {
+            var dynamoBatchSizeLimit = 25;
+            var batches = items.Chunk(dynamoBatchSizeLimit);
+            await Task.WhenAll(batches.Select(async batch =>
+            {
+                var writeRequests = batch.Select(_ =>
+                {
+                    return new WriteRequest
+                    {
+                        PutRequest = new PutRequest
+                        {
+                            Item = _
+                        }
+                    };
+                }).ToList();
+
+                await client.BatchWriteItemAsync(new BatchWriteItemRequest
+                {
+                    RequestItems = new Dictionary<string, List<WriteRequest>>
+                    {
+                        [tableName] = writeRequests
+                    }
+                });
+            }));
         }
     }
 }

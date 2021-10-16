@@ -10,11 +10,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="System.Linq.Async" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Tsukiy0.Extensions.Data\Tsukiy0.Extensions.Data.csproj" />
     <ProjectReference Include="..\Tsukiy0.Extensions.Json\Tsukiy0.Extensions.Json.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Core\Tsukiy0.Extensions.Core.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
