@@ -26,8 +26,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: us-east-1
         run: |
-          docker-compose -f tasks/ci/docker-compose.yml build deploy_integration
-          docker-compose -f tasks/ci/docker-compose.yml run deploy_integration
+          docker-compose -f tasks/ci/docker-compose.yml build deploy
+          docker-compose -f tasks/ci/docker-compose.yml run deploy
           docker-compose -f tasks/ci/docker-compose.yml down
       - name: integration
         env:
