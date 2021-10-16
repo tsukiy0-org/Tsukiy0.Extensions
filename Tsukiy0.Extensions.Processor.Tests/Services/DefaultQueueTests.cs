@@ -30,12 +30,12 @@ namespace Tsukiy0.Extensions.Processor.Tests.Services
             var traceId = Guid.NewGuid();
             var body = "test";
             mockCorrelationService.Setup(_ => _.TraceId).Returns(traceId);
-            var messages = new List<Message<string>>();
+            var messages = new List<IEnumerable<Message<string>>>();
             mockMessageQueue.Setup(_ => _.Send(Capture.In(messages)));
 
             await sut.Send(body);
 
-            messages.Single().Should().BeEquivalentTo(new Message<string>
+            messages.Single().Single().Should().BeEquivalentTo(new Message<string>
                 (
                     Header: new MessageHeader
                     (

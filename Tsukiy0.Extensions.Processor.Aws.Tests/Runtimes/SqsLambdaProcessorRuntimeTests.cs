@@ -31,7 +31,7 @@ namespace Tsukiy0.Extensions.Processor.Aws.Tests.Runtimes
         {
             var fixture = new Fixture();
             var e = fixture.Build<SQSEvent>()
-                .With(_ => _.Records, fixture.CreateMany<SQSMessage>(100))
+                .With(_ => _.Records, fixture.Build<SQSMessage>().Without(_ => _.MessageAttributes).CreateMany(10).ToList())
                 .Create();
 
             Func<Task> action = async () => await sut.Run(e);
