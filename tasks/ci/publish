@@ -3,13 +3,22 @@
 set -euo pipefail
 
 VERSION=$(jq -r ".version" package.json)
+NUGET_PKG_DIR=/tmp/nuget
 SOURCE=https://api.nuget.org/v3/index.json
 
-dotnet nuget push Tsukiy0.Extensions.Core/bin/Debug/*.nupkg --api-key ${NUGET_API_KEY} --source ${SOURCE}
-dotnet nuget push Tsukiy0.Extensions.AspNetCore/bin/Debug/*.nupkg --api-key ${NUGET_API_KEY} --source ${SOURCE}
-dotnet nuget push Tsukiy0.Extensions.Logging/bin/Debug/*.nupkg --api-key ${NUGET_API_KEY} --source ${SOURCE}
-dotnet nuget push Tsukiy0.Extensions.Logging.NLog/bin/Debug/*.nupkg --api-key ${NUGET_API_KEY} --source ${SOURCE}
-dotnet nuget push Tsukiy0.Extensions.Logging.AspNetCore/bin/Debug/*.nupkg --api-key ${NUGET_API_KEY} --source ${SOURCE}
-dotnet nuget push Tsukiy0.Extensions.Aws.Core/bin/Debug/*.nupkg --api-key ${NUGET_API_KEY} --source ${SOURCE}
-dotnet nuget push Tsukiy0.Extensions.Aws.Infrastructure/bin/Debug/*.nupkg --api-key ${NUGET_API_KEY} --source ${SOURCE}
-dotnet nuget push Tsukiy0.Extensions.Aws.Runtime.Lambda/bin/Debug/*.nupkg --api-key ${NUGET_API_KEY} --source ${SOURCE}
+pack() {
+    dotnet pack ${1} --include-symbols -o ${NUGET_PKG_DIR}
+}
+
+pack Tsukiy0.Extensions.AspNetCore
+pack Tsukiy0.Extensions.Core
+pack Tsukiy0.Extensions.Correlation
+pack Tsukiy0.Extensions.DependencyInjection
+pack Tsukiy0.Extensions.Http
+pack Tsukiy0.Extensions.Json
+pack Tsukiy0.Extensions.Logging
+pack Tsukiy0.Extensions.Logging.NLog
+pack Tsukiy0.Extensions.Processor
+pack Tsukiy0.Extensions.Processor.Aws
+
+dotnet nuget push "${NUGET_PKG_DIR}/*.nupkg" --source ${SOURCE} --api-key ${NUGET_API_KEY}

@@ -4,4 +4,3 @@ set -euo pipefail
 
 dotnet build
 dotnet test --filter FullyQualifiedName\~.Tests
-dotnet pack
