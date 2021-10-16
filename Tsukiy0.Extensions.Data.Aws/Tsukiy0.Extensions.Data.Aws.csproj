@@ -5,10 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.0.83" />
     <PackageReference Include="MinVer" Version="2.5.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tsukiy0.Extensions.Data\Tsukiy0.Extensions.Data.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Json\Tsukiy0.Extensions.Json.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
