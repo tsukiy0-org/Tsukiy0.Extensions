@@ -1,8 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Threading;
+using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
 using FluentAssertions;
+using Moq;
 using Tsukiy0.Extensions.Data.Aws.Extensions;
+using Tsukiy0.Extensions.Data.Aws.Models;
 using Xunit;
 
 namespace Tsukiy0.Extensions.Data.Aws.Tests.Extensions
@@ -90,7 +96,125 @@ namespace Tsukiy0.Extensions.Data.Aws.Tests.Extensions
             fromActual.Should().BeEquivalentTo(obj);
         }
 
-        public class SerializationTest
+        [Fact]
+        public async void ScanAllAsync()
+        {
+            // Arrange
+            var page1Request = new ScanRequest
+            {
+                ExclusiveStartKey = null
+            };
+            var page1Response = new ScanResponse
+            {
+                Items = new List<Dictionary<string, AttributeValue>> {
+                    new Point(1, 2).ToAttributeMap(),
+                    new Point(3, 4).ToAttributeMap(),
+                },
+                LastEvaluatedKey = new DynamoKey
+                (
+                    PK: "A",
+                    SK: "B"
+                ).ToAttributeMap()
+            };
+
+            var page2Request = new ScanRequest
+            {
+                ExclusiveStartKey = page1Response.LastEvaluatedKey
+            };
+            var page2Response = new ScanResponse
+            {
+                Items = new List<Dictionary<string, AttributeValue>> {
+                    new Point(5, 6).ToAttributeMap(),
+                    new Point(7, 8).ToAttributeMap(),
+                },
+                LastEvaluatedKey = null
+            };
+
+            var mockClient = new Mock<IAmazonDynamoDB>();
+            var requests = new List<ScanRequest>();
+            mockClient.SetupSequence(_ => _.ScanAsync(Capture.In(requests), CancellationToken.None))
+                .ReturnsAsync(page1Response)
+                .ReturnsAsync(page2Response);
+
+            // Act
+            var actual = await mockClient.Object.ScanAllAsync(page1Request)
+                .Select(_ => _.FromAttributeMap<Point>())
+                .ToListAsync();
+
+            // Assert
+            actual.Should().BeEquivalentTo(new List<Point> {
+                new Point(1, 2),
+                new Point(3, 4),
+                new Point(5, 6),
+                new Point(7, 8),
+            });
+            requests.Should().BeEquivalentTo(new List<ScanRequest>
+            {
+                page1Request,
+                page2Request
+            });
+        }
+
+        [Fact]
+        public async void QueryAllAsync()
+        {
+            // Arrange
+            var page1Request = new QueryRequest
+            {
+                ExclusiveStartKey = null
+            };
+            var page1Response = new QueryResponse
+            {
+                Items = new List<Dictionary<string, AttributeValue>> {
+                    new Point(1, 2).ToAttributeMap(),
+                    new Point(3, 4).ToAttributeMap(),
+                },
+                LastEvaluatedKey = new DynamoKey
+                (
+                    PK: "A",
+                    SK: "B"
+                ).ToAttributeMap()
+            };
+
+            var page2Request = new QueryRequest
+            {
+                ExclusiveStartKey = page1Response.LastEvaluatedKey
+            };
+            var page2Response = new QueryResponse
+            {
+                Items = new List<Dictionary<string, AttributeValue>> {
+                    new Point(5, 6).ToAttributeMap(),
+                    new Point(7, 8).ToAttributeMap(),
+                },
+                LastEvaluatedKey = null
+            };
+
+            var mockClient = new Mock<IAmazonDynamoDB>();
+            var requests = new List<QueryRequest>();
+            mockClient.SetupSequence(_ => _.QueryAsync(Capture.In(requests), CancellationToken.None))
+                .ReturnsAsync(page1Response)
+                .ReturnsAsync(page2Response);
+
+            // Act
+            var actual = await mockClient.Object.QueryAllAsync(page1Request)
+                .Select(_ => _.FromAttributeMap<Point>())
+                .ToListAsync();
+
+            // Assert
+            actual.Should().BeEquivalentTo(new List<Point> {
+                new Point(1, 2),
+                new Point(3, 4),
+                new Point(5, 6),
+                new Point(7, 8),
+            });
+            requests.Should().BeEquivalentTo(new List<QueryRequest>
+            {
+                page1Request,
+                page2Request
+            });
+        }
+
+        private class SerializationTest
         {
             public string __PK { get; set; }
             public string PK { get; set; }
