@@ -4,8 +4,8 @@ namespace Tsukiy0.Extensions.Data.Models
 {
     public interface IDao
     {
-        public string Type { get; set; }
-        public int Version { get; set; }
-        public DateTimeOffset Updated { get; set; }
+        public string __Type { get; set; }
+        public int __Version { get; set; }
+        public DateTimeOffset __Updated { get; set; }
     }
 }

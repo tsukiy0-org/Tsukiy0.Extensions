@@ -28,9 +28,9 @@ namespace Tsukiy0.Extensions.Data.Tests.Services
             actual.Should().NotBeNull();
             actual.Should().BeEquivalentTo(new DaoV2
             {
-                Type = "TEST",
-                Version = 2,
-                Updated = DateTimeOffset.MaxValue,
+                __Type = "TEST",
+                __Version = 2,
+                __Updated = DateTimeOffset.MaxValue,
                 Latest = true
             });
         }
@@ -42,9 +42,9 @@ namespace Tsukiy0.Extensions.Data.Tests.Services
             var sut = new VersionDaoMapper();
             var dao = new DaoV2
             {
-                Type = "TEST",
-                Version = 2,
-                Updated = DateTimeOffset.MaxValue,
+                __Type = "TEST",
+                __Version = 2,
+                __Updated = DateTimeOffset.MaxValue,
                 Latest = true
             };
 
@@ -66,9 +66,9 @@ namespace Tsukiy0.Extensions.Data.Tests.Services
             var sut = new VersionDaoMapper();
             var dao = new DaoV1
             {
-                Type = "TEST",
-                Version = 1,
-                Updated = DateTimeOffset.MaxValue,
+                __Type = "TEST",
+                __Version = 1,
+                __Updated = DateTimeOffset.MaxValue,
                 Latest = "true"
             };
 
@@ -91,17 +91,17 @@ namespace Tsukiy0.Extensions.Data.Tests.Services
 
     public class DaoV1 : IDao
     {
-        public string Type { get; set; }
-        public int Version { get; set; }
-        public DateTimeOffset Updated { get; set; }
+        public string __Type { get; set; }
+        public int __Version { get; set; }
+        public DateTimeOffset __Updated { get; set; }
         public string Latest { get; set; }
     }
 
     public class DaoV2 : IDao
     {
-        public string Type { get; set; }
-        public int Version { get; set; }
-        public DateTimeOffset Updated { get; set; }
+        public string __Type { get; set; }
+        public int __Version { get; set; }
+        public DateTimeOffset __Updated { get; set; }
         public bool Latest { get; set; }
     }
 
@@ -124,9 +124,9 @@ namespace Tsukiy0.Extensions.Data.Tests.Services
         {
             return new DaoV1
             {
-                Version = 1,
-                Updated = DateTimeOffset.MaxValue,
-                Type = "TEST",
+                __Version = 1,
+                __Updated = DateTimeOffset.MaxValue,
+                __Type = "TEST",
                 Latest = destination.Latest.ToString()
             };
         }
@@ -152,9 +152,9 @@ namespace Tsukiy0.Extensions.Data.Tests.Services
         {
             return new DaoV2
             {
-                Version = 2,
-                Updated = DateTimeOffset.MaxValue,
-                Type = "TEST",
+                __Version = 2,
+                __Updated = DateTimeOffset.MaxValue,
+                __Type = "TEST",
                 Latest = destination.Latest
             };
         }
