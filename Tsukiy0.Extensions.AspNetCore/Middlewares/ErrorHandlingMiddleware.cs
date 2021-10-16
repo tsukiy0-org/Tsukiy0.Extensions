@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Tsukiy0.Extensions.Core.Exceptions;
+using Tsukiy0.Extensions.Json.Extensions;
 
 namespace Tsukiy0.Extensions.AspNetCore.Middlewares
 {
@@ -45,7 +46,7 @@ namespace Tsukiy0.Extensions.AspNetCore.Middlewares
             var body = JsonSerializer.Serialize(new
             {
                 Message = e.Message
-            });
+            }, JsonSerializerExtensions.DefaultJsonSerializerOptions);
             await context.Response.WriteAsync(body);
         }
     }

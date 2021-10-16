@@ -22,7 +22,7 @@ namespace Tsukiy0.Extensions.Logging.AspNetCore.Middlewares
             finally
             {
                 logger.LogInformation(
-                    "Transaction {Request} {Response}",
+                    "Transaction {request} {response}",
                     new
                     {
                         Host = context.Request.Host.Value,

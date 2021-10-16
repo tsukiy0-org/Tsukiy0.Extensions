@@ -5,6 +5,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Http;
 using Tsukiy0.Extensions.Logging.NLog.Tests.Helpers;
 using Tsukiy0.Extensions.Logging.AspNetCore.Middlewares;
+using Tsukiy0.Extensions.Json.Extensions;
 
 namespace Tsukiy0.Extensions.AspNetCore.Tests.Middlewares
 {
@@ -39,28 +40,30 @@ namespace Tsukiy0.Extensions.AspNetCore.Tests.Middlewares
             await sut.InvokeAsync(context, mockRequestDelegate.Object);
             var actual = helper.GetFirstLog();
 
-            JsonSerializer.Serialize((object)actual.Context).Should().Be(JsonSerializer.Serialize(
-                new
-                {
-                    Request = new
+            JsonSerializer.Serialize((object)actual.Context, JsonSerializerExtensions.DefaultJsonSerializerOptions)
+                .Should().Be(JsonSerializer.Serialize(
+                    new
                     {
-                        Host = "google.com",
-                        Scheme = "http",
-                        Protocol = "HTTP/1.1",
-                        Method = "POST",
-                        Path = "/WeatherForecast",
-                        Query = "?test",
-                        ContentType = "application/json",
-                        ContentLength = 100
+                        Request = new
+                        {
+                            Host = "google.com",
+                            Scheme = "http",
+                            Protocol = "HTTP/1.1",
+                            Method = "POST",
+                            Path = "/WeatherForecast",
+                            Query = "?test",
+                            ContentType = "application/json",
+                            ContentLength = 100
+                        },
+                        Response = new
+                        {
+                            StatusCode = 200,
+                            ContentType = "application/xml",
+                            ContentLength = 300
+                        }
                     },
-                    Response = new
-                    {
-                        StatusCode = 200,
-                        ContentType = "application/xml",
-                        ContentLength = 300
-                    }
-                }
-            ));
+                    JsonSerializerExtensions.DefaultJsonSerializerOptions
+                ));
         }
     }
 }

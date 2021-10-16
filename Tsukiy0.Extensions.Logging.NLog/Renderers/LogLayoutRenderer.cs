@@ -5,6 +5,7 @@ using NLog;
 using NLog.LayoutRenderers;
 using Tsukiy0.Extensions.Logging.Models;
 using Tsukiy0.Extensions.Logging.Extensions;
+using Tsukiy0.Extensions.Json.Extensions;
 
 namespace Tsukiy0.Extensions.NLog.Renderers
 {
@@ -31,7 +32,7 @@ namespace Tsukiy0.Extensions.NLog.Renderers
                 RenderException(logEvent)
             );
 
-            var json = JsonSerializer.Serialize(log);
+            var json = JsonSerializer.Serialize(log, JsonSerializerExtensions.DefaultJsonSerializerOptions);
 
             builder.Append(json);
         }

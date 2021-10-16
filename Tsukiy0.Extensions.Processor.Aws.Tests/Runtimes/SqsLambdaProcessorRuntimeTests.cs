@@ -12,6 +12,7 @@ using Tsukiy0.Extensions.Processor.Models;
 using static Amazon.Lambda.SQSEvents.SQSEvent;
 using System.Linq;
 using AutoFixture;
+using Tsukiy0.Extensions.Json.Extensions;
 
 namespace Tsukiy0.Extensions.Processor.Aws.Tests.Runtimes
 {
@@ -48,7 +49,7 @@ namespace Tsukiy0.Extensions.Processor.Aws.Tests.Runtimes
             var e = fixture.Build<SQSEvent>()
                 .With(_ => _.Records, new List<SQSMessage> {
                     new SQSMessage {
-                        Body = JsonSerializer.Serialize(message)
+                        Body = JsonSerializer.Serialize(message, JsonSerializerExtensions.DefaultJsonSerializerOptions)
                     }
                 })
                 .Create();

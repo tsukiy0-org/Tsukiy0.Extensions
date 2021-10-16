@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using NLog;
 using Tsukiy0.Extensions.NLog.Renderers;
 using Tsukiy0.Extensions.Logging.Models;
+using Tsukiy0.Extensions.Json.Extensions;
 
 namespace Tsukiy0.Extensions.Logging.NLog.Tests.Helpers
 {
@@ -39,7 +40,7 @@ namespace Tsukiy0.Extensions.Logging.NLog.Tests.Helpers
 
         public Log GetLog(int index)
         {
-            return JsonSerializer.Deserialize<Log>(Target.Logs[index]);
+            return JsonSerializer.Deserialize<Log>(Target.Logs[index], JsonSerializerExtensions.DefaultJsonSerializerOptions);
         }
 
         public Log GetFirstLog()

@@ -37,7 +37,7 @@ namespace Tsukiy0.Extensions.Logging.NLog.Tests
             actual.Exception.Should().BeNull();
             var context = (JsonElement)actual.Context;
             context.GetProperty("p1").GetString().Should().Be("param1");
-            context.GetProperty("p2").GetProperty("Complex").GetString().Should().Be("Object");
+            context.GetProperty("p2").GetProperty("complex").GetString().Should().Be("Object");
         }
 
         [Fact]
@@ -61,13 +61,13 @@ namespace Tsukiy0.Extensions.Logging.NLog.Tests
             actual.Message.Should().Contain("Object");
             var context = (JsonElement)actual.Context;
             context.GetProperty("p1").GetString().Should().Be("param1");
-            context.GetProperty("p2").GetProperty("Complex").GetString().Should().Be("Object");
+            context.GetProperty("p2").GetProperty("complex").GetString().Should().Be("Object");
             actual.Exception.Message.Should().Equals(exception.Message);
             actual.Exception.Type.Should().Equals(exception.GetType().Name);
             actual.Exception.StackTrace.Should().Equals(exception.StackTrace);
             var exceptionContext = (JsonElement)actual.Exception.Context;
             exceptionContext.GetProperty("Errors").GetString().Should().Be("Are Bad");
-            exceptionContext.GetProperty("ComplexErrors").GetProperty("Value").GetString().Should().Be("Are Worse");
+            exceptionContext.GetProperty("ComplexErrors").GetProperty("value").GetString().Should().Be("Are Worse");
         }
 
         [Fact]
