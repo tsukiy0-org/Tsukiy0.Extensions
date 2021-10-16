@@ -14,6 +14,7 @@ pack Tsukiy0.Extensions.AspNetCore
 pack Tsukiy0.Extensions.Core
 pack Tsukiy0.Extensions.Correlation
 pack Tsukiy0.Extensions.Data
+pack Tsukiy0.Extensions.Data.Aws
 pack Tsukiy0.Extensions.DependencyInjection
 pack Tsukiy0.Extensions.Http
 pack Tsukiy0.Extensions.Json
