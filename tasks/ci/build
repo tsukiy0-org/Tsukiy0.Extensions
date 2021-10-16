@@ -2,5 +2,6 @@
 
 set -euo pipefail
 
+dotnet tool restore
 dotnet build
-dotnet test --filter FullyQualifiedName\~.Tests
+dotnet test --filter FullyQualifiedName\~.Tests --collect:"XPlat Code Coverage"

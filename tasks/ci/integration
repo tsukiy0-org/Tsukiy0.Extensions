@@ -8,4 +8,4 @@ get_cfn_output() {
 
 export SqsClientQueueUrl=$(get_cfn_output Tsukiy0Extensions SqsClientQueueUrl)
 
-dotnet test --filter FullyQualifiedName\~.IntegrationTests
+dotnet test --filter FullyQualifiedName\~.IntegrationTests --collect:"XPlat Code Coverage"

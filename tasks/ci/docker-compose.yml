@@ -43,3 +43,11 @@ services:
     environment:
       NUGET_API_KEY: ${NUGET_API_KEY}
     command: bash ./tasks/ci/publish
+  coverage:
+    build:
+      context: .
+      dockerfile: coverage.Dockerfile
+    volumes: 
+      - ../../:/app
+    working_dir: /app
+    command: bash ./tasks/ci/coverage
