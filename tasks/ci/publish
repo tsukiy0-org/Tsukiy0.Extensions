@@ -11,6 +11,7 @@ pack() {
 }
 
 pack Tsukiy0.Extensions.AspNetCore
+pack Tsukiy0.Extensions.Configuration
 pack Tsukiy0.Extensions.Core
 pack Tsukiy0.Extensions.Correlation
 pack Tsukiy0.Extensions.Data
