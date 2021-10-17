@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Tsukiy0.Extensions.Data.Aws\Tsukiy0.Extensions.Data.Aws.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Testing\Tsukiy0.Extensions.Testing.csproj" />
   </ItemGroup>
 
 </Project>
