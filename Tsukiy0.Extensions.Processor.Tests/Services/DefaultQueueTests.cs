@@ -8,6 +8,7 @@ using Tsukiy0.Extensions.Processor.Models;
 using FluentAssertions;
 using System.Linq;
 using FluentAssertions.Extensions;
+using Tsukiy0.Extensions.Testing.Extensions;
 
 namespace Tsukiy0.Extensions.Processor.Tests.Services
 {
@@ -47,8 +48,7 @@ namespace Tsukiy0.Extensions.Processor.Tests.Services
                     Body: body
                 ),
                 o => o
-                    .Using<DateTimeOffset>(ctx => ctx.Subject.Should().BeCloseTo(ctx.Expectation, 20.Seconds()))
-                    .WhenTypeIs<DateTimeOffset>()
+                    .ComparingDateTimesCloseTo(20.Seconds())
             );
         }
 
