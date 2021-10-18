@@ -6,7 +6,7 @@ using Microsoft.OpenApi.Models;
 using Tsukiy0.Extensions.AspNetCore.Extensions;
 using Tsukiy0.Extensions.Http.Constants;
 
-namespace Tsukiy0.Extensions.TestBed.AspNetCore
+namespace Tsukiy0.Extensions.AspNetCore.Tests.TestApi
 {
     public class Startup
     {
@@ -24,14 +24,14 @@ namespace Tsukiy0.Extensions.TestBed.AspNetCore
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Tsukiy0.Extensions.TestBed.AspNetCore", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Tsukiy0.Extensions.AspNetCore.Tests.TestApi", Version = "v1" });
             });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseDefaults(Configuration);
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Tsukiy0.Extensions.TestBed.AspNetCore v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Tsukiy0.Extensions.AspNetCore.Tests.TestApi v1"));
         }
     }
 }

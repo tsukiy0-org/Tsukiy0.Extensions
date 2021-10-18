@@ -58,6 +58,7 @@ namespace Tsukiy0.Extensions.AspNetCore.Extensions
 
         public static IServiceCollection AddDefaults(this IServiceCollection services)
         {
+            services.AddCorrelationService();
             services.AddDefaultControllers();
             services.AddDefaultLogging();
             services.AddErrorHandling();
