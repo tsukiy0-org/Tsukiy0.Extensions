@@ -186,9 +186,17 @@ namespace Tsukiy0.Extensions.Data.Tests.Services
             HadVersionMismatch = true;
         }
 
-        protected override IDao ToDao(IDao u)
+        protected override DaoVersion ToDaoVersion(IDao u)
         {
-            return u;
+            return new DaoVersion(u.__TYPE, u.__VERSION);
         }
+
+    }
+
+    public interface IDao
+    {
+        public string __TYPE { get; }
+        public int __VERSION { get; }
+        public DateTimeOffset __UPDATED { get; }
     }
 }

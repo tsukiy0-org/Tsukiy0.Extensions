@@ -17,9 +17,9 @@ namespace Tsukiy0.Extensions.Data.Services
 
         public async Task<T> From(U u)
         {
-            var dao = ToDao(u);
+            var dao = ToDaoVersion(u);
             var latestVersion = GetLatestVersionMapper().Version;
-            var versionMapper = versionMappers.FirstOrDefault(_ => _.Version == dao.__VERSION);
+            var versionMapper = versionMappers.FirstOrDefault(_ => _.Version == dao.Version);
 
             if (versionMapper is null)
             {
@@ -28,9 +28,9 @@ namespace Tsukiy0.Extensions.Data.Services
 
             var dto = await versionMapper.Mapper.From(u);
 
-            if (dao.__VERSION != latestVersion)
+            if (dao.Version != latestVersion)
             {
-                await OnVersionMismatch(dto, dao.__VERSION);
+                await OnVersionMismatch(dto, dao.Version);
             }
 
             return dto;
@@ -42,7 +42,7 @@ namespace Tsukiy0.Extensions.Data.Services
             return await mapper.To(t);
         }
 
-        protected abstract IDao ToDao(U u);
+        protected abstract DaoVersion ToDaoVersion(U u);
 
         protected abstract Task OnVersionMismatch(T dto, int currentVersion);
 
