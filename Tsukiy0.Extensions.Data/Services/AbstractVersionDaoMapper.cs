@@ -19,7 +19,7 @@ namespace Tsukiy0.Extensions.Data.Services
         {
             var dao = ToDao(u);
             var latestVersion = GetLatestVersionMapper().Version;
-            var versionMapper = versionMappers.FirstOrDefault(_ => _.Version == dao.__Version);
+            var versionMapper = versionMappers.FirstOrDefault(_ => _.Version == dao.__VERSION);
 
             if (versionMapper is null)
             {
@@ -28,9 +28,9 @@ namespace Tsukiy0.Extensions.Data.Services
 
             var dto = await versionMapper.Mapper.From(u);
 
-            if (dao.__Version != latestVersion)
+            if (dao.__VERSION != latestVersion)
             {
-                await OnVersionMismatch(dto, dao.__Version);
+                await OnVersionMismatch(dto, dao.__VERSION);
             }
 
             return dto;
