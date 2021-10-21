@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
@@ -50,13 +51,30 @@ namespace Tsukiy0.Extensions.Configuration.Tests.Extensions
             });
         }
 
+        [Fact]
+        public void GetSection_WhenRecordThenFailsDueToNoConstructor()
+        {
+            //Arange
+            var configuration = SetupConfiguration(new Dictionary<string, string>
+            {
+                {"TestRecordConfig:A", "1"},
+                {"TestRecordConfig:B", "2"}
+            });
+
+            //Act
+            Action action = () => configuration.GetSection<TestRecordConfig>();
+
+            //Assert
+            action.Should().Throw<InvalidOperationException>();
+        }
+
         private class TestConfig
         {
             public string A { get; set; }
             public string B { get; set; }
-            public string C { get; set; }
-            public string D { get; set; }
         }
+
+        private record TestRecordConfig(string A, string B);
 
         private IConfiguration SetupConfiguration(IDictionary<string, string> config)
         {
