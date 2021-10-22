@@ -6,7 +6,7 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace Tsukiy0.Extensions.Configuration.Aws.Services
 {
-    public class SsmParameterService
+    public class SsmParameterService : ISsmParameterService
     {
         private readonly IAmazonSimpleSystemsManagement _client;
         private readonly IMemoryCache _cache;
