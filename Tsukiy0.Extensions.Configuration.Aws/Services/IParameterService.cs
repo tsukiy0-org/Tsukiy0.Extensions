@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Tsukiy0.Extensions.Configuration.Aws
+namespace Tsukiy0.Extensions.Configuration.Aws.Services
 {
     public interface IParameterService
     {
