@@ -34,7 +34,7 @@ namespace Tsukiy0.Extensions.Data.Aws.Tests.Extensions
                 __PK = "PK",
                 PK = "PK",
                 __SK = "SK",
-                __Updated = DateTimeOffset.UtcNow,
+                __Updated = DateTimeOffset.MaxValue,
                 Integer = 1,
                 Decimal = 1.111111M,
                 String = "String",
@@ -48,7 +48,7 @@ namespace Tsukiy0.Extensions.Data.Aws.Tests.Extensions
                 {
                     IsComplex = true
                 },
-                Date = DateTimeOffset.Now,
+                Date = DateTimeOffset.MaxValue,
                 Guid = Guid.NewGuid(),
                 Enum = SerializationTest.Enummm.CASE_2
             };
