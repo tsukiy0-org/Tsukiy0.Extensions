@@ -25,17 +25,5 @@ namespace Tsukiy0.Extensions.Http.Extensions
         {
             response.EnsureStatusCode(new[] { HttpStatusCode.OK });
         }
-
-        public static HttpRequestMessage AddTraceId(this HttpRequestMessage request, ICorrelationService correlationService)
-        {
-            request.Headers.Add(HttpHeaders.TraceId, correlationService.TraceId.ToString());
-            return request;
-        }
-
-        public static HttpRequestMessage AddApiKey(this HttpRequestMessage request, string key)
-        {
-            request.Headers.Add(HttpHeaders.ApiKey, key);
-            return request;
-        }
     }
 }

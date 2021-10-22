@@ -53,28 +53,5 @@ namespace Tsukiy0.Extensions.Http.Tests.Extensions
 
             action.Should().NotThrow();
         }
-
-        [Fact]
-        public void AddTraceId__AddsTraceIdToHeader()
-        {
-            var traceId = Guid.NewGuid();
-            mockCorrelationService.Setup(_ => _.TraceId).Returns(traceId);
-            var request = new HttpRequestMessage();
-
-            request.AddTraceId(mockCorrelationService.Object);
-
-            request.Headers.GetValues(HttpHeaders.TraceId).Should().Contain(traceId.ToString());
-        }
-
-        [Fact]
-        public void AddApiKey__AddsApiKeyToHeader()
-        {
-            var key = Guid.NewGuid().ToString();
-            var request = new HttpRequestMessage();
-
-            request.AddApiKey(key);
-
-            request.Headers.GetValues(HttpHeaders.ApiKey).Should().Contain(key);
-        }
     }
 }

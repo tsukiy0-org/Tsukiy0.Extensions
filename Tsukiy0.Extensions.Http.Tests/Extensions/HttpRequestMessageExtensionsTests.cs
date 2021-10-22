@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using FluentAssertions;
+using Moq;
+using Tsukiy0.Extensions.Correlation.Services;
 using Tsukiy0.Extensions.Http.Extensions;
 using Xunit;
 
@@ -47,11 +49,38 @@ namespace Tsukiy0.Extensions.Http.Tests.Extensions
         {
             var key = "X-Test";
             var value = "Value";
+
             _sample.AddHeader(key, value);
             _sample.Headers.TryGetValues(key, out IEnumerable<string> actual);
 
             actual.Should().HaveCount(1);
             actual.Single().Should().Be(value);
+        }
+
+        [Fact]
+        public void AddTraceId__AddsTraceIdToHeader()
+        {
+            var traceId = Guid.NewGuid();
+            var mockCorrelationService = new Mock<ICorrelationService>();
+            mockCorrelationService.Setup(_ => _.TraceId).Returns(traceId);
+
+            _sample.AddTraceId(mockCorrelationService.Object);
+            _sample.Headers.TryGetValues(Constants.HttpHeaders.TraceId, out IEnumerable<string> actual);
+
+            actual.Should().HaveCount(1);
+            actual.Single().Should().Be(traceId.ToString());
+        }
+
+        [Fact]
+        public void AddApiKey__AddsApiKeyToHeader()
+        {
+            var key = Guid.NewGuid().ToString();
+
+            _sample.AddApiKey(key);
+            _sample.Headers.TryGetValues(Constants.HttpHeaders.ApiKey, out IEnumerable<string> actual);
+
+            actual.Should().HaveCount(1);
+            actual.Single().Should().Be(key.ToString());
         }
     }
 }
