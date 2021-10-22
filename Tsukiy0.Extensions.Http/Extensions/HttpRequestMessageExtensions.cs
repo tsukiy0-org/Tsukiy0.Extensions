@@ -13,6 +13,18 @@ namespace Tsukiy0.Extensions.Http.Extensions
             return request;
         }
 
+        public static HttpRequestMessage AddUserAgent(this HttpRequestMessage request, ProductInfoHeaderValue value)
+        {
+            request.Headers.UserAgent.Add(value);
+            return request;
+        }
+
+        public static HttpRequestMessage AddHeader(this HttpRequestMessage request, string key, string value)
+        {
+            request.Headers.Add(key, value);
+            return request;
+        }
+
     }
 
 }
