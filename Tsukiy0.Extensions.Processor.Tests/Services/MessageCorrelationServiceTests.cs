@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using Tsukiy0.Extensions.Messaging.Models;
-using Tsukiy0.Extensions.Messaging.Services;
+using Tsukiy0.Extensions.Processor.Services;
 using Xunit;
 
-namespace Tsukiy0.Extensions.Messaging.Tests.Services
+namespace Tsukiy0.Extensions.Processor.Tests.Services
 {
     public class MessageCorrelationServiceTests
     {

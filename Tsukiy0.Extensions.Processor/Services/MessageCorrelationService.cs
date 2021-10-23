@@ -2,7 +2,7 @@ using System;
 using Tsukiy0.Extensions.Correlation.Services;
 using Tsukiy0.Extensions.Messaging.Models;
 
-namespace Tsukiy0.Extensions.Messaging.Services
+namespace Tsukiy0.Extensions.Processor.Services
 {
     public class MessageCorrelationService : ICorrelationService
     {
