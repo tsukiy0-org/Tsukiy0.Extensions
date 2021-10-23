@@ -4,12 +4,14 @@
     <ProjectReference Include="..\Tsukiy0.Extensions.Processor\Tsukiy0.Extensions.Processor.csproj" />
     <ProjectReference Include="..\Tsukiy0.Extensions.Json\Tsukiy0.Extensions.Json.csproj" />
     <ProjectReference Include="..\Tsukiy0.Extensions.Core\Tsukiy0.Extensions.Core.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Messaging\Tsukiy0.Extensions.Messaging.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Messaging.Aws\Tsukiy0.Extensions.Messaging.Aws.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Amazon.Lambda.SQSEvents" Version="2.0.0" />
     <PackageReference Include="AWSSDK.Batch" Version="3.7.2.39" />
-    <PackageReference Include="AWSSDK.SQS" Version="3.7.1.25" />
+    <PackageReference Include="AWSSDK.SQS" Version="3.7.1.27" />
   </ItemGroup>
 
   <PropertyGroup>

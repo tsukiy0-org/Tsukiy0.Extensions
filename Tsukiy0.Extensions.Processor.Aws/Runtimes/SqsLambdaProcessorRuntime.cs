@@ -3,7 +3,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Amazon.Lambda.SQSEvents;
 using Tsukiy0.Extensions.Json.Extensions;
-using Tsukiy0.Extensions.Processor.Models;
+using Tsukiy0.Extensions.Messaging.Models;
 using Tsukiy0.Extensions.Processor.Services;
 
 namespace Tsukiy0.Extensions.Processor.Aws.Runtimes

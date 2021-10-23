@@ -1,16 +1,16 @@
 using Tsukiy0.Extensions.Correlation.Services;
-using Tsukiy0.Extensions.Processor.Services;
 using Xunit;
-using Moq;
 using System;
 using System.Collections.Generic;
-using Tsukiy0.Extensions.Processor.Models;
 using FluentAssertions;
 using System.Linq;
 using FluentAssertions.Extensions;
+using Tsukiy0.Extensions.Messaging.Services;
+using Moq;
+using Tsukiy0.Extensions.Messaging.Models;
 using Tsukiy0.Extensions.Testing.Extensions;
 
-namespace Tsukiy0.Extensions.Processor.Tests.Services
+namespace Tsukiy0.Extensions.Messaging.Tests.Services
 {
     public class DefaultQueueTests
     {

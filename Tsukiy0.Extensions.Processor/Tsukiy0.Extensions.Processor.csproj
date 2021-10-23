@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Tsukiy0.Extensions.Correlation\Tsukiy0.Extensions.Correlation.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Messaging\Tsukiy0.Extensions.Messaging.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

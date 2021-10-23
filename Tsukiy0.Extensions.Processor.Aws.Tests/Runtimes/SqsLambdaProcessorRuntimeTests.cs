@@ -8,7 +8,7 @@ using Tsukiy0.Extensions.Processor.Services;
 using Tsukiy0.Extensions.Processor.Aws.Runtimes;
 using FluentAssertions;
 using Amazon.Lambda.SQSEvents;
-using Tsukiy0.Extensions.Processor.Models;
+using Tsukiy0.Extensions.Messaging.Models;
 using static Amazon.Lambda.SQSEvents.SQSEvent;
 using System.Linq;
 using AutoFixture;
