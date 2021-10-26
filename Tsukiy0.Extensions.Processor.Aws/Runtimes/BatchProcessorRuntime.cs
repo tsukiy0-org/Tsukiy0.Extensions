@@ -20,7 +20,7 @@ namespace Tsukiy0.Extensions.Processor.Aws.Runtimes
         public async Task Run()
         {
             var messageRaw = Environment.GetEnvironmentVariable(BatchMessageQueue<T>.MESSAGE_KEY);
-            var message = JsonSerializer.Deserialize<Message<T>>(messageRaw, JsonSerializerExtensions.DefaultJsonSerializerOptions);
+            var message = JsonSerializer.Deserialize<Message<T>>(messageRaw, JsonSerializerExtensions.DefaultOptions);
             await _processor.Run(message);
         }
     }

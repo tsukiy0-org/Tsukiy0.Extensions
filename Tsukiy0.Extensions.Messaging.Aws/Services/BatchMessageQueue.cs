@@ -24,7 +24,15 @@ namespace Tsukiy0.Extensions.Messaging.Aws.Services
             _jobDefinitionArn = jobDefinitionArn;
         }
 
-        public async Task Send(Message<T> message)
+        public async Task Send(IEnumerable<Message<T>> messages)
+        {
+            await Task.WhenAll(messages.Select(async _ =>
+            {
+                await Send(_);
+            }));
+        }
+
+        private async Task Send(Message<T> message)
         {
             await _client.SubmitJobAsync(new SubmitJobRequest
             {
@@ -37,19 +45,12 @@ namespace Tsukiy0.Extensions.Messaging.Aws.Services
                     {
                         new Amazon.Batch.Model.KeyValuePair {
                             Name = MESSAGE_KEY,
-                            Value = JsonSerializer.Serialize(message, JsonSerializerExtensions.DefaultJsonSerializerOptions)
+                            Value = JsonSerializer.Serialize(message, JsonSerializerExtensions.DefaultOptions)
                         }
                     }
                 }
             });
         }
 
-        public async Task Send(IEnumerable<Message<T>> messages)
-        {
-            await Task.WhenAll(messages.Select(async _ =>
-            {
-                await Send(_);
-            }));
-        }
     }
 }

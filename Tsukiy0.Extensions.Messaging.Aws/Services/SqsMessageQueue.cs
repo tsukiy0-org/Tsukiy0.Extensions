@@ -40,10 +40,5 @@ namespace Tsukiy0.Extensions.Messaging.Aws.Services
 
             // @TODO retry failed
         }
-
-        public async Task Send(Message<T> message)
-        {
-            await Send(new List<Message<T>> { message });
-        }
     }
 }
