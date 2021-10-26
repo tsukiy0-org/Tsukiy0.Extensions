@@ -38,10 +38,10 @@ jobs:
           docker-compose -f tasks/ci/docker-compose.yml build integration
           docker-compose -f tasks/ci/docker-compose.yml run integration
           docker-compose -f tasks/ci/docker-compose.yml down
-      - name: coverage
+      - name: health
         run: |
-          docker-compose -f tasks/ci/docker-compose.yml build coverage
-          docker-compose -f tasks/ci/docker-compose.yml run coverage
+          docker-compose -f tasks/ci/docker-compose.yml build health
+          docker-compose -f tasks/ci/docker-compose.yml run health
           docker-compose -f tasks/ci/docker-compose.yml down
 
       - name: publish
