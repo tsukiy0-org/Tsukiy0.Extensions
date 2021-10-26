@@ -40,7 +40,7 @@ namespace Tsukiy0.Extensions.AspNetCore.Tests.Middlewares
             await sut.InvokeAsync(context, mockRequestDelegate.Object);
             var actual = helper.GetFirstLog();
 
-            JsonSerializer.Serialize((object)actual.Context, JsonSerializerExtensions.DefaultJsonSerializerOptions)
+            JsonSerializer.Serialize((object)actual.Context, JsonSerializerExtensions.DefaultOptions)
                 .Should().Be(JsonSerializer.Serialize(
                     new
                     {
@@ -62,7 +62,7 @@ namespace Tsukiy0.Extensions.AspNetCore.Tests.Middlewares
                             ContentLength = 300
                         }
                     },
-                    JsonSerializerExtensions.DefaultJsonSerializerOptions
+                    JsonSerializerExtensions.DefaultOptions
                 ));
         }
     }

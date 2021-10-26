@@ -46,7 +46,7 @@ namespace Tsukiy0.Extensions.AspNetCore.Middlewares
             var body = JsonSerializer.Serialize(new
             {
                 Message = e.Message
-            }, JsonSerializerExtensions.DefaultJsonSerializerOptions);
+            }, JsonSerializerExtensions.DefaultOptions);
             await context.Response.WriteAsync(body);
         }
     }

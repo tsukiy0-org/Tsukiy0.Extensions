@@ -49,7 +49,7 @@ namespace Tsukiy0.Extensions.Processor.Aws.Tests.Runtimes
             var e = fixture.Build<SQSEvent>()
                 .With(_ => _.Records, new List<SQSMessage> {
                     new SQSMessage {
-                        Body = JsonSerializer.Serialize(message, JsonSerializerExtensions.DefaultJsonSerializerOptions)
+                        Body = JsonSerializer.Serialize(message, JsonSerializerExtensions.DefaultOptions)
                     }
                 })
                 .Create();

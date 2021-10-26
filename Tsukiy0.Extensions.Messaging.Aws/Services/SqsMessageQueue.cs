@@ -31,7 +31,7 @@ namespace Tsukiy0.Extensions.Messaging.Aws.Services
                 Entries = chunk.Select(_ => new SendMessageBatchRequestEntry
                 {
                     Id = Guid.NewGuid().ToString(),
-                    MessageBody = JsonSerializer.Serialize(_, JsonSerializerExtensions.DefaultJsonSerializerOptions)
+                    MessageBody = JsonSerializer.Serialize(_, JsonSerializerExtensions.DefaultOptions)
                 }).ToList()
             });
 

@@ -32,7 +32,7 @@ namespace Tsukiy0.Extensions.NLog.Renderers
                 RenderException(logEvent)
             );
 
-            var json = JsonSerializer.Serialize(log, JsonSerializerExtensions.DefaultJsonSerializerOptions);
+            var json = JsonSerializer.Serialize(log, JsonSerializerExtensions.DefaultOptions);
 
             builder.Append(json);
         }

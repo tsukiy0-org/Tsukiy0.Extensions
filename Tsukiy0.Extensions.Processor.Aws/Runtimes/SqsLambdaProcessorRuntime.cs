@@ -14,7 +14,7 @@ namespace Tsukiy0.Extensions.Processor.Aws.Runtimes
 
         protected override async Task<Message<T>> ToMessage(SQSEvent e)
         {
-            return JsonSerializer.Deserialize<Message<T>>(e.Records.Single().Body, JsonSerializerExtensions.DefaultJsonSerializerOptions);
+            return JsonSerializer.Deserialize<Message<T>>(e.Records.Single().Body, JsonSerializerExtensions.DefaultOptions);
         }
     }
 }

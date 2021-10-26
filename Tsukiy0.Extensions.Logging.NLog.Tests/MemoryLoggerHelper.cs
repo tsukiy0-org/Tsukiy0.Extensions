@@ -40,7 +40,7 @@ namespace Tsukiy0.Extensions.Logging.NLog.Tests.Helpers
 
         public Log GetLog(int index)
         {
-            return JsonSerializer.Deserialize<Log>(Target.Logs[index], JsonSerializerExtensions.DefaultJsonSerializerOptions);
+            return JsonSerializer.Deserialize<Log>(Target.Logs[index], JsonSerializerExtensions.DefaultOptions);
         }
 
         public Log GetFirstLog()

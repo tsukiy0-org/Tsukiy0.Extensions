@@ -19,12 +19,12 @@ namespace Tsukiy0.Extensions.Data.Aws.Extensions
 
         public static Dictionary<string, AttributeValue> ToAttributeMap(this object input)
         {
-            return Document.FromJson(JsonSerializer.Serialize(input, JsonSerializerExtensions.DefaultJsonSerializerOptions)).ToAttributeMap();
+            return Document.FromJson(JsonSerializer.Serialize(input, JsonSerializerExtensions.DefaultOptions)).ToAttributeMap();
         }
 
         public static T FromAttributeMap<T>(this Dictionary<string, AttributeValue> input)
         {
-            return JsonSerializer.Deserialize<T>(Document.FromAttributeMap(input).ToJson(), JsonSerializerExtensions.DefaultJsonSerializerOptions);
+            return JsonSerializer.Deserialize<T>(Document.FromAttributeMap(input).ToJson(), JsonSerializerExtensions.DefaultOptions);
         }
 
         public static async IAsyncEnumerable<Dictionary<string, AttributeValue>> QueryAllAsync(this IAmazonDynamoDB client, QueryRequest request)

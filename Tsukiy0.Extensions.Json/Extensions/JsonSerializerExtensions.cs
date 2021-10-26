@@ -5,7 +5,7 @@ namespace Tsukiy0.Extensions.Json.Extensions
 {
     public static class JsonSerializerExtensions
     {
-        public static JsonSerializerOptions DefaultJsonSerializerOptions
+        public static JsonSerializerOptions DefaultOptions
         {
             get
             {
