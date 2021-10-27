@@ -24,7 +24,7 @@ namespace Tsukiy0.Extensions.Configuration.Aws.Tests.Services
         }
 
         [Fact]
-        public async void WhenNotExistsThenThrow()
+        public async void WhenNotExistsThenReturnsNull()
         {
             mockSsmClient.Setup(_ => _.GetParameterAsync(It.IsAny<GetParameterRequest>(), CancellationToken.None)).ReturnsAsync(new GetParameterResponse
             {
@@ -34,9 +34,9 @@ namespace Tsukiy0.Extensions.Configuration.Aws.Tests.Services
                 }
             });
 
-            Func<Task> action = async () => await sut.Get("test");
+            var actual = await sut.Get("test");
 
-            await action.Should().ThrowAsync<MissingParameterException>();
+            actual.Should().BeNull();
         }
 
         [Fact]

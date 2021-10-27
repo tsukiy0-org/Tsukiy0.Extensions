@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Tsukiy0.Extensions.Configuration.Aws.Exceptions;
 using Tsukiy0.Extensions.Configuration.Aws.Models;
 
 namespace Tsukiy0.Extensions.Configuration.Aws.Services
@@ -27,6 +28,12 @@ namespace Tsukiy0.Extensions.Configuration.Aws.Services
             var tasks = _maps.Select(async map =>
             {
                 var value = await _ssmParameterService.Get(map.ParameterKey);
+
+                if (value is null)
+                {
+                    throw new SsmParameterNotFoundException(map);
+                }
+
                 Data.Add(map.ConfigurationKey, value);
             });
 

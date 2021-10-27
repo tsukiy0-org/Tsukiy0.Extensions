@@ -17,7 +17,7 @@ namespace Tsukiy0.Extensions.Configuration.Aws.Services
             _cache = cache;
         }
 
-        public async Task<string> Get(string key)
+        public async Task<string?> Get(string key)
         {
             return await _cache.GetOrCreateAsync($"{nameof(SsmParameterService)}__{key}", async (_) =>
             {
@@ -27,21 +27,8 @@ namespace Tsukiy0.Extensions.Configuration.Aws.Services
                     WithDecryption = true
                 });
 
-                if (res.Parameter.Value is null)
-                {
-                    throw new MissingParameterException(key);
-                }
-
                 return res.Parameter.Value;
             });
-        }
-
-        public class MissingParameterException : Exception
-        {
-            public MissingParameterException(string key) : base($"Missing parameter with key {key}.")
-            {
-                Data.Add(nameof(key), key);
-            }
         }
     }
 }

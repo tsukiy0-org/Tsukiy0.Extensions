@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using Moq;
+using Tsukiy0.Extensions.Configuration.Aws.Exceptions;
 using Tsukiy0.Extensions.Configuration.Aws.Models;
 using Tsukiy0.Extensions.Configuration.Aws.Services;
 using Xunit;
@@ -31,6 +33,16 @@ namespace Tsukiy0.Extensions.Configuration.Aws.Tests.Services
             _sut.TryGet("ConfigKey", out string actual);
 
             actual.Should().Be(value);
+        }
+
+        [Fact]
+        public async void Load__WhenNoValueThenThrow()
+        {
+            _mockSsmParameterService.Setup(_ => _.Get("SsmKey")).ReturnsAsync((string)null);
+
+            Action action = () => _sut.Load();
+
+            action.Should().Throw<SsmParameterNotFoundException>();
         }
 
     }
