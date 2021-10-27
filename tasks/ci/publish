@@ -22,6 +22,7 @@ pack Tsukiy0.Extensions.Http
 pack Tsukiy0.Extensions.Json
 pack Tsukiy0.Extensions.Logging
 pack Tsukiy0.Extensions.Logging.NLog
+pack Tsukiy0.Extensions.MediatR
 pack Tsukiy0.Extensions.Messaging
 pack Tsukiy0.Extensions.Messaging.Aws
 pack Tsukiy0.Extensions.Processor
