@@ -1,6 +1,6 @@
 using System;
 
-namespace Tsukiy0.Extensions.TestBed.AspNetCore
+namespace Tsukiy0.Extensions.Example.AspNetCore
 {
     public class WeatherForecast
     {

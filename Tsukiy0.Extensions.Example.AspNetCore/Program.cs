@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Tsukiy0.Extensions.Logging.NLog.Extensions;
 
-namespace Tsukiy0.Extensions.TestBed.AspNetCore
+namespace Tsukiy0.Extensions.Example.AspNetCore
 {
     public class Program
     {
@@ -17,6 +17,6 @@ namespace Tsukiy0.Extensions.TestBed.AspNetCore
                 {
                     webBuilder.UseStartup<Startup>();
                 })
-                .ConfigureNLogLogging("Tsukiy0.Extensions.TestBed.AspNetCore");
+                .ConfigureNLogLogging("Tsukiy0.Extensions.Example.AspNetCore");
     }
 }

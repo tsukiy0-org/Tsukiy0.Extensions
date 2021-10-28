@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Tsukiy0.Extensions.TestBed.AspNetCore": {
+    "Tsukiy0.Extensions.Example.AspNetCore": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": false,
