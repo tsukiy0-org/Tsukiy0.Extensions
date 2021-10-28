@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@tsukiy0/extensions-aws-cdk": "^0.1.0-alpha.44",
-    "aws-cdk-lib": "2.0.0-rc.16",
+    "aws-cdk-lib": "2.0.0-rc.23",
     "constructs": "10.0.5"
   },
   "scripts": {

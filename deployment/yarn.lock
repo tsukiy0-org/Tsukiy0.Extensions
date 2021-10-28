@@ -328,26 +328,6 @@ at-least-node@^1.0.0:
   resolved "https://registry.yarnpkg.com/at-least-node/-/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
   integrity sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==
 
-aws-cdk-lib@2.0.0-rc.16:
-  version "2.0.0-rc.16"
-  resolved "https://registry.yarnpkg.com/aws-cdk-lib/-/aws-cdk-lib-2.0.0-rc.16.tgz#f709b62c396d62ca8d353317a2a6e4d44ecba9e3"
-  integrity sha512-Nyk3JJWQuySS9PbwIevXyyFgPEQgAscM7edEZzNCBR2v6ToCgxXMdthWn0JCxJbuU20S4GcYgFPef9YEAbvGTw==
-  dependencies:
-    "@balena/dockerignore" "^1.0.2"
-    case "1.6.3"
-    colors "^1.4.0"
-    diff "^5.0.0"
-    fast-deep-equal "^3.1.3"
-    fs-extra "^9.1.0"
-    ignore "^5.1.8"
-    jsonschema "^1.4.0"
-    minimatch "^3.0.4"
-    punycode "^2.1.1"
-    semver "^7.3.5"
-    string-width "^4.2.2"
-    table "^6.7.1"
-    yaml "1.10.2"
-
 aws-cdk-lib@2.0.0-rc.23:
   version "2.0.0-rc.23"
   resolved "https://registry.yarnpkg.com/aws-cdk-lib/-/aws-cdk-lib-2.0.0-rc.23.tgz#4581fdabeb61f984fc6908df9d8ac8651497b2df"

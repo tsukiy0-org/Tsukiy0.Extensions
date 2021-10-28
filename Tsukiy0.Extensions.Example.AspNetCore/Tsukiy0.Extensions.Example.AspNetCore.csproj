@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Tsukiy0.Extensions.AspNetCore\Tsukiy0.Extensions.AspNetCore.csproj" />
     <ProjectReference Include="..\Tsukiy0.Extensions.Logging.NLog\Tsukiy0.Extensions.Logging.NLog.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Configuration.Aws\Tsukiy0.Extensions.Configuration.Aws.csproj" />
   </ItemGroup>
 
 </Project>
