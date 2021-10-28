@@ -115,6 +115,15 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/recommended/-/recommended-1.0.1.tgz#7619bad397e06ead1c5182926c944e0ca6177f52"
   integrity sha512-2xN+iGTbPBEzGSnVp/Hd64vKJCJWxsi9gfs88x4PPMyEjHJoA3o5BY9r5OLPHIZU2pAQxkSAsJFqn6itClP8mQ==
 
+"@tsukiy0/extensions-aws-cdk@^0.1.0-alpha.44":
+  version "0.1.0-alpha.44"
+  resolved "https://registry.yarnpkg.com/@tsukiy0/extensions-aws-cdk/-/extensions-aws-cdk-0.1.0-alpha.44.tgz#63cad45df85d53e138f79110ae821d1b48fabb74"
+  integrity sha512-pyHddyUoaV+DfquffBrks19Zp50YhgkOMk5nbMRC4YPNZTWPRSqpGmYFFwbNT9y+7M7xRpavLzDRStjaLhUQ0Q==
+  dependencies:
+    aws-cdk-lib "2.0.0-rc.23"
+    aws-sdk "2.1005.0"
+    constructs "10.0.5"
+
 "@types/json-schema@^7.0.7":
   version "7.0.7"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.7.tgz#98a993516c859eb0d5c4c8f098317a9ea68db9ad"
@@ -339,6 +348,26 @@ aws-cdk-lib@2.0.0-rc.16:
     table "^6.7.1"
     yaml "1.10.2"
 
+aws-cdk-lib@2.0.0-rc.23:
+  version "2.0.0-rc.23"
+  resolved "https://registry.yarnpkg.com/aws-cdk-lib/-/aws-cdk-lib-2.0.0-rc.23.tgz#4581fdabeb61f984fc6908df9d8ac8651497b2df"
+  integrity sha512-X7yuSGc9TQEsJBaku0WqwkHoZzAhgV2SRLTB0afEuP7TGu2H+i9Dzgs1hiKFjOO3GWuVHPuAqiJKP2gmnSRtVQ==
+  dependencies:
+    "@balena/dockerignore" "^1.0.2"
+    case "1.6.3"
+    colors "^1.4.0"
+    diff "^5.0.0"
+    fast-deep-equal "^3.1.3"
+    fs-extra "^9.1.0"
+    ignore "^5.1.8"
+    jsonschema "^1.4.0"
+    minimatch "^3.0.4"
+    punycode "^2.1.1"
+    semver "^7.3.5"
+    string-width "^4.2.2"
+    table "^6.7.1"
+    yaml "1.10.2"
+
 aws-cdk@2.0.0-rc.15:
   version "2.0.0-rc.15"
   resolved "https://registry.yarnpkg.com/aws-cdk/-/aws-cdk-2.0.0-rc.15.tgz#fa81454abbfce10fb6633fc68db10c17c743345e"
@@ -367,6 +396,21 @@ aws-cdk@2.0.0-rc.15:
     wrap-ansi "^7.0.0"
     yaml "1.10.2"
     yargs "^16.2.0"
+
+aws-sdk@2.1005.0:
+  version "2.1005.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1005.0.tgz#963e9b5ddda982d7f2f1e59baf88a442dd5da9f8"
+  integrity sha512-S9IZLTEOTiV/juMOHvZdd6cpxRzmUYhFhJMLUGXIrAku9uZHsdVa3dDdgcbBsDmRZ4WAvlZlD+NvtTNwFCLraw==
+  dependencies:
+    buffer "4.9.2"
+    events "1.1.1"
+    ieee754 "1.1.13"
+    jmespath "0.15.0"
+    querystring "0.2.0"
+    sax "1.2.1"
+    url "0.10.3"
+    uuid "3.3.2"
+    xml2js "0.4.19"
 
 aws-sdk@^2.848.0:
   version "2.923.0"
