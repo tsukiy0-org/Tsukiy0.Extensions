@@ -87,5 +87,32 @@ namespace Tsukiy0.Extensions.Data.Aws.Extensions
                 });
             }));
         }
+
+        public static async Task DeleteAll(this IAmazonDynamoDB client, string tableName, IEnumerable<Dictionary<string, AttributeValue>> items)
+        {
+            var dynamoBatchSizeLimit = 25;
+            var batches = items.Chunk(dynamoBatchSizeLimit);
+            await Task.WhenAll(batches.Select(async batch =>
+            {
+                var writeRequests = batch.Select(_ =>
+                {
+                    return new WriteRequest
+                    {
+                        DeleteRequest = new DeleteRequest
+                        {
+                            Key = _
+                        }
+                    };
+                }).ToList();
+
+                await client.BatchWriteItemAsync(new BatchWriteItemRequest
+                {
+                    RequestItems = new Dictionary<string, List<WriteRequest>>
+                    {
+                        [tableName] = writeRequests
+                    }
+                });
+            }));
+        }
     }
 }

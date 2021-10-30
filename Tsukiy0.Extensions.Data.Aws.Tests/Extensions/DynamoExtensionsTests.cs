@@ -216,6 +216,54 @@ namespace Tsukiy0.Extensions.Data.Aws.Tests.Extensions
             });
         }
 
+        [Fact]
+        public async void PutAll()
+        {
+            // Arrange
+            var tableName = "some-table";
+            var items = new List<int>(new int[60]).Select((_, i) => new DynamoKey
+            (
+                PK: $"{i}",
+                SK: $"{i + 1}"
+            ).ToAttributeMap());
+            var mockClient = new Mock<IAmazonDynamoDB>();
+            var requests = new List<BatchWriteItemRequest>();
+            mockClient.Setup(_ => _.BatchWriteItemAsync(Capture.In(requests), CancellationToken.None));
+
+            // Act
+            await mockClient.Object.PutAll(tableName, items);
+
+            // Assert
+            requests.Should().HaveCount(3);
+            requests[0].RequestItems[tableName].Should().HaveCount(25);
+            requests[1].RequestItems[tableName].Should().HaveCount(25);
+            requests[2].RequestItems[tableName].Should().HaveCount(10);
+        }
+
+        [Fact]
+        public async void DeleteAll()
+        {
+            // Arrange
+            var tableName = "some-table";
+            var items = new List<int>(new int[60]).Select((_, i) => new DynamoKey
+            (
+                PK: $"{i}",
+                SK: $"{i + 1}"
+            ).ToAttributeMap());
+            var mockClient = new Mock<IAmazonDynamoDB>();
+            var requests = new List<BatchWriteItemRequest>();
+            mockClient.Setup(_ => _.BatchWriteItemAsync(Capture.In(requests), CancellationToken.None));
+
+            // Act
+            await mockClient.Object.DeleteAll(tableName, items);
+
+            // Assert
+            requests.Should().HaveCount(3);
+            requests[0].RequestItems[tableName].Should().HaveCount(25);
+            requests[1].RequestItems[tableName].Should().HaveCount(25);
+            requests[2].RequestItems[tableName].Should().HaveCount(10);
+        }
+
         private class SerializationTest
         {
             public string __PK { get; set; }
