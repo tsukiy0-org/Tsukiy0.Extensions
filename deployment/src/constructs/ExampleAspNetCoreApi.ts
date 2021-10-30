@@ -23,7 +23,7 @@ export class ExampleAspNetCoreApi extends Construct {
       code: DockerImageCode.fromImageAsset(
         path.resolve(
           __dirname,
-          "../../../../Tsukiy0.Extensions.Example.AspNetCore"
+          "../../../Tsukiy0.Extensions.Example.AspNetCore"
         )
       ),
       memorySize: 512,
