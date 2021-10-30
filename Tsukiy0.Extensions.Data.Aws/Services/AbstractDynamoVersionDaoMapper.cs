@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Amazon.DynamoDBv2.Model;
-using Tskiy0.Extensions.Data.Aws.Services;
+using Tsukiy0.Extensions.Data.Aws.Services;
 using Tsukiy0.Extensions.Data.Aws.Extensions;
 using Tsukiy0.Extensions.Data.Aws.Models;
 using Tsukiy0.Extensions.Data.Models;
