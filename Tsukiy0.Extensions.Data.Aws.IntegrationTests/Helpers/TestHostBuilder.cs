@@ -2,13 +2,14 @@ using System.Collections.Generic;
 using Amazon.DynamoDBv2;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Tsukiy0.Extensions.Data.Aws.Services;
 using Tsukiy0.Extensions.Configuration.Aws.Extensions;
 using Tsukiy0.Extensions.Configuration.Aws.Models;
 using Tsukiy0.Extensions.Configuration.Extensions;
 
 namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Helpers
 {
-    public static class HostBuilderExtensions
+    public static class TestHostBuilder
     {
         public static IHost Build()
         {
@@ -25,6 +26,8 @@ namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Helpers
                     _.AddConfig<TestConfig>(ctx.Configuration);
 
                     _.AddAWSService<IAmazonDynamoDB>();
+                    _.AddScoped<TestModelV1DaoMapper>();
+                    _.AddScoped<IDynamoDaoMapper<TestModel>, TestModelVersionDaoMapper>();
                 })
                 .Build();
         }

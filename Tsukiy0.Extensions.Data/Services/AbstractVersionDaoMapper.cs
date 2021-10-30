@@ -44,7 +44,7 @@ namespace Tsukiy0.Extensions.Data.Services
 
         protected abstract DaoVersion ToDaoVersion(U u);
 
-        protected abstract Task OnVersionMismatch(T dto, int currentVersion);
+        protected abstract Task OnVersionMismatch(T t, int currentVersion);
 
         private VersionMapper<T, U> GetLatestVersionMapper()
         {

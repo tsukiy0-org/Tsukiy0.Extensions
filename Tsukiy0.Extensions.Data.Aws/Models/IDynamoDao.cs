@@ -5,6 +5,6 @@ namespace Tsukiy0.Extensions.Data.Aws.Models
         string __PK { get; }
         string __SK { get; }
         string __TYPE { get; }
-        string __VERSION { get; }
+        int __VERSION { get; }
     }
 }
