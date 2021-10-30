@@ -5,6 +5,4 @@ namespace Tsukiy0.Extensions.Data.Aws.Models
         string __PK { get; }
         string __SK { get; }
     }
-
-    public record DynamoPrimaryKey(string __PK, string __SK) : IDynamoPrimaryKey { }
 }

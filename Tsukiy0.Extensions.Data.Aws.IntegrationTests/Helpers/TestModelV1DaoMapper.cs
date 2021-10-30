@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Amazon.DynamoDBv2.Model;
-using Tskiy0.Extensions.Data.Aws.Services;
 using Tsukiy0.Extensions.Data.Aws.Extensions;
 using Tsukiy0.Extensions.Data.Aws.Models;
+using Tsukiy0.Extensions.Data.Aws.Services;
 
 namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Helpers
 {
@@ -20,8 +20,8 @@ namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Helpers
         public async Task<Dictionary<string, AttributeValue>> To(TestModel destination)
         {
             return new TestModelV1Dao(
-                __PK: destination.Id.ToString(),
-                __SK: DynamoExtensions.Hash("TEST", destination.Namespace),
+                __PK: destination.Namespace.ToString(),
+                __SK: destination.Id.ToString(),
                 __TYPE: "TEST",
                 __VERSION: 1,
                 Id: destination.Id,
