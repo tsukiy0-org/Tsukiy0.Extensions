@@ -27,8 +27,8 @@ namespace Tsukiy0.Extensions.Configuration.Aws.Services
         {
             var tasks = _maps.Select(async map =>
             {
-                var secrets = await _secretsManagerService.Get(map.SecretKey);
-                secrets.TryGetValue(map.SecretField, out string value);
+                var secrets = await _secretsManagerService.Get(map.SecretName);
+                secrets.TryGetValue(map.SecretKey, out string value);
 
                 if (value is null)
                 {
