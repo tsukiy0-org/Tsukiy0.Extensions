@@ -1,7 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.Core" Version="2.0.0" />
+    <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.1.0" />
+    <PackageReference Include="Tsukiy0.Extensions.Logging.NLog" Version="0.0.0-alpha.0.140" />
+    <PackageReference Include="Tsukiy0.Extensions.Processor.Aws" Version="0.0.0-alpha.0.140" />
+  </ItemGroup>
+
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings.Production.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tsukiy0.Extensions.Logging.NLog\Tsukiy0.Extensions.Logging.NLog.csproj" />
+  </ItemGroup>
 
 </Project>
