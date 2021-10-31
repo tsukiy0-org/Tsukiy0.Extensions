@@ -1,5 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\Tsukiy0.Extensions.Example.Core\Tsukiy0.Extensions.Example.Core.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Data.Aws\Tsukiy0.Extensions.Data.Aws.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <IsPackable>false</IsPackable>
