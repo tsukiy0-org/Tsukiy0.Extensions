@@ -35,7 +35,10 @@ namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Extensions
             // Arrange
             var ns = Guid.NewGuid();
             var models = new Faker<TestModel>()
-                .RuleFor(_ => _.Namespace, (f, u) => ns)
+                .CustomInstantiator(f => new TestModel(
+                    Id: Guid.NewGuid(),
+                    Namespace: ns
+                ))
                 .GenerateForever().Take(20);
             var items = await Task.WhenAll(models.Select(async _ => await _mapper.To(_)));
 
