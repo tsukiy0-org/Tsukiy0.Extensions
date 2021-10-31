@@ -28,6 +28,7 @@ namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Helpers
                     _.AddAWSService<IAmazonDynamoDB>();
                     _.AddScoped<TestModelV1DaoMapper>();
                     _.AddScoped<IDynamoDaoMapper<TestModel>, TestModelVersionDaoMapper>();
+                    _.AddScoped<TestModelDynamoRepository>();
                 })
                 .Build();
         }
