@@ -28,7 +28,7 @@ namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Extensions
                     Id: Guid.NewGuid(),
                     Namespace: ns
                 ))
-                .GenerateForever().Take(50);
+                .GenerateForever().Take(50).ToList();
 
             #region PutAll
             // Act
@@ -59,7 +59,7 @@ namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Extensions
                     Id: Guid.NewGuid(),
                     Namespace: ns
                 ))
-                .GenerateForever().Take(50);
+                .GenerateForever().Take(50).ToList();
 
             #region PutAll
             // Act
