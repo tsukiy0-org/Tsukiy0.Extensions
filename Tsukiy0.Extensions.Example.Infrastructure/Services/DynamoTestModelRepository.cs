@@ -16,10 +16,10 @@ namespace Tsukiy0.Extensions.Example.Infrastructure.Services
     public class DynamoTestModelRepository : ITestModelRepository
     {
         private readonly IAmazonDynamoDB _client;
-        private readonly TestModelDynamoRepositoryConfig _config;
+        private readonly DynamoTestModelRepositoryConfig _config;
         private readonly IDynamoDaoMapper<TestModel> _mapper;
 
-        public DynamoTestModelRepository(IAmazonDynamoDB client, TestModelDynamoRepositoryConfig config, IDynamoDaoMapper<TestModel> mapper)
+        public DynamoTestModelRepository(IAmazonDynamoDB client, DynamoTestModelRepositoryConfig config, IDynamoDaoMapper<TestModel> mapper)
         {
             _client = client;
             _config = config;

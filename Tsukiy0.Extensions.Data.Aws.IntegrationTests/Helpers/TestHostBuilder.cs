@@ -21,12 +21,12 @@ namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Helpers
                 {
                     _.AddSsmParameterConfiguration(new List<SsmParameterMap>
                     {
-                        new SsmParameterMap("/tsukiy0/extensions/test-table/table-name", $"{nameof(TestModelDynamoRepositoryConfig)}:{nameof(TestModelDynamoRepositoryConfig.TableName)}")
+                        new SsmParameterMap("/tsukiy0/extensions/test-table/table-name", $"{nameof(DynamoTestModelRepositoryConfig)}:{nameof(DynamoTestModelRepositoryConfig.TableName)}")
                     });
                 })
                 .ConfigureServices((ctx, _) =>
                 {
-                    _.AddConfig<TestModelDynamoRepositoryConfig>(ctx.Configuration);
+                    _.AddConfig<DynamoTestModelRepositoryConfig>(ctx.Configuration);
                     _.AddAWSService<IAmazonDynamoDB>();
                     _.AddScoped<TestModelV1DaoMapper>();
                     _.AddScoped<IDynamoDaoMapper<TestModel>, TestModelVersionDaoMapper>();
