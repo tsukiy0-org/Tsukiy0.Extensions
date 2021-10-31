@@ -6,6 +6,9 @@ using Tsukiy0.Extensions.Data.Aws.Services;
 using Tsukiy0.Extensions.Configuration.Aws.Extensions;
 using Tsukiy0.Extensions.Configuration.Aws.Models;
 using Tsukiy0.Extensions.Configuration.Extensions;
+using Tsukiy0.Extensions.Example.Infrastructure.Services;
+using Tsukiy0.Extensions.Example.Core.Models;
+using Tsukiy0.Extensions.Example.Infrastructure.Configs;
 
 namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Helpers
 {
@@ -18,13 +21,12 @@ namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Helpers
                 {
                     _.AddSsmParameterConfiguration(new List<SsmParameterMap>
                     {
-                        new SsmParameterMap("/tsukiy0/extensions/test-dynamo-table/table-name", $"{nameof(TestConfig)}:{nameof(TestConfig.TestDynamoTableName)}")
+                        new SsmParameterMap("/tsukiy0/extensions/test-dynamo-table/table-name", $"{nameof(TestModelDynamoRepositoryConfig)}:{nameof(TestModelDynamoRepositoryConfig.TableName)}")
                     });
                 })
                 .ConfigureServices((ctx, _) =>
                 {
-                    _.AddConfig<TestConfig>(ctx.Configuration);
-
+                    _.AddConfig<TestModelDynamoRepositoryConfig>(ctx.Configuration);
                     _.AddAWSService<IAmazonDynamoDB>();
                     _.AddScoped<TestModelV1DaoMapper>();
                     _.AddScoped<IDynamoDaoMapper<TestModel>, TestModelVersionDaoMapper>();

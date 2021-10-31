@@ -4,6 +4,8 @@ using Bogus;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Tsukiy0.Extensions.Data.Aws.IntegrationTests.Helpers;
+using Tsukiy0.Extensions.Example.Core.Models;
+using Tsukiy0.Extensions.Example.Infrastructure.Services;
 using Xunit;
 
 namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Extensions
