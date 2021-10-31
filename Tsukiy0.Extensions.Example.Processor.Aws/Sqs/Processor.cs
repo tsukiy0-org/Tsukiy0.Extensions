@@ -34,13 +34,13 @@ namespace Tsukiy0.Extensions.Example.Processor.Aws.Sqs
                     _.AddAWSService<IAmazonDynamoDB>();
                     _.AddScoped<TestModelV1DaoMapper>();
                     _.AddScoped<IDynamoDaoMapper<TestModel>, TestModelVersionDaoMapper>();
-                    _.AddScoped<TestModelDynamoRepository>();
+                    _.AddScoped<DynamoTestModelRepository>();
                 });
         }
 
         protected override async Task Run(IHost host, TestModel body)
         {
-            var repo = host.Services.GetRequiredService<TestModelDynamoRepository>();
+            var repo = host.Services.GetRequiredService<DynamoTestModelRepository>();
             await repo.PutAll(new List<TestModel> { body });
         }
     }

@@ -8,17 +8,18 @@ using Tsukiy0.Extensions.Data.Aws.Extensions;
 using Tsukiy0.Extensions.Data.Aws.Models;
 using Tsukiy0.Extensions.Data.Aws.Services;
 using Tsukiy0.Extensions.Example.Core.Models;
+using Tsukiy0.Extensions.Example.Core.Services;
 using Tsukiy0.Extensions.Example.Infrastructure.Configs;
 
 namespace Tsukiy0.Extensions.Example.Infrastructure.Services
 {
-    public class TestModelDynamoRepository
+    public class DynamoTestModelRepository : ITestModelRepository
     {
         private readonly IAmazonDynamoDB _client;
         private readonly TestModelDynamoRepositoryConfig _config;
         private readonly IDynamoDaoMapper<TestModel> _mapper;
 
-        public TestModelDynamoRepository(IAmazonDynamoDB client, TestModelDynamoRepositoryConfig config, IDynamoDaoMapper<TestModel> mapper)
+        public DynamoTestModelRepository(IAmazonDynamoDB client, TestModelDynamoRepositoryConfig config, IDynamoDaoMapper<TestModel> mapper)
         {
             _client = client;
             _config = config;

@@ -12,12 +12,12 @@ namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Extensions
 {
     public partial class DynamoExtensionsTests
     {
-        private readonly TestModelDynamoRepository _sut;
+        private readonly DynamoTestModelRepository _sut;
 
         public DynamoExtensionsTests()
         {
             var host = TestHostBuilder.Build();
-            _sut = host.Services.GetRequiredService<TestModelDynamoRepository>();
+            _sut = host.Services.GetRequiredService<DynamoTestModelRepository>();
         }
 
         [Fact]
