@@ -1,11 +1,19 @@
 import { Stack, StackProps } from "aws-cdk-lib";
 import { Construct } from "constructs";
-import { TestDynamoTable } from "../constructs/TestDynamoTable";
+import { TestTable } from "../constructs/TestTable";
 
 export class ExternalStack extends Stack {
-  constructor(scope: Construct, id: string, props: StackProps) {
+  constructor(
+    scope: Construct,
+    id: string,
+    props: StackProps & {
+      tableName: string;
+    }
+  ) {
     super(scope, id, props);
 
-    new TestDynamoTable(this, "TestDynamoTable");
+    new TestTable(this, "TestDynamoTable", {
+      tableName: props.tableName,
+    });
   }
 }

@@ -25,7 +25,7 @@ namespace Tsukiy0.Extensions.Example.Processor.Aws.Sqs
                 {
                     _.AddSsmParameterConfiguration(new List<SsmParameterMap>
                     {
-                        new SsmParameterMap("/tsukiy0/extensions/test-dynamo-table/table-name", $"{nameof(TestModelDynamoRepositoryConfig)}:{nameof(TestModelDynamoRepositoryConfig.TableName)}")
+                        new SsmParameterMap("/tsukiy0/extensions/test-table/table-name", $"{nameof(TestModelDynamoRepositoryConfig)}:{nameof(TestModelDynamoRepositoryConfig.TableName)}")
                     });
                 })
                 .ConfigureServices((ctx, _) =>
