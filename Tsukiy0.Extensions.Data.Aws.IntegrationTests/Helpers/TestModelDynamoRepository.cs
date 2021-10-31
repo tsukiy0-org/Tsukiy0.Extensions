@@ -35,7 +35,7 @@ namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Helpers
             await _client.DeleteAll(_config.TestDynamoTableName, keys);
         }
 
-        public async Task<IEnumerable<TestModel>> ListByNamespace(Guid ns)
+        public async Task<IEnumerable<TestModel>> QueryByNamespace(Guid ns)
         {
             return await _client.QueryAllAsync(new QueryRequest
             {
@@ -48,6 +48,26 @@ namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Helpers
                 ExpressionAttributeValues = new Dictionary<string, AttributeValue>
                 {
                     [":PK"] = new AttributeValue { S = ns.ToString() }
+                },
+                Limit = 10
+            })
+            .SelectAwait(async _ => await _mapper.From(_))
+            .ToListAsync();
+        }
+
+        public async Task<IEnumerable<TestModel>> ScanByNamespace(Guid ns)
+        {
+            return await _client.ScanAllAsync(new ScanRequest
+            {
+                TableName = _config.TestDynamoTableName,
+                FilterExpression = "#F = :F",
+                ExpressionAttributeNames = new Dictionary<string, string>
+                {
+                    ["#F"] = nameof(IDynamoPrimaryKey.__PK)
+                },
+                ExpressionAttributeValues = new Dictionary<string, AttributeValue>
+                {
+                    [":F"] = new AttributeValue { S = ns.ToString() }
                 },
                 Limit = 10
             })

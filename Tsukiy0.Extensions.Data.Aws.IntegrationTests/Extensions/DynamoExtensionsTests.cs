@@ -1,14 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Amazon.DynamoDBv2.Model;
 using Bogus;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
-using Tsukiy0.Extensions.Data.Aws.Extensions;
 using Tsukiy0.Extensions.Data.Aws.IntegrationTests.Helpers;
-using Tsukiy0.Extensions.Data.Aws.Models;
 using Xunit;
 
 namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Extensions
@@ -33,12 +28,12 @@ namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Extensions
                     Id: Guid.NewGuid(),
                     Namespace: ns
                 ))
-                .GenerateForever().Take(100);
+                .GenerateForever().Take(50);
 
             #region PutAll
             // Act
             await _sut.PutAll(models);
-            var actualPut = await _sut.ListByNamespace(ns);
+            var actualPut = await _sut.QueryByNamespace(ns);
 
             // Assert
             actualPut.Should().BeEquivalentTo(models);
@@ -47,12 +42,42 @@ namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Extensions
             #region DeleteAll
             // Act
             await _sut.DeleteAll(models);
-            var actualDelete = await _sut.ListByNamespace(ns);
+            var actualDelete = await _sut.QueryByNamespace(ns);
 
             // Assert
             actualDelete.Should().BeEmpty();
             #endregion
+        }
 
+        [Fact]
+        public async void ScanAllAndDeleteAll()
+        {
+            // Arrange
+            var ns = Guid.NewGuid();
+            var models = new Faker<TestModel>()
+                .CustomInstantiator(f => new TestModel(
+                    Id: Guid.NewGuid(),
+                    Namespace: ns
+                ))
+                .GenerateForever().Take(50);
+
+            #region PutAll
+            // Act
+            await _sut.PutAll(models);
+            var actualPut = await _sut.ScanByNamespace(ns);
+
+            // Assert
+            actualPut.Should().BeEquivalentTo(models);
+            #endregion
+
+            #region DeleteAll
+            // Act
+            await _sut.DeleteAll(models);
+            var actualDelete = await _sut.ScanByNamespace(ns);
+
+            // Assert
+            actualDelete.Should().BeEmpty();
+            #endregion
         }
     }
 }
