@@ -10,8 +10,6 @@ using Tsukiy0.Extensions.Example.Infrastructure.Services;
 using Tsukiy0.Extensions.Example.Core.Models;
 using Tsukiy0.Extensions.Example.Infrastructure.Configs;
 using Amazon.SQS;
-using Tsukiy0.Extensions.Messaging.Services;
-using Tsukiy0.Extensions.Example.Core.Handlers;
 
 namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Helpers
 {
@@ -38,7 +36,8 @@ namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Helpers
                     _.AddScoped<IDynamoDaoMapper<TestModel>, TestModelVersionDaoMapper>();
                     _.AddScoped<DynamoTestModelRepository>();
 
-                    _.AddScoped<IQueue<SaveTestModelRequest>, SqsSaveTestModelQueue>();
+                    _.AddConfig<SqsSaveTestModelQueueConfig>(ctx.Configuration);
+                    _.AddScoped<SqsSaveTestModelQueue>();
                 })
                 .Build();
         }
