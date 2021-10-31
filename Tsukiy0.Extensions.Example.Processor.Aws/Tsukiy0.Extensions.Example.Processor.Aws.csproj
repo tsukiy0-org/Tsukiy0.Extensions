@@ -4,7 +4,6 @@
     <PackageReference Include="Amazon.Lambda.Core" Version="2.0.0" />
     <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.1.0" />
     <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.1" />
-    <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="Tsukiy0.Extensions.Logging.NLog" Version="0.0.0-alpha.0.140" />
     <PackageReference Include="Tsukiy0.Extensions.Processor.Aws" Version="0.0.0-alpha.0.140" />
   </ItemGroup>
@@ -28,6 +27,7 @@
     <ProjectReference Include="..\Tsukiy0.Extensions.Configuration\Tsukiy0.Extensions.Configuration.csproj" />
     <ProjectReference Include="..\Tsukiy0.Extensions.Configuration.Aws\Tsukiy0.Extensions.Configuration.Aws.csproj" />
     <ProjectReference Include="..\Tsukiy0.Extensions.Example.Infrastructure\Tsukiy0.Extensions.Example.Infrastructure.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.MediatR\Tsukiy0.Extensions.MediatR.csproj" />
   </ItemGroup>
 
 </Project>
