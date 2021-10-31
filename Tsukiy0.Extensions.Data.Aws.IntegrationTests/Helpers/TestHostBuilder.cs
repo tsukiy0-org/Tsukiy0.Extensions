@@ -6,8 +6,6 @@ using Tsukiy0.Extensions.Data.Aws.Services;
 using Tsukiy0.Extensions.Configuration.Aws.Extensions;
 using Tsukiy0.Extensions.Configuration.Aws.Models;
 using Tsukiy0.Extensions.Configuration.Extensions;
-using Amazon.Extensions.NETCore.Setup;
-using Microsoft.Extensions.Configuration;
 
 namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Helpers
 {
@@ -27,7 +25,6 @@ namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Helpers
                 {
                     _.AddConfig<TestConfig>(ctx.Configuration);
 
-                    _.AddDefaultAWSOptions(ctx.Configuration.GetAWSOptions());
                     _.AddAWSService<IAmazonDynamoDB>();
                     _.AddScoped<TestModelV1DaoMapper>();
                     _.AddScoped<IDynamoDaoMapper<TestModel>, TestModelVersionDaoMapper>();
