@@ -39,7 +39,7 @@ namespace Tsukiy0.Extensions.Data.Aws.Services
                         return await mapper.To(dest);
                     }));
                 })
-                .ForEachAsync(async _ =>
+                .ForEachAwaitAsync(async _ =>
                 {
                     await client.PutAll(config.TableName, _);
                 });
