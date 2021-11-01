@@ -10,6 +10,8 @@ using Tsukiy0.Extensions.Example.Infrastructure.Services;
 using Tsukiy0.Extensions.Example.Core.Models;
 using Tsukiy0.Extensions.Example.Infrastructure.Configs;
 using Amazon.SQS;
+using Tsukiy0.Extensions.Correlation.Services;
+using System;
 
 namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Helpers
 {
@@ -35,6 +37,7 @@ namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Helpers
                     _.AddScoped<TestModelV1DaoMapper>();
                     _.AddScoped<IDynamoDaoMapper<TestModel>, TestModelVersionDaoMapper>();
                     _.AddScoped<DynamoTestModelRepository>();
+                    _.AddScoped<ICorrelationService>(_ => new StaticCorrelationService(Guid.NewGuid(), Guid.NewGuid()));
 
                     _.AddConfig<SqsSaveTestModelQueueConfig>(ctx.Configuration);
                     _.AddScoped<SqsSaveTestModelQueue>();
