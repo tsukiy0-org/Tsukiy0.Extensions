@@ -11,7 +11,6 @@ using Tsukiy0.Extensions.Data.Aws.Services;
 using Tsukiy0.Extensions.Example.Core.Handlers;
 using Tsukiy0.Extensions.Example.Core.Models;
 using Tsukiy0.Extensions.Example.Infrastructure.Configs;
-using Tsukiy0.Extensions.Example.Infrastructure.Services;
 using Tsukiy0.Extensions.Logging.NLog.Extensions;
 using Tsukiy0.Extensions.MediatR.Extensions;
 using Tsukiy0.Extensions.Processor.Services;
