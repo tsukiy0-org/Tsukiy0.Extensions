@@ -10,6 +10,7 @@ using Tsukiy0.Extensions.Configuration.Extensions;
 using Tsukiy0.Extensions.Data.Aws.Services;
 using Tsukiy0.Extensions.Example.Core.Handlers;
 using Tsukiy0.Extensions.Example.Core.Models;
+using Tsukiy0.Extensions.Example.Core.Services;
 using Tsukiy0.Extensions.Example.Infrastructure.Configs;
 using Tsukiy0.Extensions.Logging.NLog.Extensions;
 using Tsukiy0.Extensions.MediatR.Extensions;
@@ -36,7 +37,7 @@ namespace Tsukiy0.Extensions.Example.Infrastructure.Services
                     _.AddAWSService<IAmazonDynamoDB>();
                     _.AddScoped<TestModelV1DaoMapper>();
                     _.AddScoped<IDynamoDaoMapper<TestModel>, TestModelVersionDaoMapper>();
-                    _.AddScoped<DynamoTestModelRepository>();
+                    _.AddScoped<ITestModelRepository, DynamoTestModelRepository>();
 
                     _.AddMediatR();
                     _.AddScoped<IRequestHandler<SaveTestModelRequest, Unit>, SaveTestModelHandler>();

@@ -7,9 +7,9 @@ using Tsukiy0.Extensions.Example.Core.Services;
 
 namespace Tsukiy0.Extensions.Example.Core.Handlers
 {
-    public record SaveTestModelRequest(TestModel TestModel) : IRequest { }
+    public record SaveTestModelRequest(TestModel TestModel) : IRequest<Unit> { }
 
-    public class SaveTestModelHandler : IRequestHandler<SaveTestModelRequest>
+    public class SaveTestModelHandler : IRequestHandler<SaveTestModelRequest, Unit>
     {
         private readonly ITestModelRepository _repo;
 
