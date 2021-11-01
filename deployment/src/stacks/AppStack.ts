@@ -1,6 +1,7 @@
 import { Stack, StackProps } from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { ExampleAspNetCoreApi } from "../constructs/ExampleAspNetCoreApi";
+import { ExampleBatchProcessor } from "../constructs/ExampleBatchProcessor";
 import { ExampleSqsProcessor } from "../constructs/ExampleSqsProcessor";
 import { External } from "../constructs/External";
 
@@ -24,6 +25,10 @@ export class AppStack extends Stack {
     });
 
     new ExampleSqsProcessor(this, "ExampleSqsProcessor", {
+      external,
+    });
+
+    new ExampleBatchProcessor(this, "ExampleBatchProcessor", {
       external,
     });
   }

@@ -30,7 +30,7 @@ export class ExampleSqsProcessor extends Construct {
         path.resolve(
           __dirname,
           "../../../Tsukiy0.Extensions.Example.Processor.Aws.Sqs"
-        ),
+        )
       ),
       memorySize: 512,
     });
