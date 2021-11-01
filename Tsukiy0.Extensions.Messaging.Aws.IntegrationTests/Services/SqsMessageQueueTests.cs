@@ -24,7 +24,7 @@ namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Services
             _sut = host.Services.GetRequiredService<SqsSaveTestModelQueue>();
         }
 
-        [Fact(Skip = "debugging")]
+        [Fact]
         public async void Send()
         {
             // Arrange

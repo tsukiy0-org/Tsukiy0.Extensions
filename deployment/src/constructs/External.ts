@@ -36,7 +36,7 @@ export class External extends Construct {
   }
 
   public grantTableReadWrite = (grantee: IGrantable): void => {
-    this.grantReadParam(grantee, "/tsukiy0/extensions/test-table/table-name");
+    this.grantReadParam(grantee, "tsukiy0/extensions/test-table/table-name");
     this.table.grantReadWriteData(grantee);
   };
 
