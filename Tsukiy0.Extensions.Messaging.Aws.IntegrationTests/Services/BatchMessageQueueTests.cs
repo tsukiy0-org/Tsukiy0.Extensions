@@ -24,7 +24,7 @@ namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Services
             _sut = host.Services.GetRequiredService<BatchSaveTestModelQueue>();
         }
 
-        [Fact(Skip = "debugging")]
+        [Fact(Timeout = 90000)]
         public async void Send()
         {
             // Arrange
@@ -34,7 +34,7 @@ namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Services
             await _sut.Send(new List<SaveTestModelRequest>{
                 new SaveTestModelRequest(model)
             });
-            await Task.Delay(30000);
+            await Task.Delay(60000);
             var actual = await _repo.QueryByNamespace(model.Namespace);
 
             // Assert
