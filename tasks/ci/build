@@ -7,4 +7,4 @@ dotnet build
 dotnet test --filter FullyQualifiedName\~.Tests --collect:"XPlat Code Coverage"
 
 dotnet publish --configuration Release --runtime linux-x64 --self-contained false Tsukiy0.Extensions.Example.AspNetCore 
-dotnet publish --configuration Release --runtime linux-x64 --self-contained false Tsukiy0.Extensions.Example.Processor.Aws 
+dotnet publish --configuration Release --runtime linux-x64 --self-contained false Tsukiy0.Extensions.Example.Processor.Aws.Sqs

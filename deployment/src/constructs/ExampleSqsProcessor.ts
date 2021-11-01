@@ -29,11 +29,8 @@ export class ExampleSqsProcessor extends Construct {
       code: DockerImageCode.fromImageAsset(
         path.resolve(
           __dirname,
-          "../../../Tsukiy0.Extensions.Example.Processor.Aws"
+          "../../../Tsukiy0.Extensions.Example.Processor.Aws.Sqs"
         ),
-        {
-          file: "Sqs.Dockerfile",
-        }
       ),
       memorySize: 512,
     });

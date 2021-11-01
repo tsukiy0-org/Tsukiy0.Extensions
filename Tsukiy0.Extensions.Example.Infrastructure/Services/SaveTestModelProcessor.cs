@@ -16,7 +16,7 @@ using Tsukiy0.Extensions.Logging.NLog.Extensions;
 using Tsukiy0.Extensions.MediatR.Extensions;
 using Tsukiy0.Extensions.Processor.Services;
 
-namespace Tsukiy0.Extensions.Example.Infrastructure
+namespace Tsukiy0.Extensions.Example.Infrastructure.Services
 {
     public class SaveTestModelProcessor : DefaultProcessor<SaveTestModelRequest>
     {
