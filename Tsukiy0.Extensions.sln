@@ -83,6 +83,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Messagin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Example.Processor.Aws.Sqs", "Tsukiy0.Extensions.Example.Processor.Aws.Sqs\Tsukiy0.Extensions.Example.Processor.Aws.Sqs.csproj", "{3B43A447-75E7-4E79-BFCC-837464198CE1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Example.Processor.Aws.Batch", "Tsukiy0.Extensions.Example.Processor.Aws.Batch\Tsukiy0.Extensions.Example.Processor.Aws.Batch.csproj", "{1C00F25F-0BA3-4DE6-A539-2A2D8EE0C433}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -576,5 +578,17 @@ Global
 		{3B43A447-75E7-4E79-BFCC-837464198CE1}.Release|x64.Build.0 = Release|Any CPU
 		{3B43A447-75E7-4E79-BFCC-837464198CE1}.Release|x86.ActiveCfg = Release|Any CPU
 		{3B43A447-75E7-4E79-BFCC-837464198CE1}.Release|x86.Build.0 = Release|Any CPU
+		{1C00F25F-0BA3-4DE6-A539-2A2D8EE0C433}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C00F25F-0BA3-4DE6-A539-2A2D8EE0C433}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C00F25F-0BA3-4DE6-A539-2A2D8EE0C433}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1C00F25F-0BA3-4DE6-A539-2A2D8EE0C433}.Debug|x64.Build.0 = Debug|Any CPU
+		{1C00F25F-0BA3-4DE6-A539-2A2D8EE0C433}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1C00F25F-0BA3-4DE6-A539-2A2D8EE0C433}.Debug|x86.Build.0 = Debug|Any CPU
+		{1C00F25F-0BA3-4DE6-A539-2A2D8EE0C433}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C00F25F-0BA3-4DE6-A539-2A2D8EE0C433}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C00F25F-0BA3-4DE6-A539-2A2D8EE0C433}.Release|x64.ActiveCfg = Release|Any CPU
+		{1C00F25F-0BA3-4DE6-A539-2A2D8EE0C433}.Release|x64.Build.0 = Release|Any CPU
+		{1C00F25F-0BA3-4DE6-A539-2A2D8EE0C433}.Release|x86.ActiveCfg = Release|Any CPU
+		{1C00F25F-0BA3-4DE6-A539-2A2D8EE0C433}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
