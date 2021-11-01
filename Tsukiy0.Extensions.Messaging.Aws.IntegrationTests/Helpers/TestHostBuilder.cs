@@ -12,6 +12,7 @@ using Tsukiy0.Extensions.Example.Infrastructure.Configs;
 using Amazon.SQS;
 using Tsukiy0.Extensions.Correlation.Services;
 using System;
+using Amazon.Batch;
 
 namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Helpers
 {
@@ -25,7 +26,9 @@ namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Helpers
                     _.AddSsmParameterConfiguration(new List<SsmParameterMap>
                     {
                         new SsmParameterMap("/tsukiy0/extensions/test-table/table-name", $"{nameof(DynamoTestModelRepositoryConfig)}:{nameof(DynamoTestModelRepositoryConfig.TableName)}"),
-                        new SsmParameterMap("/tsukiy0/extensions/sqs-processor/queue-url", $"{nameof(SqsSaveTestModelQueueConfig)}:{nameof(SqsSaveTestModelQueueConfig.QueueUrl)}")
+                        new SsmParameterMap("/tsukiy0/extensions/sqs-processor/queue-url", $"{nameof(SqsSaveTestModelQueueConfig)}:{nameof(SqsSaveTestModelQueueConfig.QueueUrl)}"),
+                        new SsmParameterMap("/tsukiy0/extensions/batch-processor/job-definition-arn", $"{nameof(BatchSaveTestModelQueueConfig)}:{nameof(BatchSaveTestModelQueueConfig.JobDefinitionArn)}"),
+                        new SsmParameterMap("/tsukiy0/extensions/batch-processor/job-queue-arn", $"{nameof(BatchSaveTestModelQueueConfig)}:{nameof(BatchSaveTestModelQueueConfig.JobQueueArn)}")
                     });
                 })
                 .ConfigureServices((ctx, _) =>
@@ -33,6 +36,7 @@ namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Helpers
                     _.AddConfig<DynamoTestModelRepositoryConfig>(ctx.Configuration);
                     _.AddAWSService<IAmazonDynamoDB>();
                     _.AddAWSService<IAmazonSQS>();
+                    _.AddAWSService<IAmazonBatch>();
 
                     _.AddScoped<TestModelV1DaoMapper>();
                     _.AddScoped<IDynamoDaoMapper<TestModel>, TestModelVersionDaoMapper>();
@@ -41,6 +45,9 @@ namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Helpers
 
                     _.AddConfig<SqsSaveTestModelQueueConfig>(ctx.Configuration);
                     _.AddScoped<SqsSaveTestModelQueue>();
+
+                    _.AddConfig<BatchSaveTestModelQueueConfig>(ctx.Configuration);
+                    _.AddScoped<BatchSaveTestModelQueue>();
                 })
                 .Build();
         }
