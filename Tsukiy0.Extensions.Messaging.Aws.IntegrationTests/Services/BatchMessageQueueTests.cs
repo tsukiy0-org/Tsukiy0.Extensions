@@ -13,22 +13,15 @@ using Xunit;
 
 namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Services
 {
-    public class BatchMessageQueueTests
+    public class BatchMessageQueueTests : IClassFixture<HostFixture>
     {
         private readonly BatchSaveTestModelQueue _sut;
         private readonly DynamoTestModelRepository _repo;
-        private readonly IHost _host;
 
-        public BatchMessageQueueTests()
+        public BatchMessageQueueTests(HostFixture fixture)
         {
-            _host = TestHostBuilder.Build();
-            _repo = _host.Services.GetRequiredService<DynamoTestModelRepository>();
-            _sut = _host.Services.GetRequiredService<BatchSaveTestModelQueue>();
-        }
-
-        public void Dispose()
-        {
-            _host.Dispose();
+            _repo = fixture.Host.Services.GetRequiredService<DynamoTestModelRepository>();
+            _sut = fixture.Host.Services.GetRequiredService<BatchSaveTestModelQueue>();
         }
 
         [Fact(Timeout = 90000)]
