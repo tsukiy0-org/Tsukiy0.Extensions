@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Tsukiy0.Extensions.Example.Core.Handlers;
 using Tsukiy0.Extensions.Example.Core.Models;
 using Tsukiy0.Extensions.Example.Infrastructure.Services;
@@ -16,12 +17,18 @@ namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Services
     {
         private readonly BatchSaveTestModelQueue _sut;
         private readonly DynamoTestModelRepository _repo;
+        private readonly IHost _host;
 
         public BatchMessageQueueTests()
         {
-            var host = TestHostBuilder.Build();
-            _repo = host.Services.GetRequiredService<DynamoTestModelRepository>();
-            _sut = host.Services.GetRequiredService<BatchSaveTestModelQueue>();
+            _host = TestHostBuilder.Build();
+            _repo = _host.Services.GetRequiredService<DynamoTestModelRepository>();
+            _sut = _host.Services.GetRequiredService<BatchSaveTestModelQueue>();
+        }
+
+        public void Dispose()
+        {
+            _host.Dispose();
         }
 
         [Fact(Timeout = 90000)]
