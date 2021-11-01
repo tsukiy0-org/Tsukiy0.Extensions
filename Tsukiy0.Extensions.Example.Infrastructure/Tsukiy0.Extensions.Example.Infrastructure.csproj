@@ -5,6 +5,15 @@
     <ProjectReference Include="..\Tsukiy0.Extensions.Data.Aws\Tsukiy0.Extensions.Data.Aws.csproj" />
     <ProjectReference Include="..\Tsukiy0.Extensions.Messaging.Aws\Tsukiy0.Extensions.Messaging.Aws.csproj" />
     <ProjectReference Include="..\Tsukiy0.Extensions.Messaging\Tsukiy0.Extensions.Messaging.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Logging.NLog\Tsukiy0.Extensions.Logging.NLog.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Processor.Aws\Tsukiy0.Extensions.Processor.Aws.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Configuration\Tsukiy0.Extensions.Configuration.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.Configuration.Aws\Tsukiy0.Extensions.Configuration.Aws.csproj" />
+    <ProjectReference Include="..\Tsukiy0.Extensions.MediatR\Tsukiy0.Extensions.MediatR.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.1" />
   </ItemGroup>
 
   <PropertyGroup>
