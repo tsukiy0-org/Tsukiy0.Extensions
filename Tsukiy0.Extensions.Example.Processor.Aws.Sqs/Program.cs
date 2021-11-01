@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Tsukiy0.Extensions.Example.Core.Handlers;
+using Tsukiy0.Extensions.Example.Infrastructure.Services;
+using Tsukiy0.Extensions.Messaging.Models;
 
 namespace Tsukiy0.Extensions.Example.Processor.Aws.Sqs
 {
@@ -7,7 +11,12 @@ namespace Tsukiy0.Extensions.Example.Processor.Aws.Sqs
     {
         static async Task Main(string[] args)
         {
-            throw new NotImplementedException();
+            await new SaveTestModelProcessor().Run(
+                new Message<SaveTestModelRequest>(
+                    new MessageHeader(1, Guid.NewGuid(), DateTimeOffset.UtcNow, new Dictionary<string, string>()),
+                    new SaveTestModelRequest(new Core.Models.TestModel(Guid.NewGuid(), Guid.NewGuid()))
+                )
+            );
         }
     }
 }

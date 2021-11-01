@@ -45,7 +45,7 @@ namespace Tsukiy0.Extensions.Example.Infrastructure.Services
 
         protected override async Task Run(IHost host, SaveTestModelRequest body)
         {
-            var mediator = host.Services.GetRequiredService<Mediator>();
+            var mediator = host.Services.GetRequiredService<IMediator>();
             await mediator.Send(body);
         }
     }
