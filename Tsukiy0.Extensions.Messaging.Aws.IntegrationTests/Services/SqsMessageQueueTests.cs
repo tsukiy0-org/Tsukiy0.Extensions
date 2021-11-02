@@ -39,11 +39,11 @@ namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Services
                 .WaitAndRetry(12, retryAttempt => TimeSpan.FromSeconds(5))
                 .Execute(async () =>
                 {
-                    return await _repo.QueryByNamespace(model.Namespace);
+                    return (await _repo.QueryByNamespace(model.Namespace)).Single();
                 });
 
             // Assert
-            actual.Single().Should().BeEquivalentTo(model);
+            actual.Should().BeEquivalentTo(model);
         }
 
     }
