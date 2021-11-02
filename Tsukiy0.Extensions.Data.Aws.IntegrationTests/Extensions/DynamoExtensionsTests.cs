@@ -2,22 +2,19 @@ using System;
 using System.Linq;
 using Bogus;
 using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
-using Tsukiy0.Extensions.Data.Aws.IntegrationTests.Helpers;
 using Tsukiy0.Extensions.Example.Core.Models;
 using Tsukiy0.Extensions.Example.Infrastructure.Services;
 using Xunit;
 
 namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Extensions
 {
-    public partial class DynamoExtensionsTests
+    public partial class DynamoExtensionsTests : IClassFixture<DynamoTestModelRepositoryFixture>
     {
         private readonly DynamoTestModelRepository _sut;
 
-        public DynamoExtensionsTests()
+        public DynamoExtensionsTests(DynamoTestModelRepositoryFixture fixture)
         {
-            var host = TestHostBuilder.Build();
-            _sut = host.Services.GetRequiredService<DynamoTestModelRepository>();
+            _sut = fixture.Sut;
         }
 
         [Fact]

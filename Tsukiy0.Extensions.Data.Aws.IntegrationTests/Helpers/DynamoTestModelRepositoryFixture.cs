@@ -1,22 +1,26 @@
+using System;
 using System.Collections.Generic;
 using Amazon.DynamoDBv2;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Tsukiy0.Extensions.Data.Aws.Services;
 using Tsukiy0.Extensions.Configuration.Aws.Extensions;
 using Tsukiy0.Extensions.Configuration.Aws.Models;
 using Tsukiy0.Extensions.Configuration.Extensions;
-using Tsukiy0.Extensions.Example.Infrastructure.Services;
+using Tsukiy0.Extensions.Data.Aws.Services;
 using Tsukiy0.Extensions.Example.Core.Models;
 using Tsukiy0.Extensions.Example.Infrastructure.Configs;
+using Tsukiy0.Extensions.Example.Infrastructure.Services;
 
-namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Helpers
+namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests
 {
-    public static class TestHostBuilder
+    public class DynamoTestModelRepositoryFixture : IDisposable
     {
-        public static IHost Build()
+        public readonly DynamoTestModelRepository Sut;
+        private readonly IHost _host;
+
+        public DynamoTestModelRepositoryFixture()
         {
-            return Host.CreateDefaultBuilder()
+            _host = Host.CreateDefaultBuilder()
                 .ConfigureAppConfiguration(_ =>
                 {
                     _.AddSsmParameterConfiguration(new List<SsmParameterMap>
@@ -33,6 +37,14 @@ namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Helpers
                     _.AddScoped<DynamoTestModelRepository>();
                 })
                 .Build();
+
+            Sut = _host.Services.GetRequiredService<DynamoTestModelRepository>();
+        }
+
+        public void Dispose()
+        {
+            _host.Dispose();
         }
     }
+
 }
