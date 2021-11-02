@@ -3,28 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Tsukiy0.Extensions.Example.Core.Handlers;
 using Tsukiy0.Extensions.Example.Core.Models;
+using Tsukiy0.Extensions.Example.Core.Services;
 using Tsukiy0.Extensions.Example.Infrastructure.Services;
 using Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Helpers;
 using Xunit;
 
 namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Services
 {
-    public class SqsMessageQueueTests : IClassFixture<HostFixture>
+    public class SqsMessageQueueTests : IClassFixture<SqsMessageQueueFixture>
     {
         private readonly SqsSaveTestModelQueue _sut;
-        private readonly DynamoTestModelRepository _repo;
+        private readonly ITestModelRepository _repo;
 
-        public SqsMessageQueueTests(HostFixture fixture)
+        public SqsMessageQueueTests(SqsMessageQueueFixture fixture)
         {
-            _repo = fixture.Host.Services.GetRequiredService<DynamoTestModelRepository>();
-            _sut = fixture.Host.Services.GetRequiredService<SqsSaveTestModelQueue>();
+            _repo = fixture.Repo;
+            _sut = fixture.Sut;
         }
 
-        [Fact(Timeout = 90000)]
+        [Fact]
         public async void Send()
         {
             // Arrange
