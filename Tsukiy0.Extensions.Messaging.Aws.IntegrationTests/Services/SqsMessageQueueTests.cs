@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
+using Polly;
 using Tsukiy0.Extensions.Example.Core.Handlers;
 using Tsukiy0.Extensions.Example.Core.Models;
 using Tsukiy0.Extensions.Example.Core.Services;
@@ -33,8 +34,13 @@ namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Services
             await _sut.Send(new List<SaveTestModelRequest>{
                 new SaveTestModelRequest(model)
             });
-            await Task.Delay(30000);
-            var actual = await _repo.QueryByNamespace(model.Namespace);
+            var actual = await Policy
+                .Handle<Exception>()
+                .WaitAndRetry(12, retryAttempt => TimeSpan.FromSeconds(5))
+                .Execute(async () =>
+                {
+                    return await _repo.QueryByNamespace(model.Namespace);
+                });
 
             // Assert
             actual.Single().Should().BeEquivalentTo(model);
