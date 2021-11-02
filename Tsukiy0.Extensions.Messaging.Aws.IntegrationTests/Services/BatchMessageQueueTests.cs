@@ -36,8 +36,8 @@ namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Services
             });
             var actual = await Policy
                 .Handle<Exception>()
-                .WaitAndRetry(12, retryAttempt => TimeSpan.FromSeconds(5))
-                .Execute(async () =>
+                .WaitAndRetryAsync(12, retryAttempt => TimeSpan.FromSeconds(5))
+                .ExecuteAsync(async () =>
                 {
                     return (await _repo.QueryByNamespace(model.Namespace)).Single();
                 });
