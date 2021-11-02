@@ -12,7 +12,6 @@ using Tsukiy0.Extensions.Example.Infrastructure.Configs;
 using Amazon.SQS;
 using Tsukiy0.Extensions.Correlation.Services;
 using System;
-using Amazon.Batch;
 using Tsukiy0.Extensions.Example.Core.Services;
 
 namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Helpers
