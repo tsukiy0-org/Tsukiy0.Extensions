@@ -2,12 +2,5 @@
 
 set -euxo pipefail
 
-get_cfn_output() {
-    echo $(aws cloudformation describe-stacks --stack-name ${1} --query "Stacks[0].Outputs[?ExportName==\`${2}\`].OutputValue" --output text)
-}
-
-export SqsClientQueueUrl=$(get_cfn_output Tsukiy0Extensions SqsClientQueueUrl)
-export DOTNET_ENVIRONMENT=Staging
-
 dotnet test Tsukiy0.Extensions.Data.Aws.IntegrationTests --collect:"XPlat Code Coverage"
 dotnet test Tsukiy0.Extensions.Messaging.Aws.IntegrationTests --collect:"XPlat Code Coverage"
