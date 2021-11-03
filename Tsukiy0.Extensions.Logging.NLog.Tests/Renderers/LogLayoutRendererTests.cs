@@ -26,7 +26,7 @@ namespace Tsukiy0.Extensions.Logging.NLog.Tests
 
             actual.Version.Should().Be(1);
             actual.Level.Should().Be(20);
-            actual.Timestamp.Should().BeCloseTo(DateTimeOffset.UtcNow, 200);
+            actual.Timestamp.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromMilliseconds(200));
             actual.Name.Should().Be("TestApp");
             actual.TraceId.Should().BeNull();
             actual.SpanId.Should().BeNull();
@@ -51,7 +51,7 @@ namespace Tsukiy0.Extensions.Logging.NLog.Tests
 
             actual.Version.Should().Be(1);
             actual.Level.Should().Be(40);
-            actual.Timestamp.Should().BeCloseTo(DateTimeOffset.UtcNow, 200);
+            actual.Timestamp.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromMilliseconds(200));
             actual.Name.Should().Be("TestApp");
             actual.TraceId.Should().BeNull();
             actual.SpanId.Should().BeNull();
