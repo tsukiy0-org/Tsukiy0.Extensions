@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Logging;
 using System.Linq;
 using Tsukiy0.Extensions.AspNetCore.Configs;
 using Tsukiy0.Extensions.Http.Constants;
@@ -8,21 +9,25 @@ namespace Tsukiy0.Extensions.AspNetCore.Filters
 {
     public class ApiKeyAuthFilter : IAuthorizationFilter
     {
-        private readonly ApiKeyAuthConfig config;
+        private readonly ApiKeyAuthConfig _config;
+        private readonly ILogger<ApiKeyAuthFilter> _logger;
 
-        public ApiKeyAuthFilter(ApiKeyAuthConfig config)
+        public ApiKeyAuthFilter(ApiKeyAuthConfig config, ILogger<ApiKeyAuthFilter> logger)
         {
-            this.config = config;
+            _config = config;
+            _logger = logger;
         }
 
         public void OnAuthorization(AuthorizationFilterContext context)
         {
             var headers = context.HttpContext.Request.Headers[HttpHeaders.ApiKey].ToArray();
-            var keys = config.ApiKeys.ToList().Select(_ => _.Value);
+            var keys = _config.ApiKeys.ToList();
 
-            var ok = headers.FirstOrDefault(header => keys.Any(key => string.Equals(header, key))) != null;
+            var key = keys.FirstOrDefault(key => headers.Any(header => string.Equals(header, key.Value)));
 
-            if (!ok)
+            _logger.LogInformation("Authenticated with api key {key}", key.Key);
+
+            if (key.Key is null)
             {
                 context.Result = new UnauthorizedResult();
             }

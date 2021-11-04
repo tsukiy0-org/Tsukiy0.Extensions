@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Logging;
+using Moq;
 using Tsukiy0.Extensions.AspNetCore.Configs;
 using Tsukiy0.Extensions.AspNetCore.Filters;
 using Tsukiy0.Extensions.Http.Constants;
@@ -15,20 +17,21 @@ namespace Tsukiy0.Extensions.AspNetCore.Tests.Filters
 {
     public class ApiKeyAuthFilterTests
     {
-        private readonly ApiKeyAuthConfig config = new ApiKeyAuthConfig
+        private readonly ApiKeyAuthConfig _config = new ApiKeyAuthConfig
         {
             ApiKeys = new Dictionary<string, string>{
                 { "Operations", Guid.NewGuid().ToString() },
                 { "Service", Guid.NewGuid().ToString() },
             }
         };
-        private readonly AuthorizationFilterContext context;
-        private readonly ApiKeyAuthFilter sut;
+        private readonly AuthorizationFilterContext _context;
+        private readonly ApiKeyAuthFilter _sut;
 
         public ApiKeyAuthFilterTests()
         {
-            sut = new ApiKeyAuthFilter(config);
-            context = new AuthorizationFilterContext(
+            var logger = new Mock<ILogger<ApiKeyAuthFilter>>();
+            _sut = new ApiKeyAuthFilter(_config, logger.Object);
+            _context = new AuthorizationFilterContext(
                 new ActionContext()
                 {
                     HttpContext = new DefaultHttpContext(),
@@ -44,29 +47,29 @@ namespace Tsukiy0.Extensions.AspNetCore.Tests.Filters
         [InlineData("Service")]
         public void WhenHasKeyThenPass(string keyName)
         {
-            context.HttpContext.Request.Headers.Add(HttpHeaders.ApiKey, config.ApiKeys[keyName]);
+            _context.HttpContext.Request.Headers.Add(HttpHeaders.ApiKey, _config.ApiKeys[keyName]);
 
-            sut.OnAuthorization(context);
+            _sut.OnAuthorization(_context);
 
-            context.Result.Should().BeNull();
+            _context.Result.Should().BeNull();
         }
 
         [Fact]
         public void WhenNoKeyThenUnauthorized()
         {
-            sut.OnAuthorization(context);
+            _sut.OnAuthorization(_context);
 
-            context.Result.Should().BeEquivalentTo(new UnauthorizedResult());
+            _context.Result.Should().BeEquivalentTo(new UnauthorizedResult());
         }
 
         [Fact]
         public void WhenNotMatchingKeyThenUnauthorized()
         {
-            context.HttpContext.Request.Headers.Add(HttpHeaders.ApiKey, Guid.NewGuid().ToString());
+            _context.HttpContext.Request.Headers.Add(HttpHeaders.ApiKey, Guid.NewGuid().ToString());
 
-            sut.OnAuthorization(context);
+            _sut.OnAuthorization(_context);
 
-            context.Result.Should().BeEquivalentTo(new UnauthorizedResult());
+            _context.Result.Should().BeEquivalentTo(new UnauthorizedResult());
         }
     }
 }
