@@ -57,5 +57,21 @@ namespace Tsukiy0.Extensions.AspNetCore.Tests.Services
 
             actual.TraceId.Should().NotBe(Guid.Empty);
         }
+
+        [Fact]
+        public void NewTraceIdIsTheSameEverytime()
+        {
+            var actual = new RequestCorrelationService(mockHttpContextAccessor.Object);
+
+            actual.TraceId.Should().Be(actual.TraceId);
+        }
+
+        [Fact]
+        public void NewSpanIdIsTheSameEverytime()
+        {
+            var actual = new RequestCorrelationService(mockHttpContextAccessor.Object);
+
+            actual.SpanId.Should().Be(actual.SpanId);
+        }
     }
 }
