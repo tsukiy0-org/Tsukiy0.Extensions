@@ -8,13 +8,14 @@ namespace Tsukiy0.Extensions.AspNetCore.Services
     public class RequestCorrelationService : ICorrelationService
     {
         private readonly IHttpContextAccessor httpContextAccessor;
-        public Guid TraceId => GetTraceId();
+        public Guid TraceId { get; }
         public Guid SpanId { get; }
 
         public RequestCorrelationService(IHttpContextAccessor httpContextAccessor)
         {
             this.httpContextAccessor = httpContextAccessor;
             SpanId = Guid.NewGuid();
+            TraceId = GetTraceId();
         }
 
         private Guid GetTraceId()
