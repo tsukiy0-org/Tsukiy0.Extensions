@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AWSSDK.SecretsManager" Version="3.7.1.42" />
-    <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="3.7.7.14" />
+    <PackageReference Include="AWSSDK.SecretsManager" Version="3.7.1.46" />
+    <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="3.7.7.18" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
   </ItemGroup>
