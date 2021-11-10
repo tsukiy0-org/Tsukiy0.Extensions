@@ -52,7 +52,11 @@ namespace Tsukiy0.Extensions.Data.Services
         }
     }
 
-    public record VersionMapper<T, U>(int Version, IDaoMapper<T, U> Mapper);
+    public record VersionMapper<T, U>
+    {
+        public int Version { get; init; }
+        public IDaoMapper<T, U> Mapper { get; init; }
+    }
 
     public class VersionMapperNotFoundException : Exception { }
 }

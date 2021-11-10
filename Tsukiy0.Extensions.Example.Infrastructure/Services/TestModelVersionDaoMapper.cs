@@ -17,7 +17,10 @@ namespace Tsukiy0.Extensions.Example.Infrastructure.Services
 
         public TestModelVersionDaoMapper(TestModelV1DaoMapper v1Mapper, IAmazonDynamoDB client, DynamoTestModelRepositoryConfig config)
         : base(new List<VersionMapper<TestModel, Dictionary<string, AttributeValue>>> {
-            new VersionMapper<TestModel, Dictionary<string, AttributeValue>>(1, v1Mapper)
+            new VersionMapper<TestModel, Dictionary<string, AttributeValue>>{
+                Version = 1,
+                Mapper = v1Mapper
+            }
         })
         {
             _client = client;

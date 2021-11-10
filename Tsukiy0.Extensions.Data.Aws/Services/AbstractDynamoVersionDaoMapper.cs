@@ -18,10 +18,10 @@ namespace Tsukiy0.Extensions.Data.Aws.Services
         {
             var dao = u.FromAttributeMap<DynamoDao>();
             return new DaoVersion
-            (
-                Version: dao.__VERSION,
-                Type: dao.__TYPE
-            );
+            {
+                Version = dao.__VERSION,
+                Type = dao.__TYPE
+            };
         }
 
         private record DynamoDao(string __PK, string __SK, string __TYPE, int __VERSION) : IDynamoDao { }

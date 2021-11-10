@@ -167,14 +167,14 @@ namespace Tsukiy0.Extensions.Data.Tests.Services
         public VersionDaoMapper() : base(
             new List<VersionMapper<Dto, IDao>>
             {
-                new VersionMapper<Dto, IDao> (
-                    Version: 1,
-                    Mapper: new V1DaoMapper()
-                ),
-                new VersionMapper<Dto, IDao>(
-                    Version: 2,
-                    Mapper: new V2DaoMapper()
-                )
+                new VersionMapper<Dto, IDao> {
+                    Version = 1,
+                    Mapper = new V1DaoMapper()
+                },
+                new VersionMapper<Dto, IDao>{
+                    Version = 2,
+                    Mapper = new V2DaoMapper()
+                }
             }
         )
         {
@@ -188,7 +188,11 @@ namespace Tsukiy0.Extensions.Data.Tests.Services
 
         protected override DaoVersion ToDaoVersion(IDao u)
         {
-            return new DaoVersion(u.__TYPE, u.__VERSION);
+            return new DaoVersion
+            {
+                Type = u.__TYPE,
+                Version = u.__VERSION
+            };
         }
 
     }
