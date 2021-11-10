@@ -37,6 +37,7 @@ jobs:
           docker-compose -f tasks/ci/docker-compose.yml run health
           docker-compose -f tasks/ci/docker-compose.yml down
       - name: publish
+        if: ${{ github.ref == 'refs/heads/master' }}
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
