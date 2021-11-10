@@ -28,7 +28,10 @@ namespace Tsukiy0.Extensions.Example.Infrastructure.Services
                 {
                     _.AddSsmParameterConfiguration(new List<SsmParameterMap>
                     {
-                        new SsmParameterMap("/tsukiy0/extensions/test-table/table-name", $"{nameof(DynamoTestModelRepositoryConfig)}:{nameof(DynamoTestModelRepositoryConfig.TableName)}")
+                        new SsmParameterMap{
+                            ParameterKey = "/tsukiy0/extensions/test-table/table-name",
+                            ConfigurationKey = $"{nameof(DynamoTestModelRepositoryConfig)}:{nameof(DynamoTestModelRepositoryConfig.TableName)}"
+                        }
                     });
                 })
                 .ConfigureServices((ctx, _) =>
