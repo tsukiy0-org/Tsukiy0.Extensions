@@ -113,10 +113,10 @@ namespace Tsukiy0.Extensions.Data.Aws.Tests.Extensions
                     new Point(3, 4).ToAttributeMap(),
                 },
                 LastEvaluatedKey = new DynamoKey
-                (
-                    PK: "A",
-                    SK: "B"
-                ).ToAttributeMap()
+                {
+                    PK = "A",
+                    SK = "B"
+                }.ToAttributeMap()
             };
 
             var page2Request = new ScanRequest
@@ -135,8 +135,8 @@ namespace Tsukiy0.Extensions.Data.Aws.Tests.Extensions
             var mockClient = new Mock<IAmazonDynamoDB>();
             var requests = new List<ScanRequest>();
             mockClient.SetupSequence(_ => _.ScanAsync(Capture.In(requests), CancellationToken.None))
-                .ReturnsAsync(page1Response)
-                .ReturnsAsync(page2Response);
+                    .ReturnsAsync(page1Response)
+                    .ReturnsAsync(page2Response);
 
             // Act
             var actual = await mockClient.Object.ScanAllAsync(page1Request)
@@ -154,7 +154,7 @@ namespace Tsukiy0.Extensions.Data.Aws.Tests.Extensions
             {
                 page1Request,
                 page2Request
-            });
+});
         }
 
         [Fact]
@@ -172,10 +172,10 @@ namespace Tsukiy0.Extensions.Data.Aws.Tests.Extensions
                     new Point(3, 4).ToAttributeMap(),
                 },
                 LastEvaluatedKey = new DynamoKey
-                (
-                    PK: "A",
-                    SK: "B"
-                ).ToAttributeMap()
+                {
+                    PK = "A",
+                    SK = "B"
+                }.ToAttributeMap()
             };
 
             var page2Request = new QueryRequest
@@ -222,10 +222,10 @@ namespace Tsukiy0.Extensions.Data.Aws.Tests.Extensions
             // Arrange
             var tableName = "some-table";
             var items = new List<int>(new int[60]).Select((_, i) => new DynamoKey
-            (
-                PK: $"{i}",
-                SK: $"{i + 1}"
-            ).ToAttributeMap());
+            {
+                PK = $"{i}",
+                SK = $"{i + 1}"
+            }.ToAttributeMap());
             var mockClient = new Mock<IAmazonDynamoDB>();
             var requests = new List<BatchWriteItemRequest>();
             mockClient.Setup(_ => _.BatchWriteItemAsync(Capture.In(requests), CancellationToken.None));
@@ -246,10 +246,10 @@ namespace Tsukiy0.Extensions.Data.Aws.Tests.Extensions
             // Arrange
             var tableName = "some-table";
             var items = new List<int>(new int[60]).Select((_, i) => new DynamoKey
-            (
-                PK: $"{i}",
-                SK: $"{i + 1}"
-            ).ToAttributeMap());
+            {
+                PK = $"{i}",
+                SK = $"{i + 1}"
+            }.ToAttributeMap());
             var mockClient = new Mock<IAmazonDynamoDB>();
             var requests = new List<BatchWriteItemRequest>();
             mockClient.Setup(_ => _.BatchWriteItemAsync(Capture.In(requests), CancellationToken.None));

@@ -70,8 +70,8 @@ namespace Tsukiy0.Extensions.Configuration.Tests.Extensions
 
         private class TestConfig
         {
-            public string A { get; set; }
-            public string B { get; set; }
+            public string A { get; init; }
+            public string B { get; init; }
         }
 
         private record TestRecordConfig(string A, string B);

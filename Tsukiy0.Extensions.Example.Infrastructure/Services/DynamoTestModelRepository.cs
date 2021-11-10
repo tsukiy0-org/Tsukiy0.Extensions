@@ -34,7 +34,11 @@ namespace Tsukiy0.Extensions.Example.Infrastructure.Services
 
         public async Task DeleteAll(IEnumerable<TestModel> models)
         {
-            var keys = models.Select(_ => new DynamoKey(_.Namespace.ToString(), _.Id.ToString()).ToPrimaryKey().ToAttributeMap());
+            var keys = models.Select(_ => new DynamoKey
+            {
+                PK = _.Namespace.ToString(),
+                SK = _.Id.ToString()
+            }.ToPrimaryKey().ToAttributeMap());
             await _client.DeleteAll(_config.TableName, keys);
         }
 
