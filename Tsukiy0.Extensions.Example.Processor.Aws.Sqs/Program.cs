@@ -12,9 +12,16 @@ namespace Tsukiy0.Extensions.Example.Processor.Aws.Sqs
         static async Task Main(string[] args)
         {
             await new SaveTestModelProcessor().Run(
-                new Message<SaveTestModelRequest>(
-                    new MessageHeader(1, Guid.NewGuid(), DateTimeOffset.UtcNow, new Dictionary<string, string>()),
-                    new SaveTestModelRequest
+                new Message<SaveTestModelRequest>
+                {
+                    Header = new MessageHeader
+                    {
+                        Version = 1,
+                        TraceId = Guid.NewGuid(),
+                        Created = DateTimeOffset.UtcNow,
+                        AdditionalHeaders = new Dictionary<string, string>()
+                    },
+                    Body = new SaveTestModelRequest
                     {
                         TestModel = new Core.Models.TestModel
                         {
@@ -22,7 +29,7 @@ namespace Tsukiy0.Extensions.Example.Processor.Aws.Sqs
                             Namespace = Guid.NewGuid()
                         }
                     }
-                )
+                }
             );
         }
     }
