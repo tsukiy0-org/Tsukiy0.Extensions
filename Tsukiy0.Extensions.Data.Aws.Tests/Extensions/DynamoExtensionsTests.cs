@@ -266,24 +266,24 @@ namespace Tsukiy0.Extensions.Data.Aws.Tests.Extensions
 
         private class SerializationTest
         {
-            public string __PK { get; set; }
-            public string PK { get; set; }
-            public string __SK { get; set; }
-            public DateTimeOffset __Updated { get; set; }
-            public int Integer { get; set; }
-            public decimal Decimal { get; set; }
-            public string String { get; set; }
-            public bool Boolean { get; set; }
-            public IEnumerable<int> List { get; set; }
-            public IDictionary<string, string> Dictionary { get; set; }
-            public Complex Object { get; set; }
-            public DateTimeOffset Date { get; set; }
-            public Guid Guid { get; set; }
-            public Enummm Enum { get; set; }
+            public string __PK { get; init; }
+            public string PK { get; init; }
+            public string __SK { get; init; }
+            public DateTimeOffset __Updated { get; init; }
+            public int Integer { get; init; }
+            public decimal Decimal { get; init; }
+            public string String { get; init; }
+            public bool Boolean { get; init; }
+            public IEnumerable<int> List { get; init; }
+            public IDictionary<string, string> Dictionary { get; init; }
+            public Complex Object { get; init; }
+            public DateTimeOffset Date { get; init; }
+            public Guid Guid { get; init; }
+            public Enummm Enum { get; init; }
 
             public class Complex
             {
-                public bool IsComplex { get; set; }
+                public bool IsComplex { get; init; }
             }
 
             public enum Enummm

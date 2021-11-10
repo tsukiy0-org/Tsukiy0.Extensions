@@ -86,23 +86,23 @@ namespace Tsukiy0.Extensions.Data.Tests.Services
 
     public class Dto
     {
-        public bool Latest { get; set; }
+        public bool Latest { get; init; }
     }
 
     public class DaoV1 : IDao
     {
-        public string __TYPE { get; set; }
-        public int __VERSION { get; set; }
-        public DateTimeOffset __UPDATED { get; set; }
-        public string Latest { get; set; }
+        public string __TYPE { get; init; }
+        public int __VERSION { get; init; }
+        public DateTimeOffset __UPDATED { get; init; }
+        public string Latest { get; init; }
     }
 
     public class DaoV2 : IDao
     {
-        public string __TYPE { get; set; }
-        public int __VERSION { get; set; }
-        public DateTimeOffset __UPDATED { get; set; }
-        public bool Latest { get; set; }
+        public string __TYPE { get; init; }
+        public int __VERSION { get; init; }
+        public DateTimeOffset __UPDATED { get; init; }
+        public bool Latest { get; init; }
     }
 
     public class V1DaoMapper : IDaoMapper<Dto, IDao>

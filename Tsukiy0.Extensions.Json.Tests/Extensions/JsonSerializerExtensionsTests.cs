@@ -64,7 +64,7 @@ namespace Tsukiy0.Extensions.Json.Tests
         public void DefaultOptions__DeserializeStringToEnum()
         {
             // Act
-            var actual = JsonSerializer.Deserialize<TestEnumClass>("{\"enum\":\"BLUE\"}", JsonSerializerExtensions.DefaultOptions);
+            var actual = JsonSerializer.Deserialize<TestEnumClass>("{\"test\":\"BLUE\"}", JsonSerializerExtensions.DefaultOptions);
 
             // Assert
             actual.Should().BeEquivalentTo(new TestEnumClass { Test = TestEnum.BLUE });
