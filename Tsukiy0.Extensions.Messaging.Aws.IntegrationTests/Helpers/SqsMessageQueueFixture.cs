@@ -29,8 +29,14 @@ namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Helpers
                {
                    _.AddSsmParameterConfiguration(new List<SsmParameterMap>
                    {
-                        new SsmParameterMap("/tsukiy0/extensions/test-table/table-name", $"{nameof(DynamoTestModelRepositoryConfig)}:{nameof(DynamoTestModelRepositoryConfig.TableName)}"),
-                        new SsmParameterMap("/tsukiy0/extensions/sqs-processor/queue-url", $"{nameof(SqsSaveTestModelQueueConfig)}:{nameof(SqsSaveTestModelQueueConfig.QueueUrl)}"),
+                        new SsmParameterMap{
+                            ParameterKey = "/tsukiy0/extensions/test-table/table-name",
+                            ConfigurationKey = $"{nameof(DynamoTestModelRepositoryConfig)}:{nameof(DynamoTestModelRepositoryConfig.TableName)}"
+                        },
+                        new SsmParameterMap{
+                            ParameterKey = "/tsukiy0/extensions/sqs-processor/queue-url",
+                            ConfigurationKey = $"{nameof(SqsSaveTestModelQueueConfig)}:{nameof(SqsSaveTestModelQueueConfig.QueueUrl)}"
+                        },
                    });
                })
                .ConfigureServices((ctx, _) =>

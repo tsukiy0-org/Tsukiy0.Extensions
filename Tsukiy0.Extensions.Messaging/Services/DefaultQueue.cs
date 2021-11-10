@@ -22,15 +22,17 @@ namespace Tsukiy0.Extensions.Messaging.Services
         {
             await messageQueue.Send(
                 messages.Select(_ =>
-                    new Message<T>(
-                        Header: new MessageHeader(
-                            Version: 1,
-                            TraceId: correlationService.TraceId,
-                            Created: DateTimeOffset.UtcNow,
-                            AdditionalHeaders: new Dictionary<string, string> { }
-                        ),
-                        Body: _
-                    )
+                    new Message<T>
+                    {
+                        Header = new MessageHeader
+                        {
+                            Version = 1,
+                            TraceId = correlationService.TraceId,
+                            Created = DateTimeOffset.UtcNow,
+                            AdditionalHeaders = new Dictionary<string, string> { }
+                        },
+                        Body = _
+                    }
                 )
             );
         }

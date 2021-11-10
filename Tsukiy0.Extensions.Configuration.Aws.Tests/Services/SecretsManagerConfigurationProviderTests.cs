@@ -19,7 +19,11 @@ namespace Tsukiy0.Extensions.Configuration.Aws.Tests.Services
             _mockSecretsManagerService = new Mock<ISecretsManagerService>();
             _sut = new SecretsManagerConfigurationProvider(_mockSecretsManagerService.Object, new List<SecretsManagerMap>
             {
-                new SecretsManagerMap("SecretKey", "SecretField", "ConfigKey")
+                new SecretsManagerMap{
+                    SecretName = "SecretKey",
+                    SecretKey = "SecretField",
+                    ConfigurationKey = "ConfigKey"
+                }
             });
         }
 

@@ -11,7 +11,7 @@ namespace Tsukiy0.Extensions.Json.Tests
         public void DefaultOptions__SerializeCamelcase()
         {
             // Act
-            var actual = JsonSerializer.Serialize(new TestCasingClass(1), JsonSerializerExtensions.DefaultOptions);
+            var actual = JsonSerializer.Serialize(new TestCasingClass { Test = 1 }, JsonSerializerExtensions.DefaultOptions);
 
             // Assert
             actual.Should().Be("{\"test\":1}");
@@ -24,7 +24,7 @@ namespace Tsukiy0.Extensions.Json.Tests
             var actual = JsonSerializer.Deserialize<TestCasingClass>("{\"test\":1}", JsonSerializerExtensions.DefaultOptions);
 
             // Assert
-            actual.Should().BeEquivalentTo(new TestCasingClass(1));
+            actual.Should().BeEquivalentTo(new TestCasingClass { Test = 1 });
         }
 
         [Fact]
@@ -34,7 +34,7 @@ namespace Tsukiy0.Extensions.Json.Tests
             var actual = JsonSerializer.Deserialize<TestCasingClass>("{\"Test\":1}", JsonSerializerExtensions.DefaultOptions);
 
             // Assert
-            actual.Should().BeEquivalentTo(new TestCasingClass(1));
+            actual.Should().BeEquivalentTo(new TestCasingClass { Test = 1 });
         }
 
         [Fact]
@@ -44,7 +44,7 @@ namespace Tsukiy0.Extensions.Json.Tests
             var actual = JsonSerializer.Deserialize<TestCasingClass>("{\"Test\":\"1\"}", JsonSerializerExtensions.DefaultOptions);
 
             // Assert
-            actual.Should().BeEquivalentTo(new TestCasingClass(1));
+            actual.Should().BeEquivalentTo(new TestCasingClass { Test = 1 });
         }
 
         [Fact]
@@ -64,14 +64,20 @@ namespace Tsukiy0.Extensions.Json.Tests
         public void DefaultOptions__DeserializeStringToEnum()
         {
             // Act
-            var actual = JsonSerializer.Deserialize<TestEnumClass>("{\"enum\":\"BLUE\"}", JsonSerializerExtensions.DefaultOptions);
+            var actual = JsonSerializer.Deserialize<TestEnumClass>("{\"test\":\"BLUE\"}", JsonSerializerExtensions.DefaultOptions);
 
             // Assert
-            actual.Should().BeEquivalentTo(new TestEnumClass(TestEnum.BLUE));
+            actual.Should().BeEquivalentTo(new TestEnumClass { Test = TestEnum.BLUE });
         }
 
-        private record TestCasingClass(int Test);
-        private record TestEnumClass(TestEnum Enum);
+        private record TestCasingClass
+        {
+            public int Test { get; init; }
+        }
+        private record TestEnumClass
+        {
+            public TestEnum Test { get; init; }
+        };
 
         private enum TestEnum
         {

@@ -14,16 +14,16 @@ namespace Tsukiy0.Extensions.Processor.Tests.Services
         public MessageCorrelationServiceTests()
         {
             message = new Message<string>
-            (
-                Header: new MessageHeader
-                (
-                    Version: 1,
-                    TraceId: Guid.NewGuid(),
-                    Created: DateTimeOffset.MaxValue,
-                    AdditionalHeaders: new Dictionary<string, string>()
-                ),
-                Body: "test"
-            );
+            {
+                Header = new MessageHeader
+                {
+                    Version = 1,
+                    TraceId = Guid.NewGuid(),
+                    Created = DateTimeOffset.MaxValue,
+                    AdditionalHeaders = new Dictionary<string, string>()
+                },
+                Body = "test"
+            };
         }
 
         [Fact]

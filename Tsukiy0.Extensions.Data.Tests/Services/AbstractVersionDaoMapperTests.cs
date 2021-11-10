@@ -86,23 +86,23 @@ namespace Tsukiy0.Extensions.Data.Tests.Services
 
     public class Dto
     {
-        public bool Latest { get; set; }
+        public bool Latest { get; init; }
     }
 
     public class DaoV1 : IDao
     {
-        public string __TYPE { get; set; }
-        public int __VERSION { get; set; }
-        public DateTimeOffset __UPDATED { get; set; }
-        public string Latest { get; set; }
+        public string __TYPE { get; init; }
+        public int __VERSION { get; init; }
+        public DateTimeOffset __UPDATED { get; init; }
+        public string Latest { get; init; }
     }
 
     public class DaoV2 : IDao
     {
-        public string __TYPE { get; set; }
-        public int __VERSION { get; set; }
-        public DateTimeOffset __UPDATED { get; set; }
-        public bool Latest { get; set; }
+        public string __TYPE { get; init; }
+        public int __VERSION { get; init; }
+        public DateTimeOffset __UPDATED { get; init; }
+        public bool Latest { get; init; }
     }
 
     public class V1DaoMapper : IDaoMapper<Dto, IDao>
@@ -167,14 +167,14 @@ namespace Tsukiy0.Extensions.Data.Tests.Services
         public VersionDaoMapper() : base(
             new List<VersionMapper<Dto, IDao>>
             {
-                new VersionMapper<Dto, IDao> (
-                    Version: 1,
-                    Mapper: new V1DaoMapper()
-                ),
-                new VersionMapper<Dto, IDao>(
-                    Version: 2,
-                    Mapper: new V2DaoMapper()
-                )
+                new VersionMapper<Dto, IDao> {
+                    Version = 1,
+                    Mapper = new V1DaoMapper()
+                },
+                new VersionMapper<Dto, IDao>{
+                    Version = 2,
+                    Mapper = new V2DaoMapper()
+                }
             }
         )
         {
@@ -188,7 +188,11 @@ namespace Tsukiy0.Extensions.Data.Tests.Services
 
         protected override DaoVersion ToDaoVersion(IDao u)
         {
-            return new DaoVersion(u.__TYPE, u.__VERSION);
+            return new DaoVersion
+            {
+                Type = u.__TYPE,
+                Version = u.__VERSION
+            };
         }
 
     }

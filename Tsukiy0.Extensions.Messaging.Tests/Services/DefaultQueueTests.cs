@@ -37,16 +37,16 @@ namespace Tsukiy0.Extensions.Messaging.Tests.Services
             await sut.Send(body);
 
             messages.Single().Single().Should().BeEquivalentTo(new Message<string>
-                (
-                    Header: new MessageHeader
-                    (
-                        Version: 1,
-                        TraceId: traceId,
-                        Created: DateTimeOffset.UtcNow,
-                        AdditionalHeaders: new Dictionary<string, string>()
-                    ),
-                    Body: body
-                ),
+            {
+                Header = new MessageHeader
+                {
+                    Version = 1,
+                    TraceId = traceId,
+                    Created = DateTimeOffset.UtcNow,
+                    AdditionalHeaders = new Dictionary<string, string>()
+                },
+                Body = body
+            },
                 o => o
                     .ComparingDateTimesCloseTo(20.Seconds())
             );

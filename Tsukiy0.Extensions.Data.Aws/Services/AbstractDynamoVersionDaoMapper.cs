@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Amazon.DynamoDBv2.Model;
-using Tsukiy0.Extensions.Data.Aws.Services;
 using Tsukiy0.Extensions.Data.Aws.Extensions;
 using Tsukiy0.Extensions.Data.Aws.Models;
 using Tsukiy0.Extensions.Data.Models;
@@ -18,12 +17,18 @@ namespace Tsukiy0.Extensions.Data.Aws.Services
         {
             var dao = u.FromAttributeMap<DynamoDao>();
             return new DaoVersion
-            (
-                Version: dao.__VERSION,
-                Type: dao.__TYPE
-            );
+            {
+                Version = dao.__VERSION,
+                Type = dao.__TYPE
+            };
         }
 
-        private record DynamoDao(string __PK, string __SK, string __TYPE, int __VERSION) : IDynamoDao { }
+        private record DynamoDao : IDynamoDao
+        {
+            public string __PK { get; init; }
+            public string __SK { get; init; }
+            public string __TYPE { get; init; }
+            public int __VERSION { get; init; }
+        }
     }
 }

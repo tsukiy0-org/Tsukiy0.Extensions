@@ -20,17 +20,18 @@ namespace Tsukiy0.Extensions.NLog.Renderers
 
         protected override void Append(StringBuilder builder, LogEventInfo logEvent)
         {
-            var log = new Log(
-                1,
-                logEvent.Level.Ordinal * 10,
-                logEvent.TimeStamp.ToUniversalTime(),
-                name,
-                RenderScopeId(logEvent, LoggerExtensions.TRACE_ID_KEY),
-                RenderScopeId(logEvent, LoggerExtensions.SPAN_ID_KEY),
-                logEvent.FormattedMessage,
-                logEvent.Properties,
-                RenderException(logEvent)
-            );
+            var log = new Log
+            {
+                Version = 1,
+                Level = logEvent.Level.Ordinal * 10,
+                Timestamp = logEvent.TimeStamp.ToUniversalTime(),
+                Name = name,
+                TraceId = RenderScopeId(logEvent, LoggerExtensions.TRACE_ID_KEY),
+                SpanId = RenderScopeId(logEvent, LoggerExtensions.SPAN_ID_KEY),
+                Message = logEvent.FormattedMessage,
+                Context = logEvent.Properties,
+                Exception = RenderException(logEvent)
+            };
 
             var json = JsonSerializer.Serialize(log, JsonSerializerExtensions.DefaultOptions);
 
@@ -44,12 +45,13 @@ namespace Tsukiy0.Extensions.NLog.Renderers
                 return null;
             }
 
-            return new LogException(
-                logEvent.Exception.GetType().ToString(),
-                logEvent.Exception.Message,
-                logEvent.Exception.StackTrace,
-                logEvent.Exception.Data
-            );
+            return new LogException
+            {
+                Type = logEvent.Exception.GetType().ToString(),
+                Message = logEvent.Exception.Message,
+                StackTrace = logEvent.Exception.StackTrace,
+                Context = logEvent.Exception.Data
+            };
         }
 
         private static Guid? RenderScopeId(LogEventInfo logEvent, string key)

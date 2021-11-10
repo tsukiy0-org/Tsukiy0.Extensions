@@ -15,7 +15,10 @@ namespace Tsukiy0.Extensions.Example.AspNetCore.Extensions
                 .ConfigureAppConfiguration(_ =>
                 {
                     _.AddSsmParameterConfiguration(new List<SsmParameterMap> {
-                        new SsmParameterMap("/tsukiy0/extensions/aspnetcore/apikey/service", "ApiKeyAuthConfig:ApiKeys:Service")
+                        new SsmParameterMap{
+                            ParameterKey = "/tsukiy0/extensions/aspnetcore/apikey/service",
+                            ConfigurationKey = "ApiKeyAuthConfig:ApiKeys:Service"
+                        }
                     });
                 })
                 .ConfigureNLogLogging("api")

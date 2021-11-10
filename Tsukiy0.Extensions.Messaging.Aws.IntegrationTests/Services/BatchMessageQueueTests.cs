@@ -28,11 +28,17 @@ namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Services
         public async void Send()
         {
             // Arrange
-            var model = new TestModel(Guid.NewGuid(), Guid.NewGuid());
+            var model = new TestModel
+            {
+                Id = Guid.NewGuid(),
+                Namespace = Guid.NewGuid()
+            };
 
             // Act
             await _sut.Send(new List<SaveTestModelRequest>{
-                new SaveTestModelRequest(model)
+                new SaveTestModelRequest {
+                    TestModel = model
+                }
             });
             var actual = await Policy
                 .Handle<Exception>()

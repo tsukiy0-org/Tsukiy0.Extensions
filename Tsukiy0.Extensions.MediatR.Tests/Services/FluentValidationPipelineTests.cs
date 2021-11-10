@@ -27,10 +27,10 @@ namespace Tsukiy0.Extensions.MediatR.Tests
         public async Task WhenValidThenDoNotThrow()
         {
             // Arrange
-            var request = new TestRequest(1);
+            var request = new TestRequest { Code = 1 };
 
             // Act
-            Func<Task> action = async () => await _sut.Handle(request, CancellationToken.None, async () => new TestResponse(1));
+            Func<Task> action = async () => await _sut.Handle(request, CancellationToken.None, async () => new TestResponse { Code = 1 });
 
             // Assert
             await action.Should().NotThrowAsync();
@@ -40,17 +40,23 @@ namespace Tsukiy0.Extensions.MediatR.Tests
         public async Task WhenNotValidThenThrowAsync()
         {
             // Arrange
-            var request = new TestRequest(0);
+            var request = new TestRequest { Code = 0 };
 
             // Act
-            Func<Task> action = async () => await _sut.Handle(request, CancellationToken.None, async () => new TestResponse(1));
+            Func<Task> action = async () => await _sut.Handle(request, CancellationToken.None, async () => new TestResponse { Code = 1 });
 
             // Assert
             await action.Should().ThrowAsync<ValidationException>();
         }
 
-        private record TestResponse(int Code);
-        private record TestRequest(int Code) : IRequest<TestResponse>;
+        private record TestResponse
+        {
+            public int Code { get; init; }
+        }
+        private record TestRequest : IRequest<TestResponse>
+        {
+            public int Code { get; init; }
+        }
         private class TestRequestValidator : AbstractValidator<TestRequest>
         {
             public TestRequestValidator()

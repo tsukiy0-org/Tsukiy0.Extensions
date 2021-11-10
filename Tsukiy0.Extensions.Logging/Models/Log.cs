@@ -2,15 +2,16 @@ using System;
 
 namespace Tsukiy0.Extensions.Logging.Models
 {
-    public record Log(
-        int Version,
-        int Level,
-        DateTimeOffset Timestamp,
-        String Name,
-        Guid? TraceId,
-        Guid? SpanId,
-        string Message,
-        dynamic Context,
-        LogException? Exception
-    );
+    public record Log
+    {
+        public int Version { get; init; }
+        public int Level { get; init; }
+        public DateTimeOffset Timestamp { get; init; }
+        public string Name { get; init; }
+        public Guid? TraceId { get; init; }
+        public Guid? SpanId { get; init; }
+        public string Message { get; init; }
+        public dynamic Context { get; init; }
+        public LogException? Exception { get; init; }
+    }
 }

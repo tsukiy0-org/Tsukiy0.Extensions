@@ -29,9 +29,18 @@ namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Helpers
                 {
                     _.AddSsmParameterConfiguration(new List<SsmParameterMap>
                     {
-                        new SsmParameterMap("/tsukiy0/extensions/test-table/table-name", $"{nameof(DynamoTestModelRepositoryConfig)}:{nameof(DynamoTestModelRepositoryConfig.TableName)}"),
-                        new SsmParameterMap("/tsukiy0/extensions/batch-processor/job-definition-arn", $"{nameof(BatchSaveTestModelQueueConfig)}:{nameof(BatchSaveTestModelQueueConfig.JobDefinitionArn)}"),
-                        new SsmParameterMap("/tsukiy0/extensions/batch-processor/job-queue-arn", $"{nameof(BatchSaveTestModelQueueConfig)}:{nameof(BatchSaveTestModelQueueConfig.JobQueueArn)}")
+                        new SsmParameterMap{
+                            ParameterKey = "/tsukiy0/extensions/test-table/table-name",
+                            ConfigurationKey = $"{nameof(DynamoTestModelRepositoryConfig)}:{nameof(DynamoTestModelRepositoryConfig.TableName)}"
+                        },
+                        new SsmParameterMap{
+                            ParameterKey = "/tsukiy0/extensions/batch-processor/job-definition-arn",
+                            ConfigurationKey = $"{nameof(BatchSaveTestModelQueueConfig)}:{nameof(BatchSaveTestModelQueueConfig.JobDefinitionArn)}"
+                        },
+                        new SsmParameterMap{
+                            ParameterKey = "/tsukiy0/extensions/batch-processor/job-queue-arn",
+                            ConfigurationKey = $"{nameof(BatchSaveTestModelQueueConfig)}:{nameof(BatchSaveTestModelQueueConfig.JobQueueArn)}"
+                        }
                     });
                 })
                 .ConfigureServices((ctx, _) =>

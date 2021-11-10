@@ -19,7 +19,10 @@ namespace Tsukiy0.Extensions.Configuration.Aws.Tests.Services
             _mockSsmParameterService = new Mock<ISsmParameterService>();
             _sut = new SsmParameterConfigurationProvider(_mockSsmParameterService.Object, new List<SsmParameterMap>
             {
-                new SsmParameterMap("SsmKey", "ConfigKey")
+                new SsmParameterMap{
+                    ParameterKey = "SsmKey",
+                    ConfigurationKey = "ConfigKey"
+                }
             });
         }
 

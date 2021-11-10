@@ -23,10 +23,11 @@ namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Extensions
             // Arrange
             var ns = Guid.NewGuid();
             var models = new Faker<TestModel>()
-                .CustomInstantiator(f => new TestModel(
-                    Id: Guid.NewGuid(),
-                    Namespace: ns
-                ))
+                .CustomInstantiator(f => new TestModel
+                {
+                    Id = Guid.NewGuid(),
+                    Namespace = ns
+                })
                 .GenerateForever().Take(50).ToList();
 
             #region PutAll
@@ -54,10 +55,11 @@ namespace Tsukiy0.Extensions.Data.Aws.IntegrationTests.Extensions
             // Arrange
             var ns = Guid.NewGuid();
             var models = new Faker<TestModel>()
-                .CustomInstantiator(f => new TestModel(
-                    Id: Guid.NewGuid(),
-                    Namespace: ns
-                ))
+                .CustomInstantiator(f => new TestModel
+                {
+                    Id = Guid.NewGuid(),
+                    Namespace = ns
+                })
                 .GenerateForever().Take(50).ToList();
 
             #region PutAll
