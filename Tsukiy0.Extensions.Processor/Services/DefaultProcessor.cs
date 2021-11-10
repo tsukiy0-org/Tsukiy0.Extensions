@@ -31,7 +31,7 @@ namespace Tsukiy0.Extensions.Processor.Services
         }
         public async Task Run(Message<T> message)
         {
-            var host = CreateHost(message);
+            using var host = CreateHost(message);
             var logger = host.Services.GetRequiredService<ILogger<DefaultProcessor<T>>>();
             var correlationService = host.Services.GetRequiredService<ICorrelationService>();
 
