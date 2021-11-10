@@ -1,13 +1,11 @@
 name: pipeline
 on:
   push:
-    branches:
-      - master
   workflow_dispatch:
     inputs:
-      publish:
+      release:
         required: true
-        default: "prerelease"
+        default: "release"
 jobs:
   pipeline:
     runs-on: ubuntu-latest
