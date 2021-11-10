@@ -14,7 +14,14 @@ namespace Tsukiy0.Extensions.Example.Processor.Aws.Sqs
             await new SaveTestModelProcessor().Run(
                 new Message<SaveTestModelRequest>(
                     new MessageHeader(1, Guid.NewGuid(), DateTimeOffset.UtcNow, new Dictionary<string, string>()),
-                    new SaveTestModelRequest(new Core.Models.TestModel(Guid.NewGuid(), Guid.NewGuid()))
+                    new SaveTestModelRequest
+                    {
+                        TestModel = new Core.Models.TestModel
+                        {
+                            Id = Guid.NewGuid(),
+                            Namespace = Guid.NewGuid()
+                        }
+                    }
                 )
             );
         }

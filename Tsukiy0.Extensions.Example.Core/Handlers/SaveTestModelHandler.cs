@@ -7,7 +7,10 @@ using Tsukiy0.Extensions.Example.Core.Services;
 
 namespace Tsukiy0.Extensions.Example.Core.Handlers
 {
-    public record SaveTestModelRequest(TestModel TestModel) : IRequest<Unit> { }
+    public record SaveTestModelRequest : IRequest<Unit>
+    {
+        public TestModel TestModel { get; init; }
+    }
 
     public class SaveTestModelHandler : IRequestHandler<SaveTestModelRequest, Unit>
     {

@@ -15,7 +15,11 @@ namespace Tsukiy0.Extensions.Example.Infrastructure.Services
         public async Task<TestModel> From(Dictionary<string, AttributeValue> source)
         {
             var dao = source.FromAttributeMap<TestModelV1Dao>();
-            return new TestModel(dao.Id, dao.Namespace);
+            return new TestModel
+            {
+                Id = dao.Id,
+                Namespace = dao.Namespace
+            };
         }
 
         public async Task<Dictionary<string, AttributeValue>> To(TestModel destination)
