@@ -43,8 +43,8 @@ namespace Tsukiy0.Extensions.Data.Aws.Extensions
 
         private record Gsi3 : IDynamoGsi3Key
         {
-            public string __GSI3_PK { get; set; }
-            public string __GSI3_SK { get; set; }
+            public string __GSI3_PK { get; init; }
+            public string __GSI3_SK { get; init; }
         }
     }
 }
