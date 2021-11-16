@@ -1,0 +1,7 @@
+obj/
+bin/
+*.log
+.vscode/
+TestResults/
+coveragereport/
+mono_crash.*.json
