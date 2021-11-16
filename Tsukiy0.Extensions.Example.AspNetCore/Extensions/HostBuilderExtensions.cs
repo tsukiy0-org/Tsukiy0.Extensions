@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+
 using Tsukiy0.Extensions.Configuration.Aws.Extensions;
 using Tsukiy0.Extensions.Configuration.Aws.Models;
 using Tsukiy0.Extensions.Logging.NLog.Extensions;

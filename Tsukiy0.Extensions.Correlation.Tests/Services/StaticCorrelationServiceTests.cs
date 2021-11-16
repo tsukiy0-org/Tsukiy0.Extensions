@@ -1,6 +1,9 @@
-using FluentAssertions;
 using System;
+
+using FluentAssertions;
+
 using Tsukiy0.Extensions.Correlation.Services;
+
 using Xunit;
 
 namespace Tsukiy0.Extensions.Correlation.Tests.Services

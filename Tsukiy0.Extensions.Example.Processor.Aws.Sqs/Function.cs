@@ -1,7 +1,8 @@
 using Amazon.Lambda.Core;
+
 using Tsukiy0.Extensions.Example.Core.Handlers;
-using Tsukiy0.Extensions.Processor.Aws.Runtimes;
 using Tsukiy0.Extensions.Example.Infrastructure.Services;
+using Tsukiy0.Extensions.Processor.Aws.Runtimes;
 
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 

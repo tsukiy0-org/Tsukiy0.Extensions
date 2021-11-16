@@ -2,10 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+
 using FluentAssertions;
+
 using FluentValidation;
+
 using MediatR;
+
 using Tsukiy0.Extensions.MediatR.Services;
+
 using Xunit;
 
 namespace Tsukiy0.Extensions.MediatR.Tests
@@ -30,7 +35,7 @@ namespace Tsukiy0.Extensions.MediatR.Tests
             var request = new TestRequest { Code = 1 };
 
             // Act
-            Func<Task> action = async () => await _sut.Handle(request, CancellationToken.None, async () => new TestResponse { Code = 1 });
+            Func<Task> action = async () => await _sut.Handle(request, CancellationToken.None, () => Task.FromResult(new TestResponse { Code = 1 }));
 
             // Assert
             await action.Should().NotThrowAsync();
@@ -43,7 +48,7 @@ namespace Tsukiy0.Extensions.MediatR.Tests
             var request = new TestRequest { Code = 0 };
 
             // Act
-            Func<Task> action = async () => await _sut.Handle(request, CancellationToken.None, async () => new TestResponse { Code = 1 });
+            Func<Task> action = async () => await _sut.Handle(request, CancellationToken.None, () => Task.FromResult(new TestResponse { Code = 1 }));
 
             // Assert
             await action.Should().ThrowAsync<ValidationException>();

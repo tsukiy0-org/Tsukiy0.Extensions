@@ -1,9 +1,13 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+
 using Amazon.DynamoDBv2;
+
 using MediatR;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
 using Tsukiy0.Extensions.Configuration.Aws.Extensions;
 using Tsukiy0.Extensions.Configuration.Aws.Models;
 using Tsukiy0.Extensions.Configuration.Extensions;

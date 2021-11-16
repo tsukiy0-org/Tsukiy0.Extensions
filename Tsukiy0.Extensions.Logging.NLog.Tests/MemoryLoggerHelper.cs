@@ -1,14 +1,17 @@
 using System.Text.Json;
+
+using Microsoft.Extensions.Logging;
+
+using NLog;
 using NLog.Config;
 using NLog.Extensions.Logging;
 using NLog.LayoutRenderers;
 using NLog.Layouts;
 using NLog.Targets;
-using Microsoft.Extensions.Logging;
-using NLog;
-using Tsukiy0.Extensions.NLog.Renderers;
-using Tsukiy0.Extensions.Logging.Models;
+
 using Tsukiy0.Extensions.Json.Extensions;
+using Tsukiy0.Extensions.Logging.Models;
+using Tsukiy0.Extensions.NLog.Renderers;
 
 namespace Tsukiy0.Extensions.Logging.NLog.Tests.Helpers
 {

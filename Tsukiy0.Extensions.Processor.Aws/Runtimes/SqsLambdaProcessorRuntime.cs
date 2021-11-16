@@ -1,7 +1,9 @@
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+
 using Amazon.Lambda.SQSEvents;
+
 using Tsukiy0.Extensions.Json.Extensions;
 using Tsukiy0.Extensions.Messaging.Models;
 using Tsukiy0.Extensions.Processor.Services;
@@ -12,9 +14,9 @@ namespace Tsukiy0.Extensions.Processor.Aws.Runtimes
     {
         public SqsLambdaProcessorRuntime(IProcessor<T> processor) : base(processor) { }
 
-        protected override async Task<Message<T>> ToMessage(SQSEvent e)
+        protected override Task<Message<T>> ToMessage(SQSEvent e)
         {
-            return JsonSerializer.Deserialize<Message<T>>(e.Records.Single().Body, JsonSerializerExtensions.DefaultOptions);
+            return Task.FromResult(JsonSerializer.Deserialize<Message<T>>(e.Records.Single().Body, JsonSerializerExtensions.DefaultOptions));
         }
     }
 }

@@ -1,4 +1,5 @@
 using MediatR;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Tsukiy0.Extensions.MediatR.Extensions

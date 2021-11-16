@@ -2,13 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using FluentAssertions;
+
 using Polly;
+
 using Tsukiy0.Extensions.Example.Core.Handlers;
 using Tsukiy0.Extensions.Example.Core.Models;
 using Tsukiy0.Extensions.Example.Core.Services;
 using Tsukiy0.Extensions.Example.Infrastructure.Services;
 using Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Helpers;
+
 using Xunit;
 
 namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Services

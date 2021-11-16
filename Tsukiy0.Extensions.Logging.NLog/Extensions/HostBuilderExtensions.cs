@@ -1,6 +1,8 @@
 using System;
+
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+
 using NLog;
 using NLog.Config;
 using NLog.Extensions.Hosting;

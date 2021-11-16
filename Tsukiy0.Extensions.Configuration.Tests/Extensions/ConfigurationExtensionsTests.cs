@@ -1,8 +1,12 @@
 using System;
 using System.Collections.Generic;
+
 using FluentAssertions;
+
 using Microsoft.Extensions.Configuration;
+
 using Tsukiy0.Extensions.Configuration.Extensions;
+
 using Xunit;
 
 namespace Tsukiy0.Extensions.Configuration.Tests.Extensions

@@ -1,18 +1,25 @@
-using Xunit;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using System;
-using System.Text.Json;
-using Moq;
-using Tsukiy0.Extensions.Processor.Services;
-using Tsukiy0.Extensions.Processor.Aws.Runtimes;
-using FluentAssertions;
-using Amazon.Lambda.SQSEvents;
-using Tsukiy0.Extensions.Messaging.Models;
-using static Amazon.Lambda.SQSEvents.SQSEvent;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
+
+using Amazon.Lambda.SQSEvents;
+
 using AutoFixture;
+
+using FluentAssertions;
+
+using Moq;
+
 using Tsukiy0.Extensions.Json.Extensions;
+using Tsukiy0.Extensions.Messaging.Models;
+using Tsukiy0.Extensions.Processor.Aws.Runtimes;
+using Tsukiy0.Extensions.Processor.Services;
+
+using Xunit;
+
+using static Amazon.Lambda.SQSEvents.SQSEvent;
 
 namespace Tsukiy0.Extensions.Processor.Aws.Tests.Runtimes
 {

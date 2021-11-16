@@ -2,6 +2,7 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+
 using Tsukiy0.Extensions.Correlation.Services;
 
 namespace Tsukiy0.Extensions.Http.Extensions
@@ -37,4 +38,3 @@ namespace Tsukiy0.Extensions.Http.Extensions
         }
     }
 }
-

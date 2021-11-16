@@ -1,7 +1,9 @@
 using System;
 using System.Threading.Tasks;
+
 using Amazon.SimpleSystemsManagement;
 using Amazon.SimpleSystemsManagement.Model;
+
 using Microsoft.Extensions.Caching.Memory;
 
 namespace Tsukiy0.Extensions.Configuration.Aws.Services

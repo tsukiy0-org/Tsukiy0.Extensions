@@ -1,4 +1,5 @@
 using System;
+
 using Tsukiy0.Extensions.Configuration.Aws.Models;
 
 namespace Tsukiy0.Extensions.Configuration.Aws.Exceptions

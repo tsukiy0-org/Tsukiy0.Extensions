@@ -6,4 +6,3 @@ namespace Tsukiy0.Extensions.Http.Constants
         public const string ApiKey = "X-Api-Key";
     }
 }
-
