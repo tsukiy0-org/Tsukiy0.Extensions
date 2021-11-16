@@ -1,4 +1,4 @@
-FROM public.ecr.aws/lambda/dotnet:5.0
+FROM tsukiy0/dotnet6-runtime
 
 WORKDIR /var/task
 COPY ./bin/Release/net6.0/linux-x64/publish .
