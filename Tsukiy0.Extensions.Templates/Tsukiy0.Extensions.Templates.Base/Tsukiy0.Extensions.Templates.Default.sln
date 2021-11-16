@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Templates.Core", "Tsukiy0.Extensions.Templates.Core\Tsukiy0.Extensions.Templates.Core.csproj", "{B1FE891A-F5E7-4C78-A8A3-F2E5AD40DA43}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Templates.Default.Core", "Tsukiy0.Extensions.Templates.Default.Core\Tsukiy0.Extensions.Templates.Default.Core.csproj", "{B1FE891A-F5E7-4C78-A8A3-F2E5AD40DA43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Templates.Core.Tests", "Tsukiy0.Extensions.Templates.Core.Tests\Tsukiy0.Extensions.Templates.Core.Tests.csproj", "{98676A18-4032-4E7C-B87C-7DCB947E654E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Templates.Default.Core.Tests", "Tsukiy0.Extensions.Templates.Default.Core.Tests\Tsukiy0.Extensions.Templates.Default.Core.Tests.csproj", "{98676A18-4032-4E7C-B87C-7DCB947E654E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Templates.Domain", "Tsukiy0.Extensions.Templates.Domain\Tsukiy0.Extensions.Templates.Domain.csproj", "{16117F89-D3E9-4BE0-85EB-0EED6F9BE115}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Templates.Default.Domain", "Tsukiy0.Extensions.Templates.Default.Domain\Tsukiy0.Extensions.Templates.Default.Domain.csproj", "{16117F89-D3E9-4BE0-85EB-0EED6F9BE115}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Templates.Domain.Tests", "Tsukiy0.Extensions.Templates.Domain.Tests\Tsukiy0.Extensions.Templates.Domain.Tests.csproj", "{7D9EFDF4-E55B-4D51-A92F-0120DDF8FB6F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Templates.Default.Domain.Tests", "Tsukiy0.Extensions.Templates.Default.Domain.Tests\Tsukiy0.Extensions.Templates.Default.Domain.Tests.csproj", "{7D9EFDF4-E55B-4D51-A92F-0120DDF8FB6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Templates.Infrastructure", "Tsukiy0.Extensions.Templates.Infrastructure\Tsukiy0.Extensions.Templates.Infrastructure.csproj", "{1E30544B-5908-4585-8078-D6815D5DF181}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Templates.Default.Infrastructure", "Tsukiy0.Extensions.Templates.Default.Infrastructure\Tsukiy0.Extensions.Templates.Default.Infrastructure.csproj", "{1E30544B-5908-4585-8078-D6815D5DF181}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Templates.Infrastructure.Tests", "Tsukiy0.Extensions.Templates.Infrastructure.Tests\Tsukiy0.Extensions.Templates.Infrastructure.Tests.csproj", "{2B4C8D18-0188-4CFA-B1A9-0AD9F150B00E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Templates.Default.Infrastructure.Tests", "Tsukiy0.Extensions.Templates.Default.Infrastructure.Tests\Tsukiy0.Extensions.Templates.Default.Infrastructure.Tests.csproj", "{2B4C8D18-0188-4CFA-B1A9-0AD9F150B00E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

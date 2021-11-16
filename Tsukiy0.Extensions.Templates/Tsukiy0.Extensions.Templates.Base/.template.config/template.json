@@ -1,0 +1,33 @@
+﻿{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "tsukiy0",
+  "classifications": [],
+  "name": "Tsukiy0.Extensions.Templates.Default",
+  "shortName": "tsukiy0-extensions-default",
+  "identity": "Tsukiy0.Extensions.Templates.Default",
+  "tags": {
+    "language": "C#",
+    "type": "solution"
+  },
+  "sourceName": "Tsukiy0.Extensions.Templates.Default",
+  "primaryOutputs": [
+    {
+      "path": "Tsukiy0.Extensions.Templates.Default.sln"
+    }
+  ],
+  "sources": [
+    {
+      "exclude": [
+        ".template.config/**"
+      ],
+      "modifiers": [
+        {
+          "rename": {
+            "gitignore": ".gitignore",
+            "gitkeep": ".gitkeep"
+          }
+        }
+      ]
+    }
+  ]
+}

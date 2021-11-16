@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace Tsukiy0.Extensions.Templates.Infrastructure.Tests;
+namespace Tsukiy0.Extensions.Templates.Default.Infrastructure.Tests;
 
 public class UnitTest1
 {
