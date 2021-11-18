@@ -3,11 +3,7 @@ import { Construct } from "constructs";
 import { Api } from "../constructs/Api";
 
 export class AppStack extends Stack {
-  constructor(
-    scope: Construct,
-    id: string,
-    props: StackProps 
-  ) {
+  constructor(scope: Construct, id: string, props: StackProps) {
     super(scope, id, props);
 
     new Api(this, "Api");
