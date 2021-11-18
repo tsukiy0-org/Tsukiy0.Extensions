@@ -1,15 +1,20 @@
-using Xunit;
-using FluentAssertions;
-using Microsoft.AspNetCore.Http;
-using System.Net;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Text.Json;
-using Tsukiy0.Extensions.AspNetCore.Middlewares;
-using Tsukiy0.Extensions.Logging.NLog.Tests.Helpers;
-using Tsukiy0.Extensions.Core.Exceptions;
+
+using FluentAssertions;
+
+using Microsoft.AspNetCore.Http;
+
 using Moq;
+
+using Tsukiy0.Extensions.AspNetCore.Middlewares;
+using Tsukiy0.Extensions.Core.Exceptions;
+using Tsukiy0.Extensions.Logging.NLog.Tests.Helpers;
+
+using Xunit;
 
 namespace Tsukiy0.Extensions.AspNetCore.Tests.Middlewares
 {

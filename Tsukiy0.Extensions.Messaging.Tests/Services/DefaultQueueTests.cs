@@ -1,14 +1,18 @@
-using Tsukiy0.Extensions.Correlation.Services;
-using Xunit;
 using System;
 using System.Collections.Generic;
-using FluentAssertions;
 using System.Linq;
+
+using FluentAssertions;
 using FluentAssertions.Extensions;
-using Tsukiy0.Extensions.Messaging.Services;
+
 using Moq;
+
+using Tsukiy0.Extensions.Correlation.Services;
 using Tsukiy0.Extensions.Messaging.Models;
+using Tsukiy0.Extensions.Messaging.Services;
 using Tsukiy0.Extensions.Testing.Extensions;
+
+using Xunit;
 
 namespace Tsukiy0.Extensions.Messaging.Tests.Services
 {

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+
 using Tsukiy0.Extensions.AspNetCore.Filters;
 using Tsukiy0.Extensions.Example.AspNetCore.Models;
 
@@ -17,4 +18,3 @@ namespace Tsukiy0.Extensions.Example.AspNetCore.Controllers
         }
     }
 }
-

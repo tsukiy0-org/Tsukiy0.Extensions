@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Tsukiy0.Extensions.AspNetCore.Extensions

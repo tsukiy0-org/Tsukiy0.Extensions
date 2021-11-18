@@ -1,18 +1,21 @@
+using System;
 using System.Collections.Generic;
+
 using Amazon.DynamoDBv2;
+using Amazon.SQS;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Tsukiy0.Extensions.Data.Aws.Services;
+
 using Tsukiy0.Extensions.Configuration.Aws.Extensions;
 using Tsukiy0.Extensions.Configuration.Aws.Models;
 using Tsukiy0.Extensions.Configuration.Extensions;
-using Tsukiy0.Extensions.Example.Infrastructure.Services;
-using Tsukiy0.Extensions.Example.Core.Models;
-using Tsukiy0.Extensions.Example.Infrastructure.Configs;
-using Amazon.SQS;
 using Tsukiy0.Extensions.Correlation.Services;
-using System;
+using Tsukiy0.Extensions.Data.Aws.Services;
+using Tsukiy0.Extensions.Example.Core.Models;
 using Tsukiy0.Extensions.Example.Core.Services;
+using Tsukiy0.Extensions.Example.Infrastructure.Configs;
+using Tsukiy0.Extensions.Example.Infrastructure.Services;
 
 namespace Tsukiy0.Extensions.Messaging.Aws.IntegrationTests.Helpers
 {

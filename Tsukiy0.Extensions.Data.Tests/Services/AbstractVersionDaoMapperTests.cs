@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Xunit;
+
+using FluentAssertions;
+
 using Tsukiy0.Extensions.Data.Models;
 using Tsukiy0.Extensions.Data.Services;
-using FluentAssertions;
+
+using Xunit;
 
 namespace Tsukiy0.Extensions.Data.Tests.Services
 {
@@ -107,34 +110,34 @@ namespace Tsukiy0.Extensions.Data.Tests.Services
 
     public class V1DaoMapper : IDaoMapper<Dto, IDao>
     {
-        public async Task<Dto> From(IDao source)
+        public Task<Dto> From(IDao source)
         {
             if (source is not DaoV1 v1)
             {
                 throw new InvalidCastException();
             }
 
-            return new Dto
+            return Task.FromResult(new Dto
             {
                 Latest = v1.Latest == "true"
-            };
+            });
         }
 
-        public async Task<IDao> To(Dto destination)
+        public Task<IDao> To(Dto destination)
         {
-            return new DaoV1
+            return Task.FromResult<IDao>(new DaoV1
             {
                 __VERSION = 1,
                 __UPDATED = DateTimeOffset.MaxValue,
                 __TYPE = "TEST",
                 Latest = destination.Latest.ToString()
-            };
+            });
         }
     }
 
     public class V2DaoMapper : IDaoMapper<Dto, IDao>
     {
-        public async Task<Dto> From(IDao source)
+        public Task<Dto> From(IDao source)
 
         {
             if (source is not DaoV2 v1)
@@ -142,21 +145,21 @@ namespace Tsukiy0.Extensions.Data.Tests.Services
                 throw new InvalidCastException();
             }
 
-            return new Dto
+            return Task.FromResult(new Dto
             {
                 Latest = v1.Latest
-            };
+            });
         }
 
-        public async Task<IDao> To(Dto destination)
+        public Task<IDao> To(Dto destination)
         {
-            return new DaoV2
+            return Task.FromResult<IDao>(new DaoV2
             {
                 __VERSION = 2,
                 __UPDATED = DateTimeOffset.MaxValue,
                 __TYPE = "TEST",
                 Latest = destination.Latest
-            };
+            });
         }
     }
 
@@ -181,9 +184,10 @@ namespace Tsukiy0.Extensions.Data.Tests.Services
             HadVersionMismatch = false;
         }
 
-        protected override async Task OnVersionMismatch(Dto dto, int currentVersion)
+        protected override Task OnVersionMismatch(Dto dto, int currentVersion)
         {
             HadVersionMismatch = true;
+            return Task.CompletedTask;
         }
 
         protected override DaoVersion ToDaoVersion(IDao u)

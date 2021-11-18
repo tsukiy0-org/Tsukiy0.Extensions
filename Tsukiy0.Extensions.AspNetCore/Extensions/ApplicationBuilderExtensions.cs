@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
+
 using Tsukiy0.Extensions.AspNetCore.Middlewares;
 using Tsukiy0.Extensions.Configuration.Extensions;
 using Tsukiy0.Extensions.Logging.AspNetCore.Middlewares;

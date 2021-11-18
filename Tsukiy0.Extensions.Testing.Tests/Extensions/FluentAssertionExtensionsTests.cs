@@ -1,8 +1,11 @@
 using System;
-using Xunit;
+
 using FluentAssertions;
-using Tsukiy0.Extensions.Testing.Extensions;
 using FluentAssertions.Extensions;
+
+using Tsukiy0.Extensions.Testing.Extensions;
+
+using Xunit;
 
 namespace Tsukiy0.Extensions.Testing.Tests.Extensions
 {

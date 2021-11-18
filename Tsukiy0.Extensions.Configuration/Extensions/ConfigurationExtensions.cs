@@ -1,4 +1,5 @@
 using System;
+
 using Microsoft.Extensions.Configuration;
 
 namespace Tsukiy0.Extensions.Configuration.Extensions

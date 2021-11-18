@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+
 using MediatR;
+
 using Tsukiy0.Extensions.Example.Core.Models;
 using Tsukiy0.Extensions.Example.Core.Services;
 

@@ -2,7 +2,9 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+
 using FluentValidation;
+
 using MediatR;
 
 namespace Tsukiy0.Extensions.MediatR.Services

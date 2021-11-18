@@ -1,10 +1,15 @@
 using System.Threading;
+
 using Amazon.SQS;
 using Amazon.SQS.Model;
+
 using AutoFixture;
+
 using Moq;
+
 using Tsukiy0.Extensions.Messaging.Aws.Services;
 using Tsukiy0.Extensions.Messaging.Models;
+
 using Xunit;
 
 namespace Tsukiy0.Extensions.Messaging.Aws.Tests.Services

@@ -1,6 +1,9 @@
 using System.Linq;
+
 using FluentAssertions;
+
 using Tsukiy0.Extensions.Core.Extensions;
+
 using Xunit;
 
 namespace Tsukiy0.Extensions.Core.Tests.Extensions

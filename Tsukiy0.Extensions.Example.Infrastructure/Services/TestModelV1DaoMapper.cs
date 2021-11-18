@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+
 using Amazon.DynamoDBv2.Model;
+
 using Tsukiy0.Extensions.Data.Aws.Extensions;
 using Tsukiy0.Extensions.Data.Aws.Models;
 using Tsukiy0.Extensions.Data.Aws.Services;
@@ -21,19 +23,19 @@ namespace Tsukiy0.Extensions.Example.Infrastructure.Services
             public Guid Namespace { get; init; }
         }
 
-        public async Task<TestModel> From(Dictionary<string, AttributeValue> source)
+        public Task<TestModel> From(Dictionary<string, AttributeValue> source)
         {
             var dao = source.FromAttributeMap<TestModelV1Dao>();
-            return new TestModel
+            return Task.FromResult(new TestModel
             {
                 Id = dao.Id,
                 Namespace = dao.Namespace
-            };
+            });
         }
 
-        public async Task<Dictionary<string, AttributeValue>> To(TestModel destination)
+        public Task<Dictionary<string, AttributeValue>> To(TestModel destination)
         {
-            return new TestModelV1Dao
+            return Task.FromResult(new TestModelV1Dao
             {
                 __PK = destination.Namespace.ToString(),
                 __SK = destination.Id.ToString(),
@@ -41,7 +43,7 @@ namespace Tsukiy0.Extensions.Example.Infrastructure.Services
                 __VERSION = 1,
                 Id = destination.Id,
                 Namespace = destination.Namespace
-            }.ToAttributeMap();
+            }.ToAttributeMap());
         }
     }
 }

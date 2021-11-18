@@ -1,8 +1,11 @@
-using System.Threading.Tasks;
-using Xunit;
-using FluentAssertions;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+
+using FluentAssertions;
+
 using Tsukiy0.Extensions.Core.Extensions;
+
+using Xunit;
 
 namespace Tsukiy0.Extensions.Core.Tests.Extensions
 {

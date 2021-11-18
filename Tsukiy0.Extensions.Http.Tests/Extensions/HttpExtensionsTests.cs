@@ -1,12 +1,16 @@
 using System;
 using System.Net;
 using System.Net.Http;
+
 using FluentAssertions;
+
 using Moq;
+
 using Tsukiy0.Extensions.Correlation.Services;
 using Tsukiy0.Extensions.Http.Constants;
 using Tsukiy0.Extensions.Http.Exceptions;
 using Tsukiy0.Extensions.Http.Extensions;
+
 using Xunit;
 
 namespace Tsukiy0.Extensions.Http.Tests.Extensions
