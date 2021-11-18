@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading;
+
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
+
 using FluentAssertions;
 using FluentAssertions.Extensions;
+
 using Moq;
+
 using Tsukiy0.Extensions.Data.Aws.Extensions;
 using Tsukiy0.Extensions.Data.Aws.Models;
 using Tsukiy0.Extensions.Testing.Extensions;
+
 using Xunit;
 
 namespace Tsukiy0.Extensions.Data.Aws.Tests.Extensions

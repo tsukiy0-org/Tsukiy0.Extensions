@@ -1,8 +1,11 @@
 using System.Collections.Generic;
+
 using Amazon.SecretsManager;
 using Amazon.SimpleSystemsManagement;
+
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+
 using Tsukiy0.Extensions.Configuration.Aws.Models;
 using Tsukiy0.Extensions.Configuration.Aws.Services;
 

@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+
 using FluentAssertions;
+
 using Moq;
+
 using Tsukiy0.Extensions.Correlation.Services;
 using Tsukiy0.Extensions.Http.Extensions;
+
 using Xunit;
 
 namespace Tsukiy0.Extensions.Http.Tests.Extensions

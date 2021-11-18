@@ -1,10 +1,14 @@
 using System;
 using System.Collections.Generic;
+
 using FluentAssertions;
+
 using Moq;
+
 using Tsukiy0.Extensions.Configuration.Aws.Exceptions;
 using Tsukiy0.Extensions.Configuration.Aws.Models;
 using Tsukiy0.Extensions.Configuration.Aws.Services;
+
 using Xunit;
 
 namespace Tsukiy0.Extensions.Configuration.Aws.Tests.Services
@@ -28,7 +32,7 @@ namespace Tsukiy0.Extensions.Configuration.Aws.Tests.Services
         }
 
         [Fact]
-        public async void Load()
+        public void Load()
         {
             var value = "value";
             _mockSecretsManagerService.Setup(_ => _.Get("SecretKey")).ReturnsAsync(new Dictionary<string, string>
@@ -43,7 +47,7 @@ namespace Tsukiy0.Extensions.Configuration.Aws.Tests.Services
         }
 
         [Fact]
-        public async void Load__WhenNoValueThenThrow()
+        public void Load__WhenNoValueThenThrow()
         {
             _mockSecretsManagerService.Setup(_ => _.Get("SecretKey")).ReturnsAsync(new Dictionary<string, string> { });
 

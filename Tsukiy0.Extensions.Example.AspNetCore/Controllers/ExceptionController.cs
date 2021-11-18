@@ -1,5 +1,7 @@
 using System;
+
 using Microsoft.AspNetCore.Mvc;
+
 using Tsukiy0.Extensions.AspNetCore.Filters;
 using Tsukiy0.Extensions.Core.Exceptions;
 
@@ -30,5 +32,3 @@ namespace Tsukiy0.Extensions.Example.AspNetCore.Controllers
         }
     }
 }
-
-

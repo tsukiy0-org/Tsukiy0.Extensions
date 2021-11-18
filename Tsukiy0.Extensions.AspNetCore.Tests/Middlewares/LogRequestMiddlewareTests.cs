@@ -1,11 +1,16 @@
-using Moq;
-using Xunit;
-using FluentAssertions;
 using System.Text.Json;
+
+using FluentAssertions;
+
 using Microsoft.AspNetCore.Http;
-using Tsukiy0.Extensions.Logging.NLog.Tests.Helpers;
-using Tsukiy0.Extensions.Logging.AspNetCore.Middlewares;
+
+using Moq;
+
 using Tsukiy0.Extensions.Json.Extensions;
+using Tsukiy0.Extensions.Logging.AspNetCore.Middlewares;
+using Tsukiy0.Extensions.Logging.NLog.Tests.Helpers;
+
+using Xunit;
 
 namespace Tsukiy0.Extensions.AspNetCore.Tests.Middlewares
 {

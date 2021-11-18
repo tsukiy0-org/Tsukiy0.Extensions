@@ -1,13 +1,19 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading;
+
 using Amazon.SecretsManager;
 using Amazon.SecretsManager.Model;
+
 using FluentAssertions;
+
 using Microsoft.Extensions.Caching.Memory;
+
 using Moq;
+
 using Tsukiy0.Extensions.Configuration.Aws.Services;
 using Tsukiy0.Extensions.Json.Extensions;
+
 using Xunit;
 
 namespace Tsukiy0.Extensions.Configuration.Aws.Tests.Services

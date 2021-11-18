@@ -1,16 +1,21 @@
 using System;
 using System.Collections.Generic;
+
 using FluentAssertions;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
+
 using Moq;
+
 using Tsukiy0.Extensions.AspNetCore.Configs;
 using Tsukiy0.Extensions.AspNetCore.Filters;
 using Tsukiy0.Extensions.Http.Constants;
+
 using Xunit;
 
 namespace Tsukiy0.Extensions.AspNetCore.Tests.Filters

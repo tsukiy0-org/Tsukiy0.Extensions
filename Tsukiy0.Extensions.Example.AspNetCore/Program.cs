@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+
 using Tsukiy0.Extensions.Example.AspNetCore.Extensions;
 using Tsukiy0.Extensions.Logging.NLog.Extensions;
 

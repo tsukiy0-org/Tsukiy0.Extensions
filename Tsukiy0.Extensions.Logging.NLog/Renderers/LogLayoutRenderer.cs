@@ -1,11 +1,13 @@
 using System;
 using System.Text;
 using System.Text.Json;
+
 using NLog;
 using NLog.LayoutRenderers;
-using Tsukiy0.Extensions.Logging.Models;
-using Tsukiy0.Extensions.Logging.Extensions;
+
 using Tsukiy0.Extensions.Json.Extensions;
+using Tsukiy0.Extensions.Logging.Extensions;
+using Tsukiy0.Extensions.Logging.Models;
 
 namespace Tsukiy0.Extensions.NLog.Renderers
 {
