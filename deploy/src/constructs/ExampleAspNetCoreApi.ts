@@ -18,23 +18,23 @@ export class ExampleAspNetCoreApi extends Construct {
   ) {
     super(scope, id);
 
-    // const fn = new DefaultDockerFunction(this, "Function", {
-    //   code: DockerImageCode.fromImageAsset(
-    //     path.resolve(
-    //       __dirname,
-    //       "../../../Tsukiy0.Extensions.Example.AspNetCore"
-    //     )
-    //   ),
-    //   memorySize: 512,
-    //   timeout: Duration.seconds(30),
-    // });
-    // props.external.grantReadParam(
-    //   fn,
-    //   "tsukiy0/extensions/aspnetcore/apikey/service"
-    // );
+    const fn = new DefaultDockerFunction(this, "Function", {
+      code: DockerImageCode.fromImageAsset(
+        path.resolve(
+          __dirname,
+          "../../../Tsukiy0.Extensions.Example.AspNetCore"
+        )
+      ),
+      memorySize: 512,
+      timeout: Duration.seconds(30),
+    });
+    props.external.grantReadParam(
+      fn,
+      "tsukiy0/extensions/aspnetcore/apikey/service"
+    );
 
-    // new DefaultFunctionHttpApi(this, "Api", {
-    //   fn,
-    // });
+    new DefaultFunctionHttpApi(this, "Api", {
+      fn,
+    });
   }
 }
