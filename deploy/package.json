@@ -5,21 +5,23 @@
   "license": "UNLICENSED",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "dependencies": {
+    "@tsukiy0/aws-cdk-tools": "0.1.1-alpha.070f3cde7b3269ca11e4a3cde7502294ecebb835.20+070f3cd",
+    "aws-cdk-lib": "2.0.0-rc.27",
+    "constructs": "10.0.9"
+  },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
-    "@typescript-eslint/eslint-plugin": "^4.26.1",
-    "@typescript-eslint/parser": "^4.26.1",
-    "aws-cdk": "2.0.0-rc.23",
-    "eslint": "^7.28.0",
+    "@types/node": "16.9.4",
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
+    "aws-cdk": "2.0.0-rc.27",
+    "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "prettier": "^2.3.1",
-    "typescript": "^4.3.2"
-  },
-  "dependencies": {
-    "@tsukiy0/extensions-aws-cdk": "^0.1.0-alpha.44",
-    "aws-cdk-lib": "2.0.0-rc.23",
-    "constructs": "10.0.5"
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.4.4"
   },
   "scripts": {
     "clean": "rimraf dist",
