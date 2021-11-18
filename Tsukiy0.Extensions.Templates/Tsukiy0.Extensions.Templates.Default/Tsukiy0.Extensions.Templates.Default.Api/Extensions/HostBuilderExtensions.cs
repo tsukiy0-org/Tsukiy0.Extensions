@@ -8,7 +8,7 @@ public static class HostBuilderExtensions
     {
         return builder
             .ConfigureAppConfiguration(_ => { })
-            .ConfigureNLogLogging("api")
+            .ConfigureNLogLogging(typeof(Startup).Namespace)
             .ConfigureWebHostDefaults(_ =>
             {
                 _.UseStartup<Startup>();
