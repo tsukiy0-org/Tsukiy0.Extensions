@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+pushd deploy
+yarn install
+yarn lint
+yarn build
+yarn deploy
+popd
