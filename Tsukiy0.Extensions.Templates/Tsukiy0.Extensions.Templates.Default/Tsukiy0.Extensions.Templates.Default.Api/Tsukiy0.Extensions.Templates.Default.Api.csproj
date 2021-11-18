@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Tsukiy0.Extensions.AspNetCore" Version="0.1.1-alpha.0.2" />
+    <PackageReference Include="Tsukiy0.Extensions.Configuration" Version="0.1.1-alpha.0.2" />
+    <PackageReference Include="Tsukiy0.Extensions.Configuration.Aws" Version="0.1.1-alpha.0.2" />
+    <PackageReference Include="Tsukiy0.Extensions.Logging.NLog" Version="0.1.1-alpha.0.2" />
+  </ItemGroup>
+
+</Project>
