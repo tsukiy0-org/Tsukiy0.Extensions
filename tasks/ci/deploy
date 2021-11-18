@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-pushd deployment
+pushd deploy
 yarn install
 yarn lint
 yarn build

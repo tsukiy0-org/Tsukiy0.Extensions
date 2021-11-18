@@ -3,13 +3,10 @@ import { Construct } from "constructs";
 import { Duration } from "aws-cdk-lib";
 import { DockerImageCode } from "aws-cdk-lib/lib/aws-lambda";
 import { External } from "./External";
-import {
-  DefaultDockerFunction,
-  FunctionQueue,
-} from "@tsukiy0/extensions-aws-cdk";
 import { IParameter, StringParameter } from "aws-cdk-lib/lib/aws-ssm";
 import { IQueue } from "aws-cdk-lib/lib/aws-sqs";
 import { IGrantable } from "aws-cdk-lib/lib/aws-iam";
+import { DefaultDockerFunction, QueueFunction } from "@tsukiy0/aws-cdk-tools";
 
 export class ExampleSqsProcessor extends Construct {
   private readonly queueUrlParam: IParameter;
@@ -36,19 +33,19 @@ export class ExampleSqsProcessor extends Construct {
     });
     props.external.grantTableReadWrite(fn);
 
-    const fnQueue = new FunctionQueue(this, "FunctionQueue", {
+    const fnQueue = new QueueFunction(this, "FunctionQueue", {
       fn: fn,
-      timeout,
-      maxAttempts: 1,
+      fnTimeout: timeout,
+      maxRetries: 1,
     });
 
     const queueUrlParam = new StringParameter(this, "QueueUrl", {
       parameterName: "/tsukiy0/extensions/sqs-processor/queue-url",
-      stringValue: fnQueue.queue.queue.queueUrl,
+      stringValue: fnQueue.queue.queueUrl,
     });
 
     this.queueUrlParam = queueUrlParam;
-    this.queue = fnQueue.queue.queue;
+    this.queue = fnQueue.queue;
   }
 
   public grantSubmit = (grantee: IGrantable): void => {
