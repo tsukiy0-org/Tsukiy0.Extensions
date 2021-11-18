@@ -11,10 +11,6 @@
     <ContentTargetFolders>content</ContentTargetFolders>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-  </PropertyGroup>
-
   <ItemGroup>
     <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**" />
     <Compile Remove="**\*" />
