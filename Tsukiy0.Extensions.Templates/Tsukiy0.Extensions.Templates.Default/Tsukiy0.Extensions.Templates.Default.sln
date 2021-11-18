@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Template
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Templates.Default.Infrastructure.Tests", "Tsukiy0.Extensions.Templates.Default.Infrastructure.Tests\Tsukiy0.Extensions.Templates.Default.Infrastructure.Tests.csproj", "{2B4C8D18-0188-4CFA-B1A9-0AD9F150B00E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsukiy0.Extensions.Templates.Default.Api", "Tsukiy0.Extensions.Templates.Default.Api\Tsukiy0.Extensions.Templates.Default.Api.csproj", "{D7BDAB4F-CB43-43F1-9075-0F9FB788BA53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{2B4C8D18-0188-4CFA-B1A9-0AD9F150B00E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B4C8D18-0188-4CFA-B1A9-0AD9F150B00E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B4C8D18-0188-4CFA-B1A9-0AD9F150B00E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7BDAB4F-CB43-43F1-9075-0F9FB788BA53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7BDAB4F-CB43-43F1-9075-0F9FB788BA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7BDAB4F-CB43-43F1-9075-0F9FB788BA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7BDAB4F-CB43-43F1-9075-0F9FB788BA53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

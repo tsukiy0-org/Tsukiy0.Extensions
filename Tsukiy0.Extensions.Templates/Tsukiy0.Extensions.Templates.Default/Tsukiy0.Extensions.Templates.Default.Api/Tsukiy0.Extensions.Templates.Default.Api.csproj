@@ -12,6 +12,7 @@
     <PackageReference Include="Tsukiy0.Extensions.Configuration" Version="0.1.1-alpha.0.2" />
     <PackageReference Include="Tsukiy0.Extensions.Configuration.Aws" Version="0.1.1-alpha.0.2" />
     <PackageReference Include="Tsukiy0.Extensions.Logging.NLog" Version="0.1.1-alpha.0.2" />
+    <PackageReference Include="Tsukiy0.Extensions.MediatR" Version="0.1.1-alpha.0.2" />
   </ItemGroup>
 
   <ItemGroup>
