@@ -13,6 +13,12 @@
       "commands": [
         "dotnet-outdated"
       ]
+    },
+    "swashbuckle.aspnetcore.cli": {
+      "version": "6.2.3",
+      "commands": [
+        "swagger"
+      ]
     }
   }
 }
