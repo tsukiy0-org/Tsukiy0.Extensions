@@ -1,10 +1,14 @@
 import { Construct } from "constructs";
 import path from "path";
-import { FargateBatchJob } from "@tsukiy0/extensions-aws-cdk";
-import { DockerImageAsset } from "aws-cdk-lib/lib/aws-ecr-assets";
 import { IParameter, StringParameter } from "aws-cdk-lib/lib/aws-ssm";
 import { IGrantable } from "aws-cdk-lib/lib/aws-iam";
 import { External } from "./External";
+import {
+  FargateBatchJob,
+  FargateComputeEnvironment,
+} from "@tsukiy0/aws-cdk-tools";
+import { SubnetType } from "aws-cdk-lib/aws-ec2";
+import { ContainerImage } from "aws-cdk-lib/aws-ecs";
 
 export class ExampleBatchProcessor extends Construct {
   private readonly job: FargateBatchJob;
@@ -20,39 +24,47 @@ export class ExampleBatchProcessor extends Construct {
   ) {
     super(scope, id);
 
-    const job = new FargateBatchJob(this, "Job", {
-      vpc: props.external.vpc,
-      dockerImage: new DockerImageAsset(this, "JobImage", {
-        directory: path.resolve(
-          __dirname,
-          "../../../Tsukiy0.Extensions.Example.Processor.Aws.Batch"
-        ),
-      }),
-      computeResources: {
-        maxvCpus: 1,
-      },
-      jobDefinition: {
-        resourceRequirements: {
-          mem: 1024,
-          vcpu: 0.5,
+    const computeEnvironment = new FargateComputeEnvironment(
+      this,
+      "ComputeEnvironment",
+      {
+        vpc: props.external.vpc,
+        vpcSubnets: {
+          subnetType: SubnetType.PUBLIC,
         },
-        environment: [],
+        spot: true,
+        vcpus: 2,
+      }
+    );
+
+    const job = new FargateBatchJob(this, "Job", {
+      computeEnvironment,
+      container: {
+        image: ContainerImage.fromAsset(
+          path.resolve(
+            __dirname,
+            "../../../Tsukiy0.Extensions.Example.Processor.Aws.Batch"
+          )
+        ),
+        vcpus: 0.25,
+        memoryLimitMiB: 512,
+        assignPublicIp: true,
       },
     });
-    props.external.grantTableReadWrite(job.role);
+    props.external.grantTableReadWrite(job);
 
     const jobDefinitionArnParam = new StringParameter(
       this,
       "JobDefinitionArn",
       {
         parameterName: "/tsukiy0/extensions/batch-processor/job-definition-arn",
-        stringValue: job.jobDefinition.ref,
+        stringValue: job.definition.jobDefinitionArn,
       }
     );
 
     const jobQueueArnParam = new StringParameter(this, "JobQueueArn", {
       parameterName: "/tsukiy0/extensions/batch-processor/job-queue-arn",
-      stringValue: job.jobQueue.ref,
+      stringValue: job.queue.jobQueueArn,
     });
 
     this.job = job;

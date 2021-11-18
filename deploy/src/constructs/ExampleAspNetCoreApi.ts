@@ -1,13 +1,12 @@
 import path from "path";
 import { Construct } from "constructs";
 import { Duration } from "aws-cdk-lib";
-import {
-  DockerImageFunction,
-  DockerImageCode,
-} from "aws-cdk-lib/lib/aws-lambda";
-import { RetentionDays } from "aws-cdk-lib/lib/aws-logs";
-import { DefaultLambdaRestApi } from "@tsukiy0/extensions-aws-cdk";
+import { DockerImageCode } from "aws-cdk-lib/lib/aws-lambda";
 import { External } from "./External";
+import {
+  DefaultDockerFunction,
+  DefaultFunctionHttpApi,
+} from "@tsukiy0/aws-cdk-tools";
 
 export class ExampleAspNetCoreApi extends Construct {
   constructor(
@@ -19,7 +18,7 @@ export class ExampleAspNetCoreApi extends Construct {
   ) {
     super(scope, id);
 
-    const fn = new DockerImageFunction(this, "Function", {
+    const fn = new DefaultDockerFunction(this, "Function", {
       code: DockerImageCode.fromImageAsset(
         path.resolve(
           __dirname,
@@ -28,15 +27,13 @@ export class ExampleAspNetCoreApi extends Construct {
       ),
       memorySize: 512,
       timeout: Duration.seconds(30),
-      logRetention: RetentionDays.ONE_WEEK,
-      retryAttempts: 0,
     });
     props.external.grantReadParam(
       fn,
       "tsukiy0/extensions/aspnetcore/apikey/service"
     );
 
-    new DefaultLambdaRestApi(this, "Api", {
+    new DefaultFunctionHttpApi(this, "Api", {
       fn,
     });
   }

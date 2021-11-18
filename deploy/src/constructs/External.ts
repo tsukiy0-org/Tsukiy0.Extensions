@@ -2,7 +2,6 @@ import { Arn, Stack } from "aws-cdk-lib";
 import { ITable, Table } from "aws-cdk-lib/lib/aws-dynamodb";
 import { IVpc, SubnetType, Vpc } from "aws-cdk-lib/lib/aws-ec2";
 import { IGrantable, PolicyStatement } from "aws-cdk-lib/lib/aws-iam";
-import { IParameter } from "aws-cdk-lib/lib/aws-ssm";
 import { Construct } from "constructs";
 
 export class External extends Construct {

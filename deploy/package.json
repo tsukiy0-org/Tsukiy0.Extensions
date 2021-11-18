@@ -26,7 +26,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "tsc -p ./tsconfig.build.json",
-    "lint": "eslint src --ext .ts,.tsx",
+    "lint": "eslint \"./src/**/*.ts\"",
     "predeploy": "cdk bootstrap && cdk deploy --require-approval never Tsukiy0ExtensionsExternalStack",
     "deploy": "cdk deploy --require-approval never --all"
   }
