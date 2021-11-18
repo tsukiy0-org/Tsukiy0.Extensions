@@ -1,7 +1,5 @@
 using MediatR;
 
-using Microsoft.OpenApi.Models;
-
 using Tsukiy0.Extensions.AspNetCore.Extensions;
 using Tsukiy0.Extensions.MediatR.Extensions;
 using Tsukiy0.Extensions.Templates.Default.Core.Handlers;
@@ -22,10 +20,7 @@ public class Startup
     {
         services.AddDefaults();
         services.AddMediatR();
-        services.AddSwaggerGen(_ =>
-        {
-            _.SwaggerDoc("v1", new OpenApiInfo { Title = typeof(Startup).Namespace, Version = "v1" });
-        });
+        services.AddSwaggerGen();
 
         services.AddScoped<IRequestHandler<HealthRequest, Unit>, HealthHandler>();
     }
@@ -33,6 +28,6 @@ public class Startup
     public void Configure(IApplicationBuilder app)
     {
         app.UseDefaults(Configuration);
-        app.UseSwaggerUI(_ => _.SwaggerEndpoint("v1/swagger.json", $"{typeof(Startup).Namespace} v1"));
+        app.UseSwaggerUI();
     }
 }

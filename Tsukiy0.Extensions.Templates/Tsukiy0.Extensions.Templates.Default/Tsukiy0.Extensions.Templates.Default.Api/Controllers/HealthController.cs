@@ -7,7 +7,7 @@ using Tsukiy0.Extensions.Templates.Default.Domain.Requests;
 namespace Tsukiy0.Extensions.Templates.Default.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("health")]
 public class HealthController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -17,7 +17,7 @@ public class HealthController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet(Name = "health")]
+    [HttpGet]
     public async Task<IActionResult> Health()
     {
         await _mediator.Send(new HealthRequest());
