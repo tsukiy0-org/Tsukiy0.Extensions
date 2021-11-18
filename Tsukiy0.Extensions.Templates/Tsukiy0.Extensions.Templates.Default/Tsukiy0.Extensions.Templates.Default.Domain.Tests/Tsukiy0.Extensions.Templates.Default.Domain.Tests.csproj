@@ -23,4 +23,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Tsukiy0.Extensions.Templates.Default.Domain\Tsukiy0.Extensions.Templates.Default.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

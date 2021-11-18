@@ -15,4 +15,8 @@
     <PackageReference Include="Tsukiy0.Extensions.Logging.NLog" Version="0.1.1-alpha.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Tsukiy0.Extensions.Templates.Default.Infrastructure\Tsukiy0.Extensions.Templates.Default.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
