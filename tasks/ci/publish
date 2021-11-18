@@ -27,6 +27,7 @@ pack Tsukiy0.Extensions.Messaging
 pack Tsukiy0.Extensions.Messaging.Aws
 pack Tsukiy0.Extensions.Processor
 pack Tsukiy0.Extensions.Processor.Aws
+pack Tsukiy0.Extensions.Templates
 pack Tsukiy0.Extensions.Testing
 
 dotnet nuget push "${NUGET_PKG_DIR}/*.nupkg" --source ${SOURCE} --api-key ${NUGET_API_KEY} --skip-duplicate
