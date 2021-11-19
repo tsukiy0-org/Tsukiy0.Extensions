@@ -2,8 +2,13 @@ name: pipeline
 on:
   push:
 jobs:
-  pipeline:
+  dev:
     runs-on: ubuntu-latest
+    env:
+      ENVIRONMENT: Staging
+      AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: us-east-1
     steps:
       - uses: actions/checkout@v2
         with:
@@ -14,19 +19,38 @@ jobs:
           docker-compose -f tasks/ci/docker-compose.yml run build
           docker-compose -f tasks/ci/docker-compose.yml down
       - name: deploy
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
         run: |
           docker-compose -f tasks/ci/docker-compose.yml build deploy
           docker-compose -f tasks/ci/docker-compose.yml run deploy
           docker-compose -f tasks/ci/docker-compose.yml down
       - name: integration
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
+        run: |
+          docker-compose -f tasks/ci/docker-compose.yml build integration
+          docker-compose -f tasks/ci/docker-compose.yml run integration
+          docker-compose -f tasks/ci/docker-compose.yml down
+  prod:
+    runs-on: ubuntu-latest
+    needs: dev
+    env:
+      ENVIRONMENT: Production
+      AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: us-east-1
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: build
+        run: |
+          docker-compose -f tasks/ci/docker-compose.yml build build
+          docker-compose -f tasks/ci/docker-compose.yml run build
+          docker-compose -f tasks/ci/docker-compose.yml down
+      - name: deploy
+        run: |
+          docker-compose -f tasks/ci/docker-compose.yml build deploy
+          docker-compose -f tasks/ci/docker-compose.yml run deploy
+          docker-compose -f tasks/ci/docker-compose.yml down
+      - name: integration
         run: |
           docker-compose -f tasks/ci/docker-compose.yml build integration
           docker-compose -f tasks/ci/docker-compose.yml run integration
