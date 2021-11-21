@@ -19,14 +19,6 @@
     {
       "exclude": [
         ".template.config/**"
-      ],
-      "modifiers": [
-        {
-          "rename": {
-            "gitignore": ".gitignore",
-            "gitkeep": ".gitkeep"
-          }
-        }
       ]
     }
   ]
